@@ -18,9 +18,8 @@ docker version
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 echo -e '\033[1;31m 5.安装docker-compose \033[0m'
-scp luofei@192.168.81.29:Downloads/docker-compose-Linux-x86_64 /usr/local/bin
-echo -e '\033[1;31m 重命名 \033[0m'
-mv /usr/local/bin/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+echo -e '\033[1;31m 下载docker-compose \033[0m'
+curl -L https://github.com/docker/compose/releases/download/1.16.0-rc2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 echo -e '\033[1;31m 添加执行权限 \033[0m'
 chmod +x /usr/local/bin/docker-compose
 echo -e '\033[1;31m 查看docker-compose版本 \033[0m'
