@@ -24,7 +24,7 @@ rabbitmq-plugins enable rabbitmq_management
 echo -e "\033[1;31m 10.重启服务 \033[0m"
 service rabbitmq-server restart
 echo -e "\033[1;31m 11.增加管理员用户 \033[0m"
-rabbitmqctl add_user admin MECT888!
+rabbitmqctl add_user admin 123456
 rabbitmqctl set_user_tags admin administrator
 echo -e "\033[1;31m 12.在浏览器中使用端口15672登录控制台，可以对RabbitMQ进行管理 \033[0m"
 curl http://localhost:15672
