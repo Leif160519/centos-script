@@ -338,5 +338,15 @@ Subsystem	sftp	/usr/libexec/openssh/sftp-server
 #	ForceCommand cvs server
 EOF
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
+
+echo -e '\033[1;31m 7.安装screenfetch \033[0m'
+cd /usr/bin/
+echo -e '\033[1;31m 从github上下载screenfetch \033[0m'
+git clone git://github.com/KittyKatt/screenFetch.git screenfetch
+echo -e '\033[1;31m 给screenfetch赋予可执行权限 \033[0m'
+chmod +x /usr/bin/screenfetch
+echo -e '\033[1;31m 查看计算机软硬件信息 \033[0m'
+screenfetch
+
 echo -e '\033[1;32m系统初始化配置完成！\033[0m'
 exit
