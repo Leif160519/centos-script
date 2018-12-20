@@ -195,7 +195,18 @@ echo -e '\033[1;31m 禁止防火墙开机自启 \033[0m'
 systemctl disable firewalld
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
-echo -e '\033[1;31m 6.关闭SSH DNS反向解析和GSSAPI的用户认证 \033[0m'
+echo -e '\033[1;31m 6.安装screenfetch \033[0m'
+echo -e '\033[1;31m 从github上下载screenfetch \033[0m'
+git clone git://github.com/KittyKatt/screenFetch.git screenfetch
+echo -e '\033[1;31m 复制文件到/usr/bin/目录 \033[0m'
+cp screenfetch/screenfetch-dev /usr/bin/screenfetch
+echo -e '\033[1;31m 给screenfetch赋予可执行权限 \033[0m'
+chmod +x /usr/bin/screenfetch
+echo -e '\033[1;31m 查看计算机软硬件信息 \033[0m'
+screenfetch
+echo -e '\033[1;31m ********************************************************************************** \033[0m'
+
+echo -e '\033[1;31m 7.关闭SSH DNS反向解析和GSSAPI的用户认证 \033[0m'
 cat <<EOF >/etc/ssh/sshd_config
 #	$OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $
 
@@ -337,17 +348,10 @@ Subsystem	sftp	/usr/libexec/openssh/sftp-server
 #	PermitTTY no
 #	ForceCommand cvs server
 EOF
-echo -e '\033[1;31m ********************************************************************************** \033[0m'
-
-echo -e '\033[1;31m 7.安装screenfetch \033[0m'
-echo -e '\033[1;31m 从github上下载screenfetch \033[0m'
-git clone git://github.com/KittyKatt/screenFetch.git screenfetch
-echo -e '\033[1;31m 复制文件到/usr/bin/目录 \033[0m'
-cp screenfetch/screenfetch-dev /usr/bin/screenfetch
-echo -e '\033[1;31m 给screenfetch赋予可执行权限 \033[0m'
-chmod +x /usr/bin/screenfetch
-echo -e '\033[1;31m 查看计算机软硬件信息 \033[0m'
-screenfetch
+echo -e '\033[1;31m 重启sshd服务 \033[0m'
+systemctl restart sshd
+echo -e '\033[1;31m 查看sshd服务状态 \033[0m'
+systemctl status sshd
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 # echo -e '\033[1;31m 8.更改主机hostname \033[0m'
