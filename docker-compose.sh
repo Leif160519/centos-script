@@ -1,6 +1,6 @@
 #!/bin/bash
 #获取本机ip地址
-IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1)
+IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
 #服务名
 # SERVICE_NAME=${1:-"eureka-server admin-server"}
 #服务名数组
@@ -30,7 +30,7 @@ for ((i=1;i<SERVICE_NUM+1;i++))
   docker stop mect-${SERVICE_NAME_ARRAY[i-1]}
   docker rm mect-${SERVICE_NAME_ARRAY[i-1]}
 }
-cd ${SCRIPT_DIR}
+cd ${CONFIG_DIR}
 if [ -f docker-compose.yml ];then
   echo "检测到docker-compose.yml已存在，删除之"
   rm -f docker-compose.yml
