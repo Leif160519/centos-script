@@ -78,4 +78,7 @@ docker-compose up -d
 echo "--------------------------------构建镜像并启动容器完成--------------------------------"
 docker ps
 
+echo "清除临时目录${JENKINS_DIR}/${TMP_DIR}"
+rm -rf ${JENKINS_DIR}/${TMP_DIR}
+echo "临时目录清除完毕"
 exit
