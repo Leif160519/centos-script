@@ -24,7 +24,7 @@ SCRIPT_DIR="/home/mect/script"
 
 echo "当前服务器部署服务有${SERVICE_NUM}个，分别是："
 echo "服务名:端口号"
-for ((i=1;i<SERVICE_NUM+1;i++))
+for ((i=1;i<${SERVICE_NUM}+1;i++))
 {
   echo ${i}.${SERVICE_NAME_ARRAY[i-1]}:${SERVICE_PORT_ARRAY[i-1]};
   docker stop mect-${SERVICE_NAME_ARRAY[i-1]}
@@ -40,7 +40,7 @@ fi
 echo "开始动态生成docker-compose.yml"
 echo "version: '0.01'" >> docker-compose.yml
 echo "services:" >> docker-compose.yml
-for ((i=0;i<SERVICE_NUM;i++))
+for ((i=0;i<${SERVICE_NUM};i++))
 {
   echo "  ${SERVICE_NAME_ARRAY[i]}:" >> docker-compose.yml
   echo "    image: leif0207/medcaptain-java:8" >> docker-compose.yml
