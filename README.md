@@ -118,6 +118,9 @@ flush privileges;
 ## 11.service-config.txt
 *`spring boot`* 服务配置文件，第一行是服务名，第二行是对应的端口号
 
+## 12.python3.7.sh
+编译安装 *`Python3.7`*
+
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 
