@@ -17,9 +17,13 @@ make install
 echo -e '\033[1;31m 7.创建软链接 \033[0m'
 ln -s /usr/local/bin/python3/bin/python3 /usr/bin/python3
 ln -s /usr/local/bin/python3/bin/pip3 /usr/bin/pip3
-echo -e '\033[1;31m 8.查看pip3 版本 \033[0m'
+echo -e '\033[1;31m 8.查看pip3版本 \033[0m'
 pip3 -V
-echo -e '\033[1;31m 9.查看python版本 \033[0m'
+echo -e '\033[1;31m 9.升级pip3 \033[0m'
+pip3 install upgrade pip
+echo -e '\033[1;31m 10.查看升级后的pip3版本 \033[0m'
+pip3 -V
+echo -e '\033[1;31m 11.查看python版本 \033[0m'
 python3
 echo -e "\033[1;32m python3安装完毕！ \033[0m"
 exit
