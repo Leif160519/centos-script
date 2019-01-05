@@ -21,6 +21,8 @@ LOG_DIR="/home/mect/log"
 CONFIG_DIR="/home/mect/config"
 #脚本路径
 SCRIPT_DIR="/home/mect/script"
+#脚本运行环境(test代表测试环境，dev代表开发环境，不跟参数默认测试环境)
+SCRIPT_ENV=${1:-"test"}
 
 echo "当前服务器部署服务有${SERVICE_NUM}个，分别是："
 echo "服务名:端口号"
@@ -36,6 +38,7 @@ if [ -f docker-compose.yml ];then
   rm -f docker-compose.yml
 fi
 
+if [ ${SCRIPT_ENV} == "test" ];then
 # vi docker-compose.yml
 echo "开始动态生成docker-compose.yml"
 echo "version: '0.01'" >> docker-compose.yml
@@ -53,10 +56,28 @@ for ((i=0;i<${SERVICE_NUM};i++))
   echo "    - ${LOG_DIR}:${LOG_DIR}:rw" >> docker-compose.yml
   echo "    - /tmp" >> docker-compose.yml
   echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --spring.profiles.active=test --eureka.instance.ip-address=${IP_ADDRESS} --spring.cloud.config.uri=http://192.168.81.24:8777" >> docker-compose.yml
-  echo -e "\n\n"
+  echo -e "\n" >> docker-compose.yml
 }
-for file in $*;do
-  echo $file >> ${CONFIG_DIR}/docker-compose.yml
-done
+elif [ ${SCRIPT_ENV} == "dev" ];then
+# vi docker-compose.yml
+echo "开始动态生成docker-compose.yml"
+echo "version: '0.01'" >> docker-compose.yml
+echo "services:" >> docker-compose.yml
+for ((i=0;i<${SERVICE_NUM};i++))
+{
+  echo "  ${SERVICE_NAME_ARRAY[i]}:" >> docker-compose.yml
+  echo "    image: leif0207/medcaptain-java:8" >> docker-compose.yml
+  echo "    restart: always" >> docker-compose.yml
+  echo "    container_name: mect-${SERVICE_NAME_ARRAY[i]}" >> docker-compose.yml
+  echo "    ports:" >> docker-compose.yml
+  echo "    - ${SERVICE_PORT_ARRAY[i]}:${SERVICE_PORT_ARRAY[i]}" >> docker-compose.yml
+  echo "    volumes:" >> docker-compose.yml
+  echo "    - ${JAR_DIR}:${JAR_DIR}:rw" >> docker-compose.yml
+  echo "    - ${LOG_DIR}:${LOG_DIR}:rw" >> docker-compose.yml
+  echo "    - /tmp" >> docker-compose.yml
+  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --eureka.instance.ip-address=${IP_ADDRESS}" >> docker-compose.yml
+  echo -e "\n" >> docker-compose.yml
+}
+fi
 echo "docker-compose.yml写入完成"
 exit

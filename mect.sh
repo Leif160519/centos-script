@@ -33,8 +33,11 @@ SERVICE_PORT_ARRAY=($(tail -1 /root/service-config.txt))
 SERVICE_NUM=${#SERVICE_PORT_ARRAY[@]}
 #服务版本号
 SERVER_VERSION="0.0.1-SNAPSHOT.jar"
+#脚本运行环境(test代表测试环境，dev代表开发环境，不跟参数默认测试环境)
+SCRIPT_ENV=${1:-"test"}
 
 cat ${JENKINS_DIR}/${TMP_DIR}/${SCRIPT_DIR}/banner.txt
+echo "******************************** 当前部署环境为：${SCRIPT_ENV} ********************************"
 #--------------------------------1.备份项目旧版本--------------------------------
 echo "--------------------------------1.开始备份项目旧版本--------------------------------"
 BACKUP_DATE="$(date "+%Y-%m-%d %H:%M:%S")"
@@ -110,7 +113,7 @@ else
     echo "①.获取java8镜像"
     docker pull leif0207/medcaptain-java:8
     echo "②.执行脚本，生成docker-compose.yml配置文件"
-    bash ${HOME_DIR}/${PROJECT_DIR}/${SCRIPT_DIR}/docker-compose.sh
+    bash ${HOME_DIR}/${PROJECT_DIR}/${SCRIPT_DIR}/docker-compose.sh ${SCRIPT_ENV}
     echo "--------------------------------配置文件生成成功--------------------------------"
 
     #--------------------------------4.构建镜像并启动容器--------------------------------
