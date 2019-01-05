@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e '\033[1;31m ********************************此脚本自动化编译安装Python3.7******************************** \033[0m'
-echo -e '\033[1;31m 1.开始安装依赖包 \033[0m'
+echo -e '\033[1;31m 1.开始安装依赖包，centos里面是-devel，如果在ubuntu下安装则要改成-dev \033[0m'
 yum -y groupinstall "Development tools"
 yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel libffi-devel
 echo -e '\033[1;31m 2.获取python3.7的安装包 \033[0m'
