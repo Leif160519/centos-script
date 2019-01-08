@@ -363,10 +363,12 @@ echo -e '\033[1;31m 查看sshd服务状态 \033[0m'
 systemctl status sshd
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
-# echo -e '\033[1;31m 8.更改主机hostname \033[0m'
-# cat <<EOF >/etc/hostname
-# 192.168.81.21
-# EOF
+echo -e '\033[1;31m 8.更改主机hostname \033[0m'
+#获取本机ip地址
+IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
+cat <<EOF >/etc/hostname
+${IP_ADDRESS}
+EOF
 
 echo -e '\033[1;32m系统初始化配置完成！\033[0m'
 exit
