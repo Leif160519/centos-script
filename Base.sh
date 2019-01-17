@@ -370,5 +370,10 @@ cat <<EOF >/etc/hostname
 ${IP_ADDRESS}
 EOF
 
+# echo "修复重启后网络服务无法启动的问题"
+# systemctl stop NetworkManager
+# systemctl disable NetworkManager
+# Systemctl start network
+
 echo -e '\033[1;32m系统初始化配置完成！\033[0m'
 exit
