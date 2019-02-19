@@ -53,16 +53,16 @@ if [ -d ${HOME_DIR}/${PROJECT_DIR} ];then
 
   for ((i=0;i<${SERVICE_NUM};i++))
   {
-      echo "删除：服务 ${SERVICE_NAME_ARRAY[i]} --- jar包 ${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION}"
+      echo "删除：服务 ${SERVICE_NAME_ARRAY[i]} --- jar包 ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION}"
       rm -f ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION}
 
-      echo "删除：服务 ${SERVICE_NAME_ARRAY[i]} --- 日志目录 ${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION}"
+      echo "删除：服务 ${SERVICE_NAME_ARRAY[i]} --- 日志目录 ${HOME_DIR}/${PROJECT_DIR}/${LOG_DIR}/${SERVICE_NAME_ARRAY[i]}"
       rm -rf ${HOME_DIR}/${PROJECT_DIR}/${LOG_DIR}/${SERVICE_NAME_ARRAY[i]}
   }
 
   #复制/root/service-config.txt配置文件到/home/mect/config目录下
   cp /root/service-config.txt ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"/${PROJECT_DIR}/${CONFIG_DIR}
-  echo "--------------------------------旧项目备份完成--------------------------------"
+  echo "--------------------------------1.旧项目备份完成--------------------------------"
   tree ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"
 else
     echo "③.目录不存在，无需备份"
@@ -104,7 +104,7 @@ else
         mv ${JENKINS_DIR}/${TMP_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION}  ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}
     }
 
-    echo "--------------------------------目录构建完成--------------------------------"
+    echo "--------------------------------2.目录构建完成--------------------------------"
     tree ${HOME_DIR}/${PROJECT_DIR}
 
 
@@ -114,13 +114,13 @@ else
     docker pull leif0207/medcaptain-java:8
     echo "②.执行脚本，生成docker-compose.yml配置文件"
     bash ${HOME_DIR}/${PROJECT_DIR}/${SCRIPT_DIR}/docker-compose.sh ${SCRIPT_ENV}
-    echo "--------------------------------配置文件生成成功--------------------------------"
+    echo "--------------------------------3.配置文件生成成功--------------------------------"
 
     #--------------------------------4.构建镜像并启动容器--------------------------------
     echo "--------------------------------4.构建镜像并启动容器--------------------------------"
     cd ${HOME_DIR}/${PROJECT_DIR}/${CONFIG_DIR}
     docker-compose up -d
-    echo "--------------------------------构建镜像并启动容器完成--------------------------------"
+    echo "--------------------------------4.构建镜像并启动容器完成--------------------------------"
     docker ps
 fi
 echo "清除临时目录${JENKINS_DIR}/${TMP_DIR}"
