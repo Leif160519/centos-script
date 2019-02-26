@@ -11,3 +11,4 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 EOF
 echo "\033[1;31m 开始安装Chrome浏览器 \033[0m"
 yum -y install google-chrome-stable --nogpgcheck
+exit
