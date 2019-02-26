@@ -25,7 +25,6 @@ SCRIPT_DIR="/home/mect/script"
 SCRIPT_ENV=${1:-"test"}
 
 echo "当前服务器部署服务有${SERVICE_NUM}个，分别是："
-echo "服务名:端口号"
 for ((i=1;i<${SERVICE_NUM}+1;i++))
 {
   echo ${i}.${SERVICE_NAME_ARRAY[i-1]}:${SERVICE_PORT_ARRAY[i-1]};
@@ -55,7 +54,7 @@ for ((i=0;i<${SERVICE_NUM};i++))
   echo "    - ${JAR_DIR}:${JAR_DIR}:rw" >> docker-compose.yml
   echo "    - ${LOG_DIR}:${LOG_DIR}:rw" >> docker-compose.yml
   echo "    - /tmp" >> docker-compose.yml
-  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --spring.profiles.active=test --eureka.instance.ip-address=${IP_ADDRESS} --spring.cloud.config.uri=http://192.168.81.24:8777" >> docker-compose.yml
+  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar -Xms512m -Xmx1024m ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --spring.profiles.active=test --eureka.instance.ip-address=${IP_ADDRESS} --spring.cloud.config.uri=http://192.168.81.41:8777" >> docker-compose.yml
   echo -e "\n" >> docker-compose.yml
 }
 elif [ ${SCRIPT_ENV} == "dev" ];then
@@ -75,7 +74,7 @@ for ((i=0;i<${SERVICE_NUM};i++))
   echo "    - ${JAR_DIR}:${JAR_DIR}:rw" >> docker-compose.yml
   echo "    - ${LOG_DIR}:${LOG_DIR}:rw" >> docker-compose.yml
   echo "    - /tmp" >> docker-compose.yml
-  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --eureka.instance.ip-address=${IP_ADDRESS}" >> docker-compose.yml
+  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar -Xms512m -Xmx1024m ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --eureka.instance.ip-address=${IP_ADDRESS}" >> docker-compose.yml
   echo -e "\n" >> docker-compose.yml
 }
 fi

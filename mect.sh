@@ -40,15 +40,15 @@ cat ${JENKINS_DIR}/${TMP_DIR}/${SCRIPT_DIR}/banner.txt
 echo "********************** 当前本机IP地址为：${IP_ADDRESS};部署环境为：${SCRIPT_ENV} **********************"
 #--------------------------------1.备份项目旧版本--------------------------------
 echo "--------------------------------1.开始备份项目旧版本--------------------------------"
-BACKUP_DATE="$(date "+%Y-%m-%d %H:%M:%S")"
-echo "①.根据日期新建备份文件夹${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}""
+BACKUP_DATE="$(date "+%Y-%m-%dT%H:%M:%S")"
+echo "①.根据日期新建备份文件夹${HOME_DIR}/${BACKUP_DIR}/${BACKUP_DATE}"
 mkdir -p ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"
 echo "②.开始备份文件"
 #检测mect文件夹是否存在，存在则备份，否则不作任何操作
 if [ -d ${HOME_DIR}/${PROJECT_DIR} ];then
   #将/home/mect整个目录除资源目录复制到/home/backup/${BACKUP_DATE}(当前时间)目录下
-  echo "复制: ${HOME_DIR}/${PROJECT_DIR} 到 ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}" "
-  cp -r ${HOME_DIR}/${PROJECT_DIR} ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"
+  echo "复制: ${HOME_DIR}/${PROJECT_DIR} 到 ${HOME_DIR}/${BACKUP_DIR}/${BACKUP_DATE} "
+  cp -r ${HOME_DIR}/${PROJECT_DIR} ${HOME_DIR}/${BACKUP_DIR}/${BACKUP_DATE}
 
 
   for ((i=0;i<${SERVICE_NUM};i++))
@@ -61,9 +61,9 @@ if [ -d ${HOME_DIR}/${PROJECT_DIR} ];then
   }
 
   #复制/root/service-config.txt配置文件到/home/mect/config目录下
-  cp /root/service-config.txt ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"/${PROJECT_DIR}/${CONFIG_DIR}
+  cp /root/service-config.txt ${HOME_DIR}/${BACKUP_DIR}/${BACKUP_DATE}/${PROJECT_DIR}/${CONFIG_DIR}
   echo "--------------------------------1.旧项目备份完成--------------------------------"
-  tree ${HOME_DIR}/${BACKUP_DIR}/"${BACKUP_DATE}"
+  tree ${HOME_DIR}/${BACKUP_DIR}/${BACKUP_DATE}
 else
     echo "③.目录不存在，无需备份"
 fi
