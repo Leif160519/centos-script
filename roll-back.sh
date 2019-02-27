@@ -36,27 +36,23 @@ cat ${HOME_DIR}/${PROJECT_DIR}/${SCRIPT_DIR}/banner.txt
 echo "********************** 当前本机IP地址为：${IP_ADDRESS};部署环境为：${SCRIPT_ENV} **********************"
 
 cd ${HOME_DIR}/${BACKUP_DIR}
-path=$1
-# 按照修改日期倒叙输出文件夹名称
-dirs="$(ls ${path} -r)"
-for backup_dir in ${dirs} ; do
-    echo "--------------------------------最新备份的日期文件夹为:${backup_dir}--------------------------------" #输出最新创建的备份文件夹
-    echo "当前服务器需回滚的服务有${SERVICE_NUM}个，分别是："
-    for ((i=1;i<${SERVICE_NUM}+1;i++))
-    {
-      echo ${i}.${SERVICE_NAME_ARRAY[i-1]}:${SERVICE_PORT_ARRAY[i-1]};
-      echo "1.暂停当前Docker容器:mect-${SERVICE_NAME_ARRAY[i-1]}"
-      docker stop mect-${SERVICE_NAME_ARRAY[i-1]}
-      echo "2.删除待替换的jar包:${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}"
-      rm -f ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}
-      echo "3.开始复制jar包副本到指定文件夹中:${backup_dir}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION} ---> ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}"
-      cp  ${backup_dir}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}  ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}
-      echo "4.重新启动Docker容器:mect-${SERVICE_NAME_ARRAY[i-1]}"
-      docker start mect-${SERVICE_NAME_ARRAY[i-1]}
-    }
-    echo "回滚完毕"
-    break
-done
+# 获取最后一个备份文件夹(最新备份文件夹)
+backup_dir=$(ls | tail -1)
+echo "--------------------------------最新备份的日期文件夹为:${backup_dir}--------------------------------" #输出最新创建的备份文件夹
+echo "当前服务器需回滚的服务有${SERVICE_NUM}个，分别是："
+for ((i=1;i<${SERVICE_NUM}+1;i++))
+{
+  echo ${i}.${SERVICE_NAME_ARRAY[i-1]}:${SERVICE_PORT_ARRAY[i-1]};
+  echo "1.暂停当前Docker容器:mect-${SERVICE_NAME_ARRAY[i-1]}"
+  docker stop mect-${SERVICE_NAME_ARRAY[i-1]}
+  echo "2.删除待替换的jar包:${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}"
+  rm -f ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}
+  echo "3.开始复制jar包副本到指定文件夹中:${backup_dir}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION} ---> ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}"
+  cp  ${backup_dir}/${PROJECT_DIR}/${RESOURCE_DIR}/${SERVICE_NAME_ARRAY[i-1]}-${SERVER_VERSION}  ${HOME_DIR}/${PROJECT_DIR}/${RESOURCE_DIR}
+  echo "4.重新启动Docker容器:mect-${SERVICE_NAME_ARRAY[i-1]}"
+  docker start mect-${SERVICE_NAME_ARRAY[i-1]}
+}
+echo "回滚完毕"
 echo "查看所有Docker容器状态"
 docker ps
 exit
