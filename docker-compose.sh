@@ -74,7 +74,7 @@ for ((i=0;i<${SERVICE_NUM};i++))
   echo "    - ${JAR_DIR}:${JAR_DIR}:rw" >> docker-compose.yml
   echo "    - ${LOG_DIR}:${LOG_DIR}:rw" >> docker-compose.yml
   echo "    - /tmp" >> docker-compose.yml
-  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar -Xms512m -Xmx1024m ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --eureka.instance.ip-address=${IP_ADDRESS}" >> docker-compose.yml
+  echo "    command: java -Djava.security.egd=file:/dev/./urandom -jar -Xms512m -Xmx1024m ${JAR_DIR}/${SERVICE_NAME_ARRAY[i]}-${SERVER_VERSION} --eureka.instance.ip-address=${IP_ADDRESS} --eureka.client.service-url.defaultZone=http://192.168.81.31:8761/eureka/ " >> docker-compose.yml
   echo -e "\n" >> docker-compose.yml
 }
 fi
