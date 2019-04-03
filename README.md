@@ -112,19 +112,17 @@ flush privileges;
 
 > 上述 *`Base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
 
-## 8. gitlab.rb
-*`gitlab`* 配置文件，包含域名和备份设置(其他功能皆删除)
 
-## 9. mect.sh
+## 8. mect.sh
 *`Jenkins`* 部署执行脚本
 
-## 10. docker-compose.sh
+## 9. docker-compose.sh
 根据配置文件动态生成 *`docker-compose.yml`* ,生成过后通过 `docker-compose up -d` 生成镜像并且启动容器
 
-## 11.service-config.txt
+## 10.service-config.txt
 *`spring boot`* 服务配置文件，第一行是服务名，第二行是对应的端口号
 
-## 12.python3.7.sh
+## 11.python3.7.sh
 编译安装 *`Python3.7`*
 
 # 用法
