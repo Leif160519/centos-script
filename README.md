@@ -102,7 +102,7 @@ grant all privileges on *.* to 'root' @'%' identified by '你的root用户密码
 flush privileges;
 ```
 
-## 6. RabbitMQ.sh
+## 6. RabbitMQ(2).sh
 安装 *`RabbitMQ`* 消息通知
 
 >访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
