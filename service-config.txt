@@ -1,2 +1,0 @@
-admin-server data-statistics data-statistics-timed eureka-gateway-client eureka-server fast-dfs file-service mqtt-device-authenticate mqtt-forwarder parse-data-service product-service product-template push-socket-service shadow-device spring-cloud-config user-manage
-5000 8756 8757 8800 8761 8776 8751 8771 8770 8754 8772 8773 8755 8774 8777 8750
