@@ -44,4 +44,10 @@ echo -e "\033[1;32m  重启网络服务 \033[0m"
 systemctl restart network
 echo -e "\033[1;32m  查看网络服务状态 \033[0m"
 systemctl status network
+echo -e '\033[1;32m 更改主机hostname \033[0m'
+cat <<EOF >/etc/hostname
+${address}
+EOF
+echo -e '\033[1;32m 查看修改后的IP地址 \033[0m'
+ip a
 exit
