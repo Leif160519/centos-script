@@ -221,6 +221,9 @@ echo -e '\033[1;31m ************************************************************
 echo -e '\033[1;31m 7.关闭SSH DNS反向解析和GSSAPI的用户认证 \033[0m'
 sed -i "s/#UseDNS yes/UseDNS no/g" /etc/ssh/sshd_config
 sed -i "s/GSSAPIAuthentication yes/GSSAPIAuthentication no/g" /etc/ssh/sshd_config
+echo -e '\033[1;32m 解决SSH掉线问题 \033[0m'
+sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 60/g" /etc/ssh/sshd_config
+sed -i "s/#ClientAliveCountMax 3/ClientAliveCountMax 60/g" /etc/ssh/sshd_config
 echo -e '\033[1;31m 重启sshd服务 \033[0m'
 systemctl restart sshd
 echo -e '\033[1;31m 查看sshd服务状态 \033[0m'
