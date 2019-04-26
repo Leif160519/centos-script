@@ -14,7 +14,19 @@ systemctl start docker
 echo -e '\033[1;31m 查看docker服务启动状态 \033[0m'
 systemctl status docker 
 echo -e '\033[1;31m 查看docker版本 \033[0m'
-docker version 
+docker version
+echo -e '\033[1;31m 给docker换ustc中科大源 \033[0m'
+cat <<EOF > /etc/docker/daemon.json
+{
+
+"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+
+}
+EOF
+echo -e '\033[1;31m 重启docker服务 \033[0m'
+systemctl restart docker
+echo -e '\033[1;31m 查看docker服务启动状态 \033[0m'
+systemctl status docker
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 echo -e '\033[1;31m 5.安装docker-compose \033[0m'
