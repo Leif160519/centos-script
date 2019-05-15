@@ -46,6 +46,18 @@ cat <<EOF >/etc/rabbitmq/rabbitmq.config
 EOF
 echo -e "\033[1;31m 10.启动服务 \033[0m"
 service rabbitmq-server restart
+#判断上一句指令是否执行成功
+if [ $? -ne 0 ]; then
+    #若rabbitmq启动失败，则执行一下命令，原因可能是host里面的hostname中有特殊字符，若不想修改hostname的话就执行吧
+    cat <<EOF >/etc/rabbitmq/rabbitmq-env.conf
+    NODENAME=rabbit@localhost
+    EOF
+    #重新启动服务
+    echo -e "\033[1;31m 10.启动服务 \033[0m"
+    service rabbitmq-server restart
+else
+    echo -e "\033[1;31m 服务重启成功 \033[0m"
+fi
 echo -e "\033[1;31m 11.查看服务状态 \033[0m"
 service rabbitmq-server status
 echo -e "\033[1;31m 12.开启管理功能 \033[0m"
