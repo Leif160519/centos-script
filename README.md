@@ -113,22 +113,26 @@ flush privileges;
 
 >访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
 
-rabbitmq下载
+erlang下载(github): https://github.com/rabbitmq/erlang-rpm/releases
+
+| 描述 | 下载 |
+| --- | --- |
+| 适用于运行RabbitMQ的CentOS 7的零依赖Erlang / OTP 21.3.8.1软件包 | [erlang-21.3.8.1-1.el7.x86_64.rpm](https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el7.x86_64.rpm) |
+| 适用于运行RabbitMQ的CentOS 6的零依赖Erlang / OTP 21.3.8.1软件包 | [erlang-21.3.8.1-1.el6.x86_64.rpm](https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el6.x86_64.rpm) |
+
+>截止2019年05月16日，rabbitmq官网暂未更新erlang 21.3.8.1版本
+
+RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
+
 | 描述 | 下载 |
 | --- | --- |
 | 适用于RHEL Linux 7.x，CentOS 7.x，Fedora 19+的RPM（支持systemd） | [rabbitmq-server-3.7.14-1.el7.noarch.rpm](https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.14/rabbitmq-server-3.7.14-1.el7.noarch.rpm) |
 | 适用于RHEL Linux 6.x，CentOS 6.x，Fedora之前的RPM | [rabbitmq-server-3.7.14-1.el6.noarch.rpm](https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.14/rabbitmq-server-3.7.14-1.el6.noarch.rpm) |
 | openSUSE Linux的RPM | [rabbitmq-server-3.7.14-1.suse.noarch.rpm](https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.14/rabbitmq-server-3.7.14-1.suse.noarch.rpm) |
 | SLES 11.x的RPM|[rabbitmq-server-3.7.14-1.sles11.noarch.rpm](https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.14/rabbitmq-server-3.7.14-1.sles11.noarch.rpm)|
+
 >截止2019年05月16日，rabbitmq官网暂未更新rabbitmq 3.7.14版本
 
-
-erlang下载
-| 描述 | 下载 |
-| --- | --- |
-| 适用于运行RabbitMQ的CentOS 7的零依赖Erlang / OTP 21.3.8.1软件包 | [rabbitmq-server-3.7.14-1.el7.noarch.rpm](https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el7.x86_64.rpm) |
-| 适用于运行RabbitMQ的CentOS 6的零依赖Erlang / OTP 21.3.8.1软件包 | [rabbitmq-server-3.7.14-1.el6.noarch.rpm](https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el6.x86_64.rpm) |
->截止2019年05月16日，rabbitmq官网暂未更新erlang 21.3.8.1版本
 
 ## 8. Supervisor.sh
 通过 *`supervisor`* 进程管理工具设置应用程序开机自启动

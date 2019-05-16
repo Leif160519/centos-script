@@ -1,6 +1,7 @@
 #!/bin/bash
-# erlang下载 https://www.erlang-solutions.com/resources/download.html
-# RabbitMQ下载 https://www.rabbitmq.com/install-rpm.html#install-erlang
+# erlang下载 https://www.erlang-solutions.com/resources/download.html;https://github.com/rabbitmq/erlang-rpm/releases
+
+# RabbitMQ下载 https://www.rabbitmq.com/install-rpm.html#install-erlang;https://github.com/rabbitmq/rabbitmq-server/releases/
 
 centos6=`grep -cIE 'CentOS.*?6.*?' /etc/issue`
 centos7=`grep -cIE 'CentOS.*?7.*?' /etc/issue`
@@ -44,7 +45,6 @@ echo -e "\033[1;31m 9.编辑配置 \033[0m"
 cat <<EOF >/etc/rabbitmq/rabbitmq.config
 [{rabbit,[{loopback_users, []}]}] .
 EOF
-#若rabbitmq启动失败，则执行一下命令，原因可能是host里面的hostname中有特殊字符，若不想修改hostname的话就执行吧
 cat <<EOF >/etc/rabbitmq/rabbitmq-env.conf
 NODENAME=rabbit@localhost
 EOF
