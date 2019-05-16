@@ -8,10 +8,10 @@ centos7=`grep -cIE 'CentOS.*?7.*?' /etc/issue`
 
 if [ $centos6 = 1 -o $centos7 = 1 ]; then
     echo -e "\033[1;31m 1.卸载RabbitMQ \033[0m"
-    yum remove rabbitmq
+    yum -y remove rabbitmq
     rpm -qa | grep rabbitmq | xargs -I {} rpm -e {}
     echo -e "\033[1;31m 2.卸载erlang  \033[0m"
-    yum remove erlang
+    yum -y remove erlang
     rpm -qa | grep erlang | xargs -I {} rpm -e {}
     echo -e "\033[1;31m 3.安装socat  \033[0m"
     yum -y install socat
