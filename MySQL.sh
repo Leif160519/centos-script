@@ -3,7 +3,7 @@ echo -e '\033[1;31m ********************************此脚本自动化安装MySQ
 echo -e '\033[1;31m 开始安装mysql最新稳定版5.7（实际上为社区版本)\033[0m'
 echo -e '\033[1;31m 下载mysql安装包 \033[0m'
 wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-echo -e '\033[1;31m 安装mysql \033[0m'
+echo -e '\033[1;31m 安装mysql依赖 \033[0m'
 yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
 # echo '查看最新稳定版本信息'
 # yum repolist all | grep mysql

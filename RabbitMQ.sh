@@ -40,7 +40,7 @@ if [ $centos7 = 1 ]; then
 fi
 
 echo -e "\033[1;31m 8.设置开机启动 \033[0m"
-service enable rabbitmq-server
+systemctl enable rabbitmq-server
 echo -e "\033[1;31m 9.编辑配置 \033[0m"
 cat <<EOF >/etc/rabbitmq/rabbitmq.config
 [{rabbit,[{loopback_users, []}]}] .
@@ -50,13 +50,13 @@ NODENAME=rabbit@localhost
 EOF
 #重新启动服务
 echo -e "\033[1;31m 10.启动服务 \033[0m"
-service rabbitmq-server restart
+systemctl restart  rabbitmq-server
 echo -e "\033[1;31m 11.查看服务状态 \033[0m"
-service rabbitmq-server status
+systemctl status rabbitmq-server 
 echo -e "\033[1;31m 12.开启管理功能 \033[0m"
 rabbitmq-plugins enable rabbitmq_management
 echo -e "\033[1;31m 13.重启服务 \033[0m"
-service rabbitmq-server restart
+systemctl restart  rabbitmq-server
 echo -e "\033[1;31m 14.增加管理员用户 \033[0m"
 rabbitmqctl add_user admin 123456
 rabbitmqctl set_user_tags admin administrator
