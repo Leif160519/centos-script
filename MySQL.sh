@@ -9,6 +9,10 @@ yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
 # yum repolist all | grep mysql
 echo -e '\033[1;31m 安装mysql社区服务器 \033[0m'
 yum -y install mysql-community-server
+echo -e '\033[1;31m 修改mysql配置文件 \033[0m'
+sed -i '$a\federated'  /etc/my.cnf
+sed -i '$a\max_connections = 2000'  /etc/my.cnf
+sed -i '$a\max_allowed_packet = 64M'  /etc/my.cnf
 echo -e '\033[1;31m 设置mysql开机启动 \033[0m'
 systemctl enable mysqld
 echo -e '\033[1;31m 启动mysql \033[0m'
@@ -26,8 +30,11 @@ echo -e '\033[1;31m 使用以下命令操作数据库：\033[0m
  mysql> set global validate_password_policy=0;
  mysql> set global validate_password_length=4;
  mysql> ALTER USER USER() IDENTIFIED BY "123456";
+ mysql> grant all privileges on *.* to 'root' @'%' identified by '123456';
+ mysql> flush privileges;
  mysql> quit;
 \033[0m'
 mysql -u root -p
 echo -e "\033[1;32m mysql密码设置完毕！ \033[0m"
+
 exit
