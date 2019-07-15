@@ -139,6 +139,9 @@ RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
 
 > 上述 *`Base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
 
+## 9.cockpit.sh
+轻量级性能检测工具，带web界面
+
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 
