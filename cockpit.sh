@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 echo -e '\033[1;31m 安装cockpit \033[0m'
-yum install cockpit
+yum -y install cockpit
 echo -e '\033[1;31m 设置开机自启 \033[0m'
 systemctl enable --now cockpit.socket
 # echo -e '\033[1;31m 防火墙处理 \033[0m'
