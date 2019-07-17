@@ -1,6 +1,6 @@
 #!/bin/bash
 #获取本机ip地址
-IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
+IP_ADDRESS=`ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1`
 echo -e '\033[1;31m ********************************此脚本自动化安装GitLab******************************** \033[0m'
 echo -e '\033[1;31m 1.安装SSH \033[0m'
 yum -y install curl policycoreutils openssh-server openssh-clients
@@ -21,11 +21,7 @@ curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh | sudo bash
 # ubuntu下：curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 yum -y install gitlab-ce
 echo -e '\033[1;31m 添加定时任务，每天凌晨两点，执行gitlab备份 \033[0m'
-sed -i "14a\0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1" /etc/crontab
-
-# ubuntu下：
-# sed -i "16a\0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1" /etc/crontab
-
+sed -i '$a\0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1' /etc/crontab
 echo -e '\033[1;31m 自动编辑gitlab配置文件，设置域名和文件保存时间，默认保存7天 \033[0m'
 sed -i "s/external_url 'http:\/\/gitlab.example.com'/external_url 'http:\/\/${IP_ADDRESS}'/g" /etc/gitlab/gitlab.rb
 sed -i "s/# gitlab_rails\['backup_keep_time'\] = 604800/gitlab_rails\['backup_keep_time'\] = 604800/g" /etc/gitlab/gitlab.rb
