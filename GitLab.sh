@@ -22,6 +22,10 @@ curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh | sudo bash
 yum -y install gitlab-ce
 echo -e '\033[1;31m 添加定时任务，每天凌晨两点，执行gitlab备份 \033[0m'
 sed -i '$a\0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1' /etc/crontab
+echo -e '\033[1;31m 加载任务,使之生效 \033[0m'
+crontab /etc/crontab
+echo -e '\033[1;31m 查看任务 \033[0m'
+crontab -l
 echo -e '\033[1;31m 自动编辑gitlab配置文件，设置域名和文件保存时间，默认保存7天 \033[0m'
 sed -i "s/external_url 'http:\/\/gitlab.example.com'/external_url 'http:\/\/${IP_ADDRESS}'/g" /etc/gitlab/gitlab.rb
 sed -i "s/# gitlab_rails\['backup_keep_time'\] = 604800/gitlab_rails\['backup_keep_time'\] = 604800/g" /etc/gitlab/gitlab.rb
