@@ -30,7 +30,7 @@ echo -e '\033[1;31m 使用以下命令操作数据库：\033[0m
  mysql> set global validate_password_policy=0;
  mysql> set global validate_password_length=4;
  mysql> ALTER USER USER() IDENTIFIED BY "123456";
- mysql> grant all privileges on *.* to 'root' @'%' identified by '123456';
+ mysql> grant all privileges on *.* to "root" @"%" identified by "123456";
  mysql> flush privileges;
  mysql> quit;
 \033[0m'
