@@ -205,6 +205,8 @@ free -m
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 echo -e '\033[1;31m 5.关闭防火墙 \033[0m'
+echo -e '\033[1;31m 禁用SElinux \033[0m'
+setenforce 0
 echo -e '\033[1;31m 修改 \033[1;33m /etc/selinux/config \033[0m 配置文件 \033[0m'
 sed -i "s/enforcing/disabled/g" /etc/selinux/config
 echo -e '\033[1;31m 停止防火墙服务 \033[0m'
