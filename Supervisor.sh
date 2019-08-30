@@ -17,5 +17,5 @@ echo -e '\033[1;31m 使用以下命令操作supervisor：\033[0m
  supervisor> reload
  supervisor> status
 \033[0m'
-echo -e '\033[1;32m eureka注册中心配置完成！\033[0m'
+echo -e '\033[1;32m supervisor配置完成！\033[0m'
 exit
