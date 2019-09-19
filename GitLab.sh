@@ -36,4 +36,6 @@ gitlab-ctl status
 echo -e '\033[1;31m 使用以下指令启动|停止|查看状态|重启服务管理gitlab \033[0m'
 echo -e '\033[1;33m gitlab-ctl start|stop|status|restart \033[0m'
 echo -e '\033[1;32m GitLab配置完成！\033[0m'
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit

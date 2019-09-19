@@ -254,4 +254,6 @@ EOF
 # Systemctl start network
 
 echo -e '\033[1;32m系统初始化配置完成！\033[0m'
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit

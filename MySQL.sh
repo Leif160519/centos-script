@@ -36,5 +36,6 @@ echo -e '\033[1;31m 使用以下命令操作数据库：\033[0m
 \033[0m'
 mysql -u root -p
 echo -e "\033[1;32m mysql密码设置完毕！ \033[0m"
-
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit

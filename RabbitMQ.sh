@@ -63,4 +63,6 @@ rabbitmqctl set_user_tags admin administrator
 echo -e "\033[1;31m 15.在浏览器中使用端口15672登录控制台，可以对RabbitMQ进行管理 \033[0m"
 curl http://localhost:15672
 echo -e '\033[1;32m RabbitMQ配置完成！\033[0m'
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit   

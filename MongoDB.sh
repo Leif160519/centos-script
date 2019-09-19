@@ -17,4 +17,6 @@ echo -e '\033[1;31m 启动MongoDB \033[0m'
 systemctl start mongod.service
 echo -e '\033[1;31m 查看MongoDB状态 \033[0m'
 systemctl status mongod.service
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit

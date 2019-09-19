@@ -37,4 +37,6 @@ chmod +x /usr/local/bin/docker-compose
 echo -e '\033[1;31m 查看docker-compose版本 \033[0m'
 docker-compose version
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit

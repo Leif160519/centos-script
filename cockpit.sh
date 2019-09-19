@@ -11,4 +11,6 @@ systemctl start cockpit
 echo -e '\033[1;31m 查看cockpit状态 \033[0m'
 systemctl status cockpit
 echo -e '\033[1;31m 访问http://localhost:9090；使用本机用户名和密码登录 \033[0m'
+echo -e "\033[1;31m 清除yum安装包 \033[0m"
+yum -y clean all
 exit
