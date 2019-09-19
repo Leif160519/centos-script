@@ -145,8 +145,23 @@ RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
 
 > 上述 *`Base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
 
-## 9.cockpit.sh
-轻量级性能检测工具，带web界面
+## 9.monitor
+监控软件
+### 9.1 netdata
+Linux硬件资源监控软件，默认访问端口`1999`
+![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
+
+### 9.2 goaccess
+分析nginx日志的工具，默认访问端口`7890`
+![image.png](https://img.hacpai.com/file/2019/09/image-da5afe19.png)
+
+### 9.3 cockpit
+轻量级硬件资源监控软件，默认访问端口`9090`
+![image.png](https://img.hacpai.com/file/2019/09/image-158bc1f9.png)
+
+![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
+
+
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
