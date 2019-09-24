@@ -65,7 +65,7 @@ systemctl start kube-apiserver kube-scheduler kube-controller-manager
 netstat -nlpt | grep kube
 
 #测试
-curl http://172.16.253.129:8080/version
+curl http://${master_ip}:8080/version
 
 
 #4.node部署完成后验证集群是否成功
