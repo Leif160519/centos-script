@@ -161,7 +161,8 @@ Linux硬件资源监控软件，默认访问端口`1999`
 
 ![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
 
-
+## 10. k8s
+centos下k8s安装脚本
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
