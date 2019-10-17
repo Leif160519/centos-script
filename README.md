@@ -89,10 +89,21 @@ centos 基础环境配置，安装配置必备组件，包括(按照脚本执行
 
 > 备份时间和备份保存时间可根据实际情况修改
 
+> 查看gitlab版本号`cat /opt/gitlab/embedded/service/gitlab-rails/VERSION`
+
+> [Gitlab如何进行备份恢复与迁移？](https://leif.fun/articles/2019/08/29/1567060138639.html)
+> [完全卸载GitLab](https://leif.fun/articles/2019/08/29/1567058106789.html)
+> [centos搭建gitlab社区版](https://leif.fun/articles/2019/08/29/1567057627672.html)
+> [解决Gitlab迁移服务器后SSH key无效的问题](https://leif.fun/articles/2019/08/22/1566472573139.html)
+
 ## 4. MongoDB.sh
 安装 *`MongoDB`* 数据库
 
 > *`MongoDB`* 默认没有用户名和密码，可以用Navicat等数据库管理工具直接连接
+> [MongoDB 备份(mongodump)与恢复(mongorestore)](https://leif.fun/articles/2019/08/30/1567127999119.html)
+> [开启mongodb远程访问](https://leif.fun/articles/2019/08/30/1567127345260.html)
+> [mongodb服务启动失败](https://leif.fun/articles/2019/08/30/1567127175232.html)
+> [升级 MongoDB 到 4.0](https://leif.fun/articles/2019/08/30/1567127101249.html)
 
 ## 5. MySQL.sh
 安装 *`MySQL`* 数据库社区版，脚本主要设置了固定密码。
@@ -111,8 +122,12 @@ grant all privileges on *.* to 'root' @'%' identified by '你的root用户密码
 ```
 flush privileges;
 ```
+
+> [mysql相关内容](https://leif.fun/search?keyword=mysql)
+
 ## 6.python3.7.sh
 编译安装 *`Python3.7`*
+> [python相关内容](https://leif.fun/search?keyword=python)
 
 ## 7. RabbitMQ.sh
 安装 *`RabbitMQ`* 消息通知
@@ -145,15 +160,19 @@ RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
 
 > 上述 *`Base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
 
+> 具体安装教程：[centos7安装supervisor](https://leif.fun/articles/2019/08/28/1566986488665.html)
+
 ## 9.monitor
 监控软件
 ### 9.1 netdata
 Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
+> 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
 ### 9.2 goaccess
 分析nginx日志的工具，默认访问端口`7890`
 ![image.png](https://img.hacpai.com/file/2019/09/image-da5afe19.png)
+> 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
 ### 9.3 cockpit
 轻量级硬件资源监控软件，默认访问端口`9090`
@@ -163,6 +182,10 @@ Linux硬件资源监控软件，默认访问端口`1999`
 
 ## 10. k8s
 centos下k8s安装脚本
+> k8s相关资料：[Kubernetes相关资料](https://leif.fun/articles/2019/09/06/1567758755140.html)
+> [Kubernetes 部署失败的 10 个最普遍原因（Part 1）](https://leif.fun/articles/2019/09/06/1567758470060.html)
+> [CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)
+> [《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
