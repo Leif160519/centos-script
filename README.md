@@ -160,7 +160,7 @@ RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
 ## 9.monitor
 监控软件
 ### 9.1 netdata
-Linux硬件资源监控软件，默认访问端口`1999`，用户名为Linux用户名，密码为Linux登录密码
+Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
 > 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
@@ -170,7 +170,7 @@ Linux硬件资源监控软件，默认访问端口`1999`，用户名为Linux用�
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
 ### 9.3 cockpit
-轻量级硬件资源监控软件，默认访问端口`9090`
+轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
 ![image.png](https://img.hacpai.com/file/2019/09/image-158bc1f9.png)
 
 ![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
