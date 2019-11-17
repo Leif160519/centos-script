@@ -179,6 +179,9 @@ Linux硬件资源监控软件，默认访问端口`1999`
 centos下k8s安装脚本
 > k8s相关资料：[Kubernetes相关资料](https://leif.fun/articles/2019/09/06/1567758755140.html)，[Kubernetes 部署失败的 10 个最普遍原因（Part 1）](https://leif.fun/articles/2019/09/06/1567758470060.html)，[CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)，[《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
 
+## 11.oh-my-zsh
+将centos默认的shell改为zsh
+
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 
