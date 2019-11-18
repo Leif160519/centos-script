@@ -118,8 +118,10 @@ flush privileges;
 
 ## 6.python3.7.sh
 编译安装 *`Python3.7`*
-> [python相关内容](https://leif.fun/search?keyword=python)
+
 安装pip并升级到最新版
+> [python相关内容](https://leif.fun/search?keyword=python)
+
 
 ## 7. RabbitMQ.sh
 安装 *`RabbitMQ`* 消息通知
