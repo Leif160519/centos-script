@@ -28,4 +28,19 @@ python3
 echo -e "\033[1;32m python3安装完毕！ \033[0m"
 echo -e "\033[1;31m 清除yum安装包 \033[0m"
 yum -y clean all
+
+echo -e '\033[1;31m 安装pip \033[0m'
+yum -y install epel-release
+yum -y install python-pip
+echo -e '\033[1;31m 给pip换源 \033[0m'
+mkdir /root/.pip
+cat <<EOF >/root/.pip/pip.conf
+[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host=mirrors.aliyun.com
+EOF
+echo -e '\033[1;31m 升级pip \033[0m'
+pip install --upgrade pip
+
 exit
