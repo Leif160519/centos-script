@@ -19,7 +19,9 @@ echo -e '\033[1;31m 给docker换ustc中科大源 \033[0m'
 cat <<EOF > /etc/docker/daemon.json
 {
 
-"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"],
+"log-driver":"json-file",
+"log-opts": {"max-size":"1m", "max-file":"1"}
 
 }
 EOF
