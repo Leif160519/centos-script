@@ -39,6 +39,9 @@ chmod +x /usr/local/bin/docker-compose
 echo -e '\033[1;31m 查看docker-compose版本 \033[0m'
 docker-compose version
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
+echo -e '\033[1;31m 安装ctop工具 \033[0m'
+wget https://github.com/bcicen/ctop/releases/download/v0.7.2/ctop-0.7.2-linux-amd64 -O /usr/local/bin/ctop
+chmod +x /usr/local/bin/ctop
 echo -e "\033[1;31m 清除yum安装包 \033[0m"
 yum -y clean all
 exit
