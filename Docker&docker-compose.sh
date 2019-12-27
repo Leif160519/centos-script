@@ -2,7 +2,7 @@
 echo -e '\033[1;31m ********************************此脚本自动化安装Docker&docker-compose******************************** \033[0m'
 echo -e '\033[1;31m 4.安装Docker \033[0m'
 echo -e '\033[1;31m 添加Docker源 \033[0m'
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/
 echo -e '\033[1;31m 更新源 \033[0m'
 yum makecache
 echo -e '\033[1;31m 安装docker-ce \033[0m'
