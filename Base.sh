@@ -1,21 +1,32 @@
 #!/bin/bash
 echo -e '\033[1;31m ********************************此脚本自动化安装初始环境******************************** \033[0m'
-#scp luofei@192.168.81.29:Desktop/command.sh /root
 echo -e '\033[1;31m 1.安装必须组件 \033[0m'
 echo -e '\033[1;31m 安装wget \033[0m'
 yum -y install wget
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
-echo -e '\033[1;31m 2.更换阿里源 \033[0m'
-echo -e '\033[1;31m 备份本地yum源 \033[0m'
-mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
-echo -e '\033[1;31m 获取阿里yum源配置文件 \033[0m'
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo 
-echo -e '\033[1;31m 更新cache \033[0m'
-yum makecache
-echo -e '\033[1;31m 更新 \033[0m'
-yum -y update
-echo -e '\033[1;31m ********************************************************************************** \033[0m'
+function choice(){
+    echo -n "是否更换阿里源？(y or n)"
+    read choice
+    if [ ${choice} == "y" ];then
+        echo -e '\033[1;31m 2.更换阿里源 \033[0m'
+        echo -e '\033[1;31m 备份本地yum源 \033[0m'
+        mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
+        echo -e '\033[1;31m 获取阿里yum源配置文件 \033[0m'
+        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo 
+        echo -e '\033[1;31m 更新cache \033[0m'
+        yum makecache
+        echo -e '\033[1;31m 更新 \033[0m'
+        yum -y update
+        echo -e '\033[1;31m ********************************************************************************** \033[0m'
+    elif [ ${choice} == "n" ];then
+        echo "你选择了不更换阿里源"
+    else
+        echo "输入有误，请重新输入"
+        choice
+    fi
+}
+choice
 
 echo -e '\033[1;31m 安装nano \033[0m'
 yum -y install nano
@@ -135,13 +146,6 @@ systemctl restart sshd
 echo -e '\033[1;31m 查看sshd服务状态 \033[0m'
 systemctl status sshd
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
-
-echo -e '\033[1;31m 8.更改主机hostname \033[0m'
-#获取本机ip地址
-IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
-cat <<EOF >/etc/hostname
-${IP_ADDRESS}
-EOF
 
 # echo "修复重启后网络服务无法启动的问题"
 # systemctl stop NetworkManager
