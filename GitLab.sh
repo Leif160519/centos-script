@@ -17,9 +17,8 @@ systemctl start postfix
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 echo -e '\033[1;31m 安装GitLab社区版 \033[0m'
-curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh | sudo bash
-# ubuntu下：curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-yum -y install gitlab-ce
+wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-11.4.6-ce.0.el7.x86_64.rpm
+rpm -i gitlab-ce-11.4.6-ce.0.el7.x86_64.rpm
 echo -e '\033[1;31m 添加定时任务，每天凌晨两点，执行gitlab备份 \033[0m'
 sed -i '$a\0  2    * * *   root    /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1' /etc/crontab
 echo -e '\033[1;31m 加载任务,使之生效 \033[0m'
