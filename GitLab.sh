@@ -3,7 +3,7 @@
 IP_ADDRESS=`ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1`
 echo -e '\033[1;31m ********************************此脚本自动化安装GitLab******************************** \033[0m'
 echo -e '\033[1;31m 1.安装SSH \033[0m'
-yum -y install curl policycoreutils openssh-server openssh-clients
+yum -y install curl policycoreutils openssh-server openssh-clients policycoreutils-python
 echo -e '\033[1;31m 设置SSH开机自启动 \033[0m'
 systemctl enable sshd
 echo -e '\033[1;31m 启动SSH服务 \033[0m'
