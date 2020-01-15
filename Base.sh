@@ -135,7 +135,19 @@ echo -e '\033[1;31m 查看计算机软硬件信息 \033[0m'
 screenfetch
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
-echo -e '\033[1;31m 7.关闭SSH DNS反向解析和GSSAPI的用户认证 \033[0m'
+# curl -o screenfetch.zip https://codeload.github.com/KittyKatt/screenFetch/zip/master
+# unzip screenfetch.zip
+# cp screenFetch-master/screenfetch-dev /usr/local/bin/screenfetch
+# chmod +x /usr/local/bin/screenfetch
+# screenfetch
+
+echo -e '\033[1;31m 7.安装neofetch \033[0m'
+curl -o /etc/yum.repos.d/konimex-neofetch-epel-7.repo https://copr.fedorainfracloud.org/coprs/konimex/neofetch/repo/epel-7/konimex-neofetch-epel-7.repo
+yum -y install neofetch
+neofetch
+echo -e '\033[1;31m ********************************************************************************** \033[0m'
+
+echo -e '\033[1;31m 8.关闭SSH DNS反向解析和GSSAPI的用户认证 \033[0m'
 sed -i "s/#UseDNS yes/UseDNS no/g" /etc/ssh/sshd_config
 sed -i "s/GSSAPIAuthentication yes/GSSAPIAuthentication no/g" /etc/ssh/sshd_config
 echo -e '\033[1;32m 解决SSH掉线问题 \033[0m'
