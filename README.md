@@ -178,6 +178,10 @@ Linux硬件资源监控软件，默认访问端口`1999`
 centos下k8s安装脚本
 > k8s相关资料：[Kubernetes相关资料](https://leif.fun/articles/2019/09/06/1567758755140.html)，[Kubernetes 部署失败的 10 个最普遍原因（Part 1）](https://leif.fun/articles/2019/09/06/1567758470060.html)，[CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)，[《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
 
+## 11. LDAP.sh
+LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议， 用这个协议可以访问提供目录服务的产品
+> 参考资料：https://blog.csdn.net/weixin_41004350/article/details/89521170
+
 ## 11.oh-my-zsh.sh
 安装zsh配置oh-my-zsh
 
