@@ -189,7 +189,11 @@ centos下k8s安装脚本
 
 ## 14. LDAP.sh
 LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议， 用这个协议可以访问提供目录服务的产品
-> 参考资料：https://blog.csdn.net/weixin_41004350/article/details/89521170
+> 参考资料：
+Centos7 搭建openldap完整详细教程(真实可用)：https://blog.csdn.net/weixin_41004350/article/details/89521170
+OpenLDAP管理工具之LDAP Admin：https://cloud.tencent.com/developer/article/1380076
+Gitlab使用LDAP用户管理配置：https://blog.csdn.net/qq_40140473/article/details/96312452
+gitlab详细配置ldap：https://blog.csdn.net/len9596/article/details/81222764
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
