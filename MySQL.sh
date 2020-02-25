@@ -25,16 +25,8 @@ random_psw=${ss:90:102}
 echo -e "\033[1;31m 随机密码为:\033[0m \033[42;34m ${random_psw} \033[0m"
 echo -e '\033[1;31m 修改mysql密码为：123456 \033[0m'
 echo -e '\033[1;31m 请复制随机密码登录mysql \033[0m'
-echo -e '\033[1;31m 使用以下命令操作数据库：\033[0m 
-\033[1;33m
- mysql> set global validate_password_policy=0;
- mysql> set global validate_password_length=4;
- mysql> ALTER USER USER() IDENTIFIED BY "123456";
- mysql> grant all privileges on *.* to "root" @"%" identified by "123456";
- mysql> flush privileges;
- mysql> quit;
-\033[0m'
-mysql -u root -p
+echo -e '\033[1;31m 设置mysql密码为123456：\033[0m 
+mysql -u root -p${random_psw} -e "set global validate_password_policy=0;set global validate_password_length=4;ALTER USER USER() IDENTIFIED BY "123456";grant all privileges on *.* to "root" @"%" identified by "123456";flush privileges;"
 echo -e "\033[1;32m mysql密码设置完毕！ \033[0m"
 echo -e "\033[1;31m 清除yum安装包 \033[0m"
 yum -y clean all
