@@ -58,38 +58,42 @@ cd /root/mysql
 docker-compose up -d
 
 
-echo -e '\033[1;32m 1.Install Zabbix repository \033[0m'
+echo -e '\033[1;32m 1.安装 数据库 \033[0m'
 rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
 yum clean all
 
-echo -e '\033[1;32m 2.Install Zabbix server, frontend, agent \033[0m'
+echo -e '\033[1;32m 2.安装Zabbix server，Web前端，agent \033[0m'
 yum install -y zabbix-server-mysql
 yum install -y zabbix-web-mysql
 yum install -y zabbix-agent 
 
-echo -e '\033[1;32m 3.Create initial database \033[0m'
-echo -e '\033[1;32m 3.1 Run the following on your database host. \033[0m'
+echo -e '\033[1;32m 3.创建初始数据库 \033[0m'
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;"
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'%' IDENTIFIED BY '${zabbix_password}';flush privileges;"
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'localhost';flush privileges;"
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'%';flush privileges;"
-docker exec -it mysql mysql -uroot -p${mysql_password} -e "create database zabbix;"
+docker exec -it mysql mysql -uroot -p${mysql_password} -e "create database zabbix character set utf8 collate utf8_bin;"
 
 
-echo -e '\033[1;32m 3.2 On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password. \033[0m'
-zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | docker exec -itd mysql mysql -uzabbix -p ${zabbix_password}
+echo -e '\033[1;32m 导入初始架构和数据，系统将提示您输入新创建的密码。 \033[0m'
+gzip -d /usr/share/doc/zabbix-server-mysql*/create.sql.gz
+docker cp /usr/share/doc/zabbix-server-mysql*/create.sql mysql:/root
+docker exec mysql mysql -uzabbix -p${zabbix_password} -e "use zabbix;source /root/create.sql;"
 
-echo -e '\033[1;32m 4.Configure the database for Zabbix server \033[0m'
+echo -e '\033[1;32m 4.为Zabbix server配置数据库 \033[0m'
+echo -e '\033[1;32m 编辑配置文件 /etc/zabbix/zabbix_server.conf \033[0m'
 sed -i "/^# DBPassword=/cDBPassword=${zabbix_password}" /etc/zabbix/zabbix_server.conf
 
-echo -e '\033[1;32m 5.Configure PHP for Zabbix frontend \033[0m'
-sed -i "/^# php_value date.timezone/cphp_value date.timezone Aisa\/Shanghai" /etc/httpd/conf.d/zabbix.conf
+echo -e '\033[1;32m 5.为Zabbix前端配置PHP \033[0m'
+echo -e '\033[1;32m 编辑配置文件 /etc/httpd/conf.d/zabbix.conf \033[0m'
+sed -i "/^# php_value date.timezone/cphp_value date.timezone Asia\/Shanghai" /etc/httpd/conf.d/zabbix.conf
 
-echo -e '\033[1;32m 6.Start Zabbix server and agent processes \033[0m'
+echo -e '\033[1;32m 6.启动Zabbix server和agent进程 \033[0m'
+echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
 systemctl restart zabbix-server zabbix-agent httpd
 systemctl enable zabbix-server zabbix-agent httpd
 systemctl status zabbix-server zabbix-agent httpd
 
-echo -e '\033[1;32m 7.Configure Zabbix frontend \033[0m'
-echo "Connect to your newly installed Zabbix frontend: http://${ip_address}/zabbix"
+echo -e '\033[1;32m 7.配置Zabbix前端 \033[0m'
+echo "连接到新安装的Zabbix前端： http://${ip_address}/zabbix"
 exit
