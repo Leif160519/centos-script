@@ -199,7 +199,8 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 > gitlab详细配置ldap：https://blog.csdn.net/len9596/article/details/81222764
 
-> yapi-配置LDAP登录，禁止注册:https://www.jianshu.com/p/62748b4db65b
+## 15. zabbix.sh
+安装zabbix服务，前提需要安装`docker`和`docker-compose`，脚本会自动生成mysql的容器，无需另外手动安装和配置mysql。
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
