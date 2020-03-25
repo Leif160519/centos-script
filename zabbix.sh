@@ -65,22 +65,22 @@ yum clean all
 echo -e '\033[1;32m 2.安装Zabbix server，Web前端，agent \033[0m'
 #此步骤由于经常失败，故需要多次尝试直到成功为止。
 function install_server_mysql(){
-  if [[ `yum list installed | grep zabbix-agent |wc -l` == 0 ]];then
+  if [[ `yum list installed | grep zabbix-server-mysql |wc -l` == 0 ]];then
     yum install -y zabbix-server-mysql
     install_server_mysql
   else
-    echo -e '\033[1;32m zabbix-server-mysql已经安装' \033[0m'
+    echo -e '\033[1;32m zabbix-server-mysql已经安装 \033[0m'
   fi
 }
 
 install_server_mysql
 
 function install_web_mysql(){
-  if [[ `yum list installed | grep zabbix-agent |wc -l` == 0 ]];then
+  if [[ `yum list installed | grep zabbix-web-mysql |wc -l` == 0 ]];then
     yum install -y zabbix-web-mysql
     install_web_mysql
   else
-    echo -e '\033[1;32m zabbix-web-mysql已经安装' \033[0m'
+    echo -e '\033[1;32m zabbix-web-mysql已经安装 \033[0m'
   fi
 }
 
@@ -91,11 +91,14 @@ function install_agent(){
     yum install -y zabbix-agent
     install_agent
   else
-    echo -e '\033[1;32m zabbix-agent已经安装' \033[0m'
+    echo -e '\033[1;32m zabbix-agent已经安装 \033[0m'
   fi
 }
 
 install_agent
+
+
+yum -y clean all
 
 echo -e '\033[1;32m 3.创建初始数据库 \033[0m'
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;"
