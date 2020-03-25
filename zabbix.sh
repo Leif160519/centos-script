@@ -75,7 +75,7 @@ docker exec -it mysql mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO '
 docker exec -it mysql mysql -uroot -p${mysql_password} -e "create database zabbix character set utf8 collate utf8_bin;"
 
 
-echo -e '\033[1;32m 导入初始架构和数据，系统将提示您输入新创建的密码。 \033[0m'
+echo -e '\033[1;32m 导入初始架构和数据。 \033[0m'
 gzip -d /usr/share/doc/zabbix-server-mysql*/create.sql.gz
 docker cp /usr/share/doc/zabbix-server-mysql*/create.sql mysql:/root
 docker exec mysql mysql -uzabbix -p${zabbix_password} -e "use zabbix;source /root/create.sql;"
@@ -86,7 +86,7 @@ sed -i "/^# DBPassword=/cDBPassword=${zabbix_password}" /etc/zabbix/zabbix_serve
 
 echo -e '\033[1;32m 5.为Zabbix前端配置PHP \033[0m'
 echo -e '\033[1;32m 编辑配置文件 /etc/httpd/conf.d/zabbix.conf \033[0m'
-sed -i "/^# php_value date.timezone/cphp_value date.timezone Asia\/Shanghai" /etc/httpd/conf.d/zabbix.conf
+sed -i "/^        # php_value date.timezone/cphp_value date.timezone Asia\/Shanghai" /etc/httpd/conf.d/zabbix.conf
 
 echo -e '\033[1;32m 6.启动Zabbix server和agent进程 \033[0m'
 echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
