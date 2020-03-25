@@ -69,7 +69,7 @@ function install_server_mysql(){
     yum install -y zabbix-server-mysql
     install_server_mysql
   else
-    echo "zabbix-server-mysql已经安装"
+    echo -e '\033[1;32m zabbix-server-mysql已经安装' \033[0m'
   fi
 }
 
@@ -80,7 +80,7 @@ function install_web_mysql(){
     yum install -y zabbix-web-mysql
     install_web_mysql
   else
-    echo "zabbix-web-mysql已经安装"
+    echo -e '\033[1;32m zabbix-web-mysql已经安装' \033[0m'
   fi
 }
 
@@ -91,7 +91,7 @@ function install_agent(){
     yum install -y zabbix-agent
     install_agent
   else
-    echo "zabbix-agent已经安装"
+    echo -e '\033[1;32m zabbix-agent已经安装' \033[0m'
   fi
 }
 
