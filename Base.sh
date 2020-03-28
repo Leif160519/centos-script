@@ -50,9 +50,21 @@ echo -e '\033[1;31m 安装expect \033[0m'
 yum -y install expect
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 echo -e '\033[1;31m 安装htop \033[0m'
-echo -e '\033[1;31m 启用epe版本 \033[0m'
+echo -e '\033[1;32m 启用epe版本 \033[0m'
 yum -y install epel-release
 yum -y install htop
+echo -e '\033[1;32m 安装iotop \033[0m'
+yum -y install iotop
+echo -e '\033[1;32m 安装iftop \033[0m'
+yum -y install iftop
+echo -e '\033[1;32m 安装nethogs \033[0m'
+yum -y install nethogs
+echo -e '\033[1;32m 安装mrtg \033[0m'
+yum -y install mrtg
+echo -e '\033[1;32m 安装nagios \033[0m'
+yum -y install nagios
+echo -e '\033[1;32m 安装cacti \033[0m'
+yum -y install cacti
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 echo -e '\033[1;31m 安装npm \033[0m'
 yum -y install npm
