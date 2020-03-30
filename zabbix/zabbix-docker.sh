@@ -37,6 +37,7 @@ docker run --name zabbix-agent -t \
     -v /etc/localtime:/etc/localtime \
     --link zabbix-server-mysql:zabbix-server \
     --link zabbix-java-gateway:zabbix-java-gateway \
+    -p 10050:10050 \
     --restart=always \
     -d zabbix/zabbix-agent:latest
 
