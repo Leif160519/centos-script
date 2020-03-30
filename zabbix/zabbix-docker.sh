@@ -4,6 +4,7 @@ docker run --name mysql-server -t \
     -e MYSQL_USER="zabbix" \
     -e MYSQL_PASSWORD="zabbix" \
     -e MYSQL_ROOT_PASSWORD="123456" \
+    -e TZ=Asia/Shanghai \
     -p 3306:3306 \
     --restart=always \
     -d mysql:5.7.28 \
@@ -11,6 +12,7 @@ docker run --name mysql-server -t \
 
 
 docker run --name zabbix-java-gateway -t \
+    -e TZ=Asia/Shanghai \
     --restart=always \
     -d zabbix/zabbix-java-gateway:latest
 
@@ -21,6 +23,7 @@ docker run --name zabbix-server-mysql -t \
     -e MYSQL_PASSWORD="zabbix" \
     -e MYSQL_ROOT_PASSWORD="123456" \
     -e ZBX_JAVAGATEWAY="zabbix-java-gateway" \
+    -e TZ=Asia/Shanghai \
     --link mysql-server:mysql \
     --link zabbix-java-gateway:zabbix-java-gateway \
     -p 10051:10051 \
@@ -30,6 +33,7 @@ docker run --name zabbix-server-mysql -t \
 docker run --name zabbix-agent -t \
     -e ZBX_HOSTNAME="zabbix-agent" \
     -e ZBX_SERVER_HOST="zabbix-server-mysql" \
+    -e TZ=Asia/Shanghai \
     --link zabbix-server-mysql:zabbix-server \
     --link zabbix-java-gateway:zabbix-java-gateway \
     --restart=always \
@@ -42,6 +46,7 @@ docker run --name zabbix-web-nginx-mysql -t \
     -e MYSQL_USER="zabbix" \
     -e MYSQL_PASSWORD="zabbix" \
     -e MYSQL_ROOT_PASSWORD="123456" \
+    -e TZ=Asia/Shanghai \
     --link mysql-server:mysql \
     --link zabbix-server-mysql:zabbix-server \
     -p 80:80 \
