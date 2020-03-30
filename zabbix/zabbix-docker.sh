@@ -1,3 +1,4 @@
+#!/bin/bash
 docker run --name mysql-server -t \
     -e MYSQL_DATABASE="zabbix" \
     -e MYSQL_USER="zabbix" \
@@ -47,6 +48,7 @@ docker run --name zabbix-web-nginx-mysql -t \
     --restart=always \
     -d zabbix/zabbix-web-nginx-mysql:latest
 
+exit
 #检测zabbix-agent容器IP地址：
 #docker exec  -it  $(docker ps -a | grep "zabbix-agent" | awk '{print $1}') "ifconfig"
 #docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' zabbix-agent
