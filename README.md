@@ -215,6 +215,14 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 安装zabbix服务，`zabbix-linux.sh`前提需要安装`docker`和`docker-compose`，脚本会自动生成mysql的容器，无需另外手动安装和配置mysql。
 个人推荐`zabbix-docker.sh`，比较方便。
 
+参考资料：
+
+- [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
+
+- [Linux老司机带你学Zabbix从入门到精通（一）](https://zhuanlan.zhihu.com/p/35064593)
+
+- [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
+
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 

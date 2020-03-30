@@ -50,3 +50,8 @@ docker run --name zabbix-web-nginx-mysql -t \
 #检测zabbix-agent容器IP地址：
 #docker exec  -it  $(docker ps -a | grep "zabbix-agent" | awk '{print $1}') "ifconfig"
 #docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' zabbix-agent
+
+#参考：
+#https://www.jianshu.com/p/b2d44c733c2d
+#https://zhuanlan.zhihu.com/p/35064593
+#https://zhuanlan.zhihu.com/p/35068409
