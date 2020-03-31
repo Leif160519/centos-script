@@ -223,6 +223,8 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
 
+- [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
+
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 
