@@ -50,6 +50,7 @@ docker run --name zabbix-web-nginx-mysql -t \
     -e MYSQL_ROOT_PASSWORD="123456" \
     -v /etc/localtime:/etc/localtime \
     -v ${dir}/99-zabbix.ini:/etc/php7/conf.d/99-zabbix.ini \
+	-v ${dir}/DejaVuSans.ttf:/usr/share/zabbix/assets/fonts/DejaVuSans.ttf
     --link mysql-server:mysql \
     --link zabbix-server-mysql:zabbix-server \
     -p 80:80 \
