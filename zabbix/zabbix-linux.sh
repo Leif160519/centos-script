@@ -192,5 +192,5 @@ systemctl enable zabbix-server zabbix-agent nginx php-fpm
 systemctl status zabbix-server zabbix-agent nginx php-fpm
 
 echo -e '\033[1;32m 7.配置Zabbix前端 \033[0m'
-echo "连接到新安装的Zabbix前端： http://${ip_address}/zabbix"
+echo "连接到新安装的Zabbix前端： http://${ip_address}"
 exit
