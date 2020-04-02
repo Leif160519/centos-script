@@ -184,6 +184,8 @@ sed -i "s/#//g" /etc/nginx/conf.d/zabbix.conf
 sed -i "s/; //g" /etc/php-fpm.d/zabbix.conf
 sed -i "s/Europe\/Riga/Asia\/Shanghai/g" /etc/php-fpm.d/zabbix.conf
 
+echo -e '\033[1;32m 替换字体 \033[0m'
+cp DejaVuSans.ttf /usr/share/fonts/dejavu/
 
 echo -e '\033[1;32m 7.启动Zabbix server和agent进程 \033[0m'
 echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
