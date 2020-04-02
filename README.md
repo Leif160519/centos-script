@@ -240,7 +240,7 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 ## 15. zabbix
 安装zabbix服务，`zabbix-linux.sh`前提需要安装`docker`和`docker-compose`，脚本会自动生成mysql的容器，无需另外手动安装和配置mysql。
 个人推荐`zabbix-docker.sh`，比较方便。
-![image.png](https://img.hacpai.com/file/2020/04/image-5869b6c6.png)
+![image.png](https://img.hacpai.com/file/2020/04/image-ca7b3026.png)
 
 ![image.png](https://img.hacpai.com/file/2020/04/image-9952a2b4.png)
 
