@@ -59,7 +59,7 @@ docker-compose up -d
 
 
 echo -e '\033[1;32m 1.安装 数据库 \033[0m'
-rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
+rpm -Uvh https://repo.zabbix.com/zabbix/4.4/rhel/7/x86_64/zabbix-release-4.4-1.el7.noarch.rpm
 yum clean all
 
 echo -e '\033[1;32m 2.安装Zabbix server，Web前端，agent \033[0m'
