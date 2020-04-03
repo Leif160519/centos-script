@@ -9,6 +9,11 @@ yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
 # yum repolist all | grep mysql
 echo -e '\033[1;31m 安装mysql社区服务器 \033[0m'
 if [[ -f mysql-community-server-5.7.29-1.el7.x86_64.rpm ]];then
+    if [[ -f mysql-community-client-5.7.29-1.el7.x86_64.rpm ]];then
+    yum -y install mysql-community-client-5.7.29-1.el7.x86_64.rpm
+    else
+        echo "" > /dev/null
+    fi
     yum -y install mysql-community-server-5.7.29-1.el7.x86_64.rpm
 else
     yum -y install mysql-community-server
@@ -26,7 +31,7 @@ echo -e '\033[1;31m 查看mysql启动状态 \033[0m'
 systemctl status mysqld
 
 echo -e '\033[1;31m 修改mysql密码为：123456 \033[0m'
-mysql -u root -e "set global validate_password_policy=0;set global validate_password_length=4;ALTER USER USER() IDENTIFIED BY "123456";grant all privileges on *.* to "root" @"%" identified by "123456";flush privileges;"
+mysql -u root -e "update mysql.user  set authentication_string=password('123456') where user='root';flush privileges;"
 echo -e "\033[1;32m mysql密码设置完毕！ \033[0m"
 echo -e "\033[1;31m 清除yum安装包 \033[0m"
 yum -y clean all
