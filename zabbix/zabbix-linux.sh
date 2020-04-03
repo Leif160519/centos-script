@@ -114,6 +114,18 @@ function install_zabbix_nginx_conf(){
 
 install_zabbix_nginx_conf
 
+echo -e "\033[1;32m 安装zabbix-get工具\033[0m"
+function install_zabbix_get(){
+  if [[ `yum list installed | grep zabbix-get |wc -l` == 0 ]];then
+    yum install -y zabbix-get
+    install_zabbix_get
+  else
+    echo -e '\033[1;32m zabbix-get已经安装 \033[0m'
+  fi
+}
+
+install_zabbix_get
+
 
 echo -e '\033[1;32m 4.创建初始数据库 \033[0m'
 mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;"
