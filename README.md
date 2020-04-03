@@ -144,6 +144,8 @@ flush privileges;
 
 > [mysql相关内容](https://leif.fun/search?keyword=mysql)
 
+附：[mysql5.7安装包(rpm)](https://centos.pkgs.org/7/mysql-5.7-x86_64/)
+
 ## 6.python3.7.sh
 编译安装 *`Python3.7`*
 
