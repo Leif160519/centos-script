@@ -30,12 +30,20 @@ systemctl start mysqld
 echo -e '\033[1;31m 查看mysql启动状态 \033[0m'
 systemctl status mysqld
 
-echo -e '\033[1;31m 修改mysql密码为：123456 \033[0m'
-mysql -u root -e "update mysql.user  set authentication_string=password('123456') where user='root';flush privileges;"
+echo -e -n '\033[1;32m 请输入将要设置的mysql root用户密码\033[0m'
+read mysql_passwd
+mysql -u root -e "update mysql.user  set authentication_string=password('${mysql_passwd}') where user='root';flush privileges;"
 echo -e "\033[1;32m mysql密码设置完毕！ \033[0m"
 echo -e "\033[1;31m 清除yum安装包 \033[0m"
 yum -y clean all
 sed -i "s/skip-grant-tables=1//g"  /etc/my.cnf
 echo -e '\033[1;31m 重启mysql \033[0m'
 systemctl restart mysqld
+mysql -u root -p${mysql_passwd} -e "set global validate_password_policy=0;"
+mysql -u root -p${mysql_passwd} -e "set global validate_password_mixed_case_count=0;"
+mysql -u root -p${mysql_passwd} -e "set global validate_password_number_count=3;"
+mysql -u root -p${mysql_passwd} -e "set global validate_password_special_char_count=0;"
+mysql -u root -p${mysql_passwd} -e "set global validate_password_length=3;"
+mysql -u root -p${mysql_passwd} -e "SHOW VARIABLES LIKE 'validate_password%';"
+mysql -u root -p${mysql_passwd} -e "set password=password(\"${mysql_passwd}\");flush privileges"
 exit

@@ -7,7 +7,7 @@ else
 fi
 echo -e '\033[1;32m 
 说明：
-zabbix版本：4.4.x;
+zabbix版本：5.0.x;
 OS:Centos 7;
 数据库:MySQL;
 Web Server:Nginx
@@ -21,32 +21,8 @@ echo -e -n  '\033[1;32m 请输入将要设置的mysql数据库密码(zabbix用�
 read zabbix_password
 
 
-function install_nginx(){
-  if [[ `yum list installed | grep nginx |wc -l` == 0 ]];then
-    yum install -y nginx
-    install_nginx
-  else
-    echo -e '\033[1;32m nginx已经安装 \033[0m'
-  fi
-}
-
-install_nginx
-
-
-function install_php_fpm(){
-  if [[ `yum list installed | grep nginx |wc -l` == 0 ]];then
-    yum install -y php_fpm
-    install_php_fpm
-  else
-    echo -e '\033[1;32m php_fpm已经安装 \033[0m'
-  fi
-}
-
-install_php_fpm
-
-
 echo -e '\033[1;32m 1.安装 数据库 \033[0m'
-rpm -Uvh https://repo.zabbix.com/zabbix/4.4/rhel/7/x86_64/zabbix-release-4.4-1.el7.noarch.rpm
+rpm -Uvh https://repo.zabbix.com/zabbix/4.5/rhel/7/x86_64/zabbix-release-4.5-2.el7.noarch.rpm
 yum clean all
 
 echo -e '\033[1;32m 2.安装Zabbix server和agent \033[0m'
@@ -78,25 +54,27 @@ install_zabbix_agent
 echo -e "\033[1;32m 3. Install Zabbix frontend\033[0m"
 echo -e "\033[1;32m Install epel repository.\033[0m"
 function install_zabbix_frontend(){
-  if [[ `yum list installed | grep epel-release |wc -l` == 0 ]];then
-    yum install -y epel-release
+  if [[ `yum list installed | grep centos-release-scl |wc -l` == 0 ]];then
+    yum install -y centos-release-scl
     install_zabbix_frontend
   else
-    echo -e '\033[1;32m epel-release已经安装 \033[0m'
+    echo -e '\033[1;32m centos-release-scl已经安装 \033[0m'
   fi
 }
 
 install_zabbix_frontend
 
 
+echo -e "\033[1;32m 编辑配置文件 /etc/yum.repos.d/zabbix.repo and enable zabbix-deprecated repository.\033[0m"
+sed -i '11s/enabled=0/enabled=1/' /etc/yum.repos.d/zabbix.repo
 
 echo -e "\033[1;32m Install Zabbix frontend packages.\033[0m"
 function install_zabbix_web_mysql(){
-  if [[ `yum list installed | grep zabbix-web-mysql |wc -l` == 0 ]];then
-    yum install -y zabbix-web-mysql
+  if [[ `yum list installed | grep zabbix-web-mysql-scl |wc -l` == 0 ]];then
+    yum install -y zabbix-web-mysql-scl
     install_zabbix_web_mysql
   else
-    echo -e '\033[1;32m zabbix-web-mysql已经安装 \033[0m'
+    echo -e '\033[1;32m zabbix-web-mysql-scl已经安装 \033[0m'
   fi
 }
 
@@ -104,8 +82,8 @@ install_zabbix_web_mysql
 
 
 function install_zabbix_nginx_conf(){
-  if [[ `yum list installed | grep zabbix_nginx_conf |wc -l` == 0 ]];then
-    yum install -y zabbix-nginx-conf
+  if [[ `yum list installed | grep zabbix-nginx-conf-scl |wc -l` == 0 ]];then
+    yum install -y zabbix-nginx-conf-scl
     install_zabbix_nginx_conf
   else
     echo -e '\033[1;32m zabbix_nginx_conf已经安装 \033[0m'
@@ -137,7 +115,7 @@ mysql -uroot -p${mysql_password} -e "create database zabbix character set utf8 c
 
 echo -e '\033[1;32m 导入初始架构和数据。 \033[0m'
 gzip -d /usr/share/doc/zabbix-server-mysql*/create.sql.gz
-docker cp /usr/share/doc/zabbix-server-mysql*/create.sql mysql:/root
+cp /usr/share/doc/zabbix-server-mysql*/create.sql /root
 mysql -uzabbix -p${zabbix_password} -e "use zabbix;source /root/create.sql;"
 
 echo -e '\033[1;32m 5.为Zabbix server配置数据库 \033[0m'
@@ -145,19 +123,21 @@ echo -e '\033[1;32m 编辑配置文件 /etc/zabbix/zabbix_server.conf \033[0m'
 sed -i "/^# DBPassword=/cDBPassword=${zabbix_password}" /etc/zabbix/zabbix_server.conf
 
 echo -e '\033[1;32m 6.为Zabbix前端配置PHP \033[0m'
-echo -e '\033[1;32m 编辑配置文件 /etc/nginx/conf.d/zabbix.conf \033[0m'
-sed -i "s/#//g" /etc/nginx/conf.d/zabbix.conf
-sed -i "s/; //g" /etc/php-fpm.d/zabbix.conf
-sed -i "s/Europe\/Riga/Asia\/Shanghai/g" /etc/php-fpm.d/zabbix.conf
+echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-nginx116/nginx/conf.d/zabbix.conf \033[0m'
+sed -i "s/#//g" /etc/opt/rh/rh-nginx116/nginx/conf.d/zabbix.conf
+echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf, add nginx to listen.acl_users directive. \033[0m'
+sed -i "s/; //g" /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
+echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf, set the right timezone for you. \033[0m'
+sed -i "s/; php_value\[date.timezone\] = Europe\/Riga/php_value\[date.timezone\] = Asia\/Shanghai/g" /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
 
 echo -e '\033[1;32m 替换字体 \033[0m'
 cp DejaVuSans.ttf /usr/share/fonts/dejavu/
 
 echo -e '\033[1;32m 7.启动Zabbix server和agent进程 \033[0m'
 echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
-systemctl restart zabbix-server zabbix-agent nginx php-fpm
-systemctl enable zabbix-server zabbix-agent nginx php-fpm
-systemctl status zabbix-server zabbix-agent nginx php-fpm
+systemctl restart zabbix-server zabbix-agent rh-nginx116-nginx rh-php72-php-fpm
+systemctl enable zabbix-server zabbix-agent rh-nginx116-nginx rh-php72-php-fpm
+systemctl status zabbix-server zabbix-agent rh-nginx116-nginx rh-php72-php-fpm
 
 echo -e '\033[1;32m 7.配置Zabbix前端 \033[0m'
 echo "连接到新安装的Zabbix前端： http://${ip_address}"
