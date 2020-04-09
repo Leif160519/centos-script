@@ -126,9 +126,55 @@ echo -e '\033[1;32m 6.为Zabbix前端配置PHP \033[0m'
 echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-nginx116/nginx/conf.d/zabbix.conf \033[0m'
 sed -i "s/#//g" /etc/opt/rh/rh-nginx116/nginx/conf.d/zabbix.conf
 echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf, add nginx to listen.acl_users directive. \033[0m'
+sed -i "s/listen.acl_users = apache/listen.acl_users = apache,nginx/g"  /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
 sed -i "s/; //g" /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
 echo -e '\033[1;32m 编辑配置文件 /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf, set the right timezone for you. \033[0m'
 sed -i "s/; php_value\[date.timezone\] = Europe\/Riga/php_value\[date.timezone\] = Asia\/Shanghai/g" /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
+
+
+
+cat <<EOF > /etc/opt/rh/rh-nginx116/nginx/nginx.conf
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/opt/rh/rh-nginx116/log/nginx/error.log;
+pid /var/opt/rh/rh-nginx116/run/nginx/nginx.pid;
+
+# Load dynamic modules. See /opt/rh/rh-nginx116/root/usr/share/doc/README.dynamic.
+include /opt/rh/rh-nginx116/root/usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/opt/rh/rh-nginx116/log/nginx/access.log  main;
+
+    sendfile        on;
+    tcp_nopush      on;
+    tcp_nodelay     on;
+    keepalive_timeout  65;
+    types_hash_max_size 2048;
+
+    include	  /etc/opt/rh/rh-nginx116/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/opt/rh/rh-nginx116/nginx/conf.d/*.conf;
+
+}
+EOF
+
+
 
 echo -e '\033[1;32m 替换字体 \033[0m'
 cp DejaVuSans.ttf /usr/share/fonts/dejavu/
