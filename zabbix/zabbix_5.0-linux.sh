@@ -177,7 +177,7 @@ EOF
 
 
 echo -e '\033[1;32m 替换字体 \033[0m'
-cp DejaVuSans.ttf /usr/share/fonts/dejavu/
+\cp DejaVuSans.ttf /usr/share/fonts/dejavu/
 
 echo -e '\033[1;32m 7.启动Zabbix server和agent进程 \033[0m'
 echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
