@@ -174,7 +174,8 @@ http {
 }
 EOF
 
-
+echo -e '\033[1;32m 配置具有root权限的Zabbix代理 \033[0m'
+sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
 
 echo -e '\033[1;32m 替换字体 \033[0m'
 \cp DejaVuSans.ttf /usr/share/fonts/dejavu/

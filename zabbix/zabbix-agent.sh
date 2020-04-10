@@ -22,6 +22,7 @@ echo -e "\033[1;32m 修改zabbix-agent配置文件 \033[0m"
 sed -i "s/Server=127.0.0.1/Server=${zabbix_server_ip}/g" /etc/zabbix/zabbix_agentd.conf
 sed -i "s/ServerActive=127.0.0.1/ServerActive=${zabbix_server_ip}/g" /etc/zabbix/zabbix_agentd.conf
 sed -i "s/# UnsafeUserParameters=0/UnsafeUserParameters=1/g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
 
 echo -e "\033[1;32m 启动zabbix-agent服务 \033[0m"
 systemctl start zabbix-agent
