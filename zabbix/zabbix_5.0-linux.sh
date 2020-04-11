@@ -182,6 +182,8 @@ echo -e '\033[1;32m 替换字体 \033[0m'
 
 #此命令只能在zabbix-server端执行，不能在zabbix-agent端执行，否则zabbix-agent服务无法启动
 sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
+
+#允许用户自定义脚本
 sed -i "s/# UnsafeUserParameters=0/UnsafeUserParameters=1/g" /etc/zabbix/zabbix_agentd.conf
 
 echo -e '\033[1;32m 7.启动Zabbix server和agent进程 \033[0m'
