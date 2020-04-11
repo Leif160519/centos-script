@@ -180,6 +180,10 @@ sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
 echo -e '\033[1;32m 替换字体 \033[0m'
 \cp DejaVuSans.ttf /usr/share/fonts/dejavu/
 
+#此命令只能在zabbix-server端执行，不能在zabbix-agent端执行，否则zabbix-agent服务无法启动
+sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/# UnsafeUserParameters=0/UnsafeUserParameters=1/g" /etc/zabbix/zabbix_agentd.conf
+
 echo -e '\033[1;32m 7.启动Zabbix server和agent进程 \033[0m'
 echo -e '\033[1;32m 启动Zabbix server和agent进程，并为它们设置开机自启： \033[0m'
 systemctl restart zabbix-server zabbix-agent rh-nginx116-nginx rh-php72-php-fpm
