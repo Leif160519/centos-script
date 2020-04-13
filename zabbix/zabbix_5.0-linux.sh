@@ -86,7 +86,7 @@ function install_zabbix_nginx_conf(){
     yum install -y zabbix-nginx-conf-scl
     install_zabbix_nginx_conf
   else
-    echo -e '\033[1;32m zabbix_nginx_conf已经安装 \033[0m'
+    echo -e '\033[1;32m zabbix-nginx-conf-scl已经安装 \033[0m'
   fi
 }
 

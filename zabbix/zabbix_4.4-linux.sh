@@ -34,11 +34,11 @@ install_nginx
 
 
 function install_php_fpm(){
-  if [[ `yum list installed | grep nginx |wc -l` == 0 ]];then
-    yum install -y php_fpm
+  if [[ `yum list installed | grep php-fpm |wc -l` == 0 ]];then
+    yum install -y php-fpm
     install_php_fpm
   else
-    echo -e '\033[1;32m php_fpm已经安装 \033[0m'
+    echo -e '\033[1;32m php-fpm已经安装 \033[0m'
   fi
 }
 
@@ -104,11 +104,11 @@ install_zabbix_web_mysql
 
 
 function install_zabbix_nginx_conf(){
-  if [[ `yum list installed | grep zabbix_nginx_conf |wc -l` == 0 ]];then
+  if [[ `yum list installed | grep zabbix-nginx-conf |wc -l` == 0 ]];then
     yum install -y zabbix-nginx-conf
     install_zabbix_nginx_conf
   else
-    echo -e '\033[1;32m zabbix_nginx_conf已经安装 \033[0m'
+    echo -e '\033[1;32m zabbix-nginx-conf已经安装 \033[0m'
   fi
 }
 
