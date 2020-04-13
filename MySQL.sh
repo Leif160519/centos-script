@@ -45,5 +45,5 @@ mysql -u root -p${mysql_passwd} -e "set global validate_password_number_count=3;
 mysql -u root -p${mysql_passwd} -e "set global validate_password_special_char_count=0;"
 mysql -u root -p${mysql_passwd} -e "set global validate_password_length=3;"
 mysql -u root -p${mysql_passwd} -e "SHOW VARIABLES LIKE 'validate_password%';"
-mysql -u root -p${mysql_passwd} -e "set password=password(\"${mysql_passwd}\");flush privileges"
+mysql -u root -p${mysql_passwd} -e "set password=password(\"${mysql_passwd}\");flush privileges;"
 exit
