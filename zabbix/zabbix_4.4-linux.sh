@@ -149,14 +149,11 @@ echo -e '\033[1;32m 编辑配置文件 /etc/nginx/conf.d/zabbix.conf \033[0m'
 sed -i "s/#//g" /etc/nginx/conf.d/zabbix.conf
 sed -i "s/; //g" /etc/php-fpm.d/zabbix.conf
 sed -i "s/Europe\/Riga/Asia\/Shanghai/g" /etc/php-fpm.d/zabbix.conf
-echo -e '\033[1;32m 配置具有root权限的Zabbix代理 \033[0m'
+echo -e '\033[1;32m 配置具有root权限的Zabbix代理(此命令只能在zabbix-server端执行，不能在zabbix-agent端执行，否则zabbix-agent服务无法启动) \033[0m'
 sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
 
 echo -e '\033[1;32m 替换字体 \033[0m'
 \cp DejaVuSans.ttf /usr/share/fonts/dejavu/
-
-#此命令只能在zabbix-server端执行，不能在zabbix-agent端执行，否则zabbix-agent服务无法启动
-sed -i "s/# AllowRoot=0/AllowRoot=1/g" /etc/zabbix/zabbix_agentd.conf
 
 #允许用户自定义脚本
 sed -i "s/# UnsafeUserParameters=0/UnsafeUserParameters=1/g" /etc/zabbix/zabbix_agentd.conf
