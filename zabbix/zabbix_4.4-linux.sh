@@ -128,11 +128,11 @@ install_zabbix_get
 
 
 echo -e '\033[1;32m 4.创建初始数据库 \033[0m'
-mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;"
-mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'%' IDENTIFIED BY '${zabbix_password}';flush privileges;"
-mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'localhost';flush privileges;"
-mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'%';flush privileges;"
-mysql -uroot -p${mysql_password} -e "create database zabbix character set utf8 collate utf8_bin;"
+mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;" --connect-expired-password
+mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'%' IDENTIFIED BY '${zabbix_password}';flush privileges;" --connect-expired-password
+mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'localhost';flush privileges;" --connect-expired-password
+mysql -uroot -p${mysql_password} -e "GRANT ALL ON *.* TO 'zabbix'@'%';flush privileges;" --connect-expired-password
+mysql -uroot -p${mysql_password} -e "create database zabbix character set utf8 collate utf8_bin;" --connect-expired-password
 
 
 echo -e '\033[1;32m 导入初始架构和数据。 \033[0m'
