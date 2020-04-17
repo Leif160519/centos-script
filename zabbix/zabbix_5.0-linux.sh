@@ -105,6 +105,21 @@ function install_zabbix_get(){
 install_zabbix_get
 
 
+
+
+echo -e "\033[1;32m 安装zabbix-sender工具\033[0m"
+function install_zabbix_get(){
+  if [[ `yum list installed | grep zabbix-sender |wc -l` == 0 ]];then
+    yum install -y zabbix-sender
+    install_zabbix_sender
+  else
+    echo -e '\033[1;32m zabbix-sender已经安装 \033[0m'
+  fi
+}
+
+install_zabbix_sender
+
+
 echo -e '\033[1;32m 4.创建初始数据库 \033[0m'
 mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'localhost' IDENTIFIED BY '${zabbix_password}';flush privileges;" --connect-expired-password
 mysql -uroot -p${mysql_password} -e "CREATE USER 'zabbix'@'%' IDENTIFIED BY '${zabbix_password}';flush privileges;" --connect-expired-password

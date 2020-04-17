@@ -16,6 +16,17 @@ function install_agent(){
 install_agent
 
 
+echo -e "\033[1;32m 安装zabbix-sender工具\033[0m"
+function install_zabbix_get(){
+  if [[ `yum list installed | grep zabbix-sender |wc -l` == 0 ]];then
+    yum install -y zabbix-sender
+    install_zabbix_sender
+  else
+    echo -e '\033[1;32m zabbix-sender已经安装 \033[0m'
+  fi
+}
+
+install_zabbix_sender
 
 
 echo -e "\033[1;32m 修改zabbix-agent配置文件 \033[0m"
