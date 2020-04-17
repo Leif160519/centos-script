@@ -108,7 +108,7 @@ install_zabbix_get
 
 
 echo -e "\033[1;32m 安装zabbix-sender工具\033[0m"
-function install_zabbix_get(){
+function install_zabbix_sender(){
   if [[ `yum list installed | grep zabbix-sender |wc -l` == 0 ]];then
     yum install -y zabbix-sender
     install_zabbix_sender
