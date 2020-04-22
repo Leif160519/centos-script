@@ -141,7 +141,7 @@ flush privileges;
 
 >访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
 
-erlang下载(github): https://github.com/rabbitmq/erlang-rpm/releases
+erlang下载:[github](https://github.com/rabbitmq/erlang-rpm/releases)
 
 | 描述 | 下载 |
 | --- | --- |
@@ -150,7 +150,7 @@ erlang下载(github): https://github.com/rabbitmq/erlang-rpm/releases
 
 >截止2019年05月16日，rabbitmq官网暂未更新erlang 21.3.8.1版本
 
-RabbitMQ下载(github): https://github.com/rabbitmq/rabbitmq-server/releases/
+RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 
 | 描述 | 下载 |
 | --- | --- |
@@ -214,13 +214,13 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 参考资料：
 
-- Centos7 搭建openldap完整详细教程(真实可用)：https://blog.csdn.net/weixin_41004350/article/details/89521170
+- [Centos7 搭建openldap完整详细教程(真实可用)](https://blog.csdn.net/weixin_41004350/article/details/89521170)
 
-- OpenLDAP管理工具之LDAP Admin：https://cloud.tencent.com/developer/article/1380076
+- [OpenLDAP管理工具之LDAP Admin](https://cloud.tencent.com/developer/article/1380076)
 
-- Gitlab使用LDAP用户管理配置：https://blog.csdn.net/qq_40140473/article/details/96312452
+- [Gitlab使用LDAP用户管理配置](https://blog.csdn.net/qq_40140473/article/details/96312452)
 
-- gitlab详细配置ldap：https://blog.csdn.net/len9596/article/details/81222764
+- [gitlab详细配置ldap](https://blog.csdn.net/len9596/article/details/81222764)
 
 ## 15. zabbix
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
