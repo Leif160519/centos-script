@@ -17,33 +17,33 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 6 | java | 不解释 |  |
 | 7 | yum-utils | yum工具包 |  |
 | 8 | expect | Expect是Unix系统中用来进行自动化控制和测试的软件工具 | https://man.linuxde.net/expect-%e7%99%be%e7%a7%91%e7%af%87 |
-| 9 | htop |  |  |
+| 9 | htop | 实时的监控界面 | https://cloud.tencent.com/developer/article/1115041 |
 | 10 | iotop | iotop命令是一个用来监视磁盘I/O使用状况的top类工具 | https://man.linuxde.net/iotop |
-| 11 | iftop |  |  |
-| 12 | nethogs |  | https://man.linuxde.net/nethogs |
-| 13 | mrtg |  |  |
-| 14 | nagios | NetHogs是一个开源的命令行工具（类似于Linux的top命令），用来按进程或程序实时统计网络带宽使用率 | https://man.linuxde.net/nethogs |
-| 15 | cacti |  |  |
-| 16 | npm |  |  |
-| 17 | pv |  |  |
+| 11 | iftop | 查看实时的网络流量，监控TCP/IP连接等 | https://www.vpser.net/manage/iftop.html |
+| 12 | nethogs | NetHogs是一个开源的命令行工具（类似于Linux的top命令），用来按进程或程序实时统计网络带宽使用率 | https://man.linuxde.net/nethogs |
+| 13 | mrtg | MRTG 是通过SNMP 协议，向运行snmp协议主机询问相关的资料后，主机传递数值给MRTG ，然后MRTG 再绘制成网页上的图表 | https://blog.51cto.com/dngood/762802 |
+| 14 | nagios | Nagios是一款开源的电脑系统和网络监视工具，能有效监控Windows、Linux和Unix的主机状态，交换机路由器等网络设置，打印机等 | https://www.cnblogs.com/mchina/archive/2013/02/20/2883404.html |
+| 15 | cacti | Cacti是一套基于PHP、MySQL、SNMP及RRDTool开发的网络流量监测图形分析工具 | https://blog.51cto.com/freeloda/1308140 |
+| 16 | npm | NPM是随同NodeJS一起安装的包管理工具 | https://www.runoob.com/nodejs/nodejs-npm.html |
+| 17 | pv | 显示当前在命令行执行的命令的进度信息，管道查看器 | https://wangchujiang.com/linux-command/c/pv.html |
 | 18 | telnet | telnet命令用于登录远程主机，对远程主机进行管理 | https://man.linuxde.net/telnet |
 | 19 | net-tools | centos网络工具包 |  |
 | 20 | tree | tree命令以树状图列出目录的内容 | https://man.linuxde.net/tree |
-| 21 | tmux |  |  |
+| 21 | tmux | tmux是一款优秀的终端复用软件 | http://louiszhai.github.io/2017/09/30/tmux/ / https://www.ruanyifeng.com/blog/2019/10/tmux.html |
 | 22 | iperf | iperf命令是一个网络性能测试工具 | https://man.linuxde.net/iperf |
-| 23 | figlet |  |  |
+| 23 | figlet | 将普通终端文本转换为大字母 | https://www.linuxprobe.com/figlet-toilet-command.html |
 | 24 | lsof | lsof命令用于查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP) | https://man.linuxde.net/lsof |
 | 25 | dpkg | dpkg命令是Debian Linux系统用来安装、创建和管理软件包的实用工具 | https://man.linuxde.net/dpkg |
 | 26 | hdparm | hdparm命令提供了一个命令行的接口用于读取和设置IDE或SCSI硬盘参数 | https://man.linuxde.net/hdparm |
 | 27 | smartmontools |  |  |
-| 28 | psmisc |  |  |
-| 29 | fping |  |  |
+| 28 | killall | killall命令使用进程的名称来杀死进程，使用此指令可以杀死一组同名进程 | https://man.linuxde.net/killall |
+| 29 | fping | Fping程序类似于ping协议回复请求以检测主机是否存在 | https://blog.csdn.net/wz_cow/article/details/80967255 |
 | 30 | tcpdump | tcpdump命令是一款sniffer工具，它可以打印所有经过网络接口的数据包的头信息，也可以使用-w选项将数据包保存到文件中，方便以后分析 | https://man.linuxde.net/tcpdump |
 | 31 | nmap | nmap命令是一款开放源代码的网络探测和安全审核工具，它的设计目标是快速地扫描大型网络 | https://man.linuxde.net/nmap |
-| 32 | fio |  |  |
+| 32 | fio | fio是一个IO测试工具，可以运行在Linux、Windows等多种系统之上，可以用来测试本地磁盘、网络存储等的性能 | https://blog.csdn.net/MrSate/article/details/53292102 |
 | 33 | nc | nc命令是netcat命令的简称，都是用来设置路由器 | https://man.linuxde.net/nc_netcat |
 | 34 | strace | strace命令是一个集诊断、调试、统计与一体的工具 | https://man.linuxde.net/strace |
-| 35 | perf |  |  |
+| 35 | perf | 性能分析工具 | https://zhuanlan.zhihu.com/p/22194920 |
 | 36 | iostat | iostat命令被用于监视系统输入输出设备和CPU的使用情况 | https://man.linuxde.net/iostat |
 | 37 | dig | dig命令是常用的域名查询工具，可以用来测试域名系统工作是否正常 | https://man.linuxde.net/dig / https://man.linuxde.net/dig-2 |
 | 38 | dstat | dstat命令是一个用来替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具 | https://man.linuxde.net/dstat |
