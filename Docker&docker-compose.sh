@@ -6,7 +6,7 @@ yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/
 echo -e '\033[1;31m 更新源 \033[0m'
 yum makecache
 echo -e '\033[1;31m 安装docker-ce \033[0m'
-yum install -y docker-ce
+yum install -y docker-ce-18.06.1.ce-3.e17
 echo -e '\033[1;31m 设置Docker开机自启动 \033[0m'
 systemctl enable docker
 echo -e '\033[1;31m 启动docker \033[0m'
@@ -15,14 +15,10 @@ echo -e '\033[1;31m 查看docker服务启动状态 \033[0m'
 systemctl status docker 
 echo -e '\033[1;31m 查看docker版本 \033[0m'
 docker version
-echo -e '\033[1;31m 给docker换ustc中科大源 \033[0m'
+echo -e '\033[1;31m 给docker换阿里源 \033[0m'
 cat <<EOF > /etc/docker/daemon.json
 {
-
-"registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"],
-"log-driver":"json-file",
-"log-opts": {"max-size":"1m", "max-file":"1"}
-
+"registry-mirrors": ["https://b9pmyelo.mirror.aliyuncs.com"]
 }
 EOF
 echo -e '\033[1;31m 重启docker服务 \033[0m'
