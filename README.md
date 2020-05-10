@@ -60,7 +60,7 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 6 | 关闭SSH DNS反向解析和GSSAPI的用户认证  | 防止ssh超时掉线 |
 
 
-## 2. Docker&docker-compose
+## 2. Docker
 安装 *`Docker`* 和 *`docker-compose`*
 
 ## 3. Gitlab.sh
