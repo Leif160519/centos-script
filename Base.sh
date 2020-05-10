@@ -147,6 +147,8 @@ echo -e '\033[1;31m 启动时间同步服务器 \033[0m'
 systemctl start ntpd
 echo -e '\033[1;31m 查看时间同步服务器运行状态 \033[0m'
 systemctl status ntpd
+echo -e '\033[1;31m 设置与windows时间同步 \033[0m'
+ntpdate time.windows.com 
 echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
 echo -e '\033[1;31m 4.永久关闭swap分区（重启后生效） \033[0m'
