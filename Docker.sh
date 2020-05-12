@@ -4,7 +4,7 @@ echo -e '\033[1;31m 4.安装Docker \033[0m'
 echo -e '\033[1;31m 添加Docker源 \033[0m'
 wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
 echo -e '\033[1;31m 安装docker-ce \033[0m'
-yum install -y docker-ce-18.06.1.ce-3.e17
+yum install -y docker-ce-18.06.1.ce-3.el7
 echo -e '\033[1;31m 设置Docker开机自启动 \033[0m'
 systemctl enable docker
 echo -e '\033[1;31m 启动docker \033[0m'
