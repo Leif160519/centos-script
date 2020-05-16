@@ -46,7 +46,8 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 35 | perf | 性能分析工具 | [在Linux下做性能分析3：perf](https://zhuanlan.zhihu.com/p/22194920) |
 | 36 | iostat | iostat命令被用于监视系统输入输出设备和CPU的使用情况 | [iostat命令](https://man.linuxde.net/iostat) |
 | 37 | dig | dig命令是常用的域名查询工具，可以用来测试域名系统工作是否正常 | [dig命令](https://man.linuxde.net/dig) / [dig命令](https://man.linuxde.net/dig-2) |
-| 38 | dstat | dstat命令是一个用来替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具 | [dstat命令](https://man.linuxde.net/dstat) |
+| 38 | nslookup | nslookup命令是常用域名查询工具，就是查DNS信息用的命令 | [nslookup命令](https://man.linuxde.net/nslookup) |
+| 39 | dstat | dstat命令是一个用来替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具 | [dstat命令](https://man.linuxde.net/dstat) |
 
 
 其他软件及操作
@@ -58,6 +59,8 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 4 | screenfetch | 查看系统信息 |
 | 5 | neofetch | 查看系统信息 |
 | 6 | 关闭SSH DNS反向解析和GSSAPI的用户认证  | 防止ssh超时掉线 |
+
+> 补充：[Linux 常用命令集合](https://www.runoob.com/w3cnote/linux-common-command.html)
 
 
 ## 2. Docker
