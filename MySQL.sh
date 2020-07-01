@@ -8,16 +8,7 @@ yum localinstall -y mysql57-community-release-el7-11.noarch.rpm
 # echo '查看最新稳定版本信息'
 # yum repolist all | grep mysql
 echo -e '\033[1;31m 安装mysql社区服务器 \033[0m'
-if [[ -f mysql-community-server-5.7.29-1.el7.x86_64.rpm ]];then
-    if [[ -f mysql-community-client-5.7.29-1.el7.x86_64.rpm ]];then
-    yum -y install mysql-community-client-5.7.29-1.el7.x86_64.rpm
-    else
-        echo "" > /dev/null
-    fi
-    yum -y install mysql-community-server-5.7.29-1.el7.x86_64.rpm
-else
-    yum -y install mysql-community-server
-fi
+yum -y install mysql-community-server
 echo -e '\033[1;31m 修改mysql配置文件 \033[0m'
 sed -i '$a\federated'  /etc/my.cnf
 sed -i '$a\max_connections = 2000'  /etc/my.cnf

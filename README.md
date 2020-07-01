@@ -48,7 +48,8 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 37 | dig | dig命令是常用的域名查询工具，可以用来测试域名系统工作是否正常 | [dig命令](https://man.linuxde.net/dig) / [dig命令](https://man.linuxde.net/dig-2) |
 | 38 | nslookup | nslookup命令是常用域名查询工具，就是查DNS信息用的命令 | [nslookup命令](https://man.linuxde.net/nslookup) |
 | 39 | dstat | dstat命令是一个用来替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具 | [dstat命令](https://man.linuxde.net/dstat) |
-
+| 40 | lynx | lynx命令是终端上的纯文本模式的网页浏览器，没有JS引擎，不支持CSS排版、图形、音视频等多媒体信息。只能作为一个很有趣的小玩具。| [lynx命令 – 终端上的纯文本浏览器](https://www.linuxcool.com/lynx) |
+| 41 | w3m | w3m是个开放源代码的命令行下面的网页浏览器。| [w3m常用操作](http://blog.lujun9972.win/blog/2016/12/11/w3m%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/index.html) |
 
 其他软件及操作
 |  序号 |  软件/操作名称 |  作用 |
