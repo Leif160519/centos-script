@@ -11,9 +11,9 @@ cat <<EOF >> /etc/exports
 ${share_dir} ${ip}(rw,sync,no_subtree_check,no_root_squash)
 EOF
 # 重启nfs服务
-systemctl restart nfs-kernel-server
+systemctl restart nfs-server
 # 设置nfs开机自启动
-systemctl enable nfs-kernel-server
+systemctl enable nfs-server
 
 browser_url="file://ip${share_dir}"
 windows_url="\\\ip\${share_dir}"
