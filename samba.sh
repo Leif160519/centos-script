@@ -22,9 +22,9 @@ cat <<EOF >> /etc/samba/smb.conf
 EOF
 
 # 重启samba
-systemctl restart smbd
+systemctl restart smb
 # 设置samba开机自启动
-systemctl enable smbd
+systemctl enable smb
 
 browser_url="file://ip/${share_name}/"
 windows_url="\\\ip\${share_name}"
