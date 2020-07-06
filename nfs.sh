@@ -16,7 +16,7 @@ systemctl restart nfs-server
 systemctl enable nfs-server
 
 browser_url="file://ip${share_dir}"
-windows_url="\\\ip\${share_dir}"
+windows_url="\\\ip\\${share_dir}"
 
 echo "浏览器通过\"${browser_url}\",windows通过\"${windows_url}\"访问"
 exit
