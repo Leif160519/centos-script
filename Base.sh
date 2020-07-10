@@ -8,7 +8,7 @@ echo -e '\033[1;31m ************************************************************
 function choice(){
     echo -n "是否更换阿里源？(y or n)"
     read choice
-    if [ ${choice} == "y" ];then
+    if [[ ${choice} == "y" ]];then
         echo -e '\033[1;31m 2.更换阿里源 \033[0m'
         echo -e '\033[1;31m 备份本地yum源 \033[0m'
         mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
@@ -19,7 +19,7 @@ function choice(){
         echo -e '\033[1;31m 更新 \033[0m'
         yum -y update
         echo -e '\033[1;31m ********************************************************************************** \033[0m'
-    elif [ ${choice} == "n" ];then
+    elif [[ ${choice} == "n" ]];then
         echo "你选择了不更换阿里源"
     else
         echo "输入有误，请重新输入"
@@ -226,10 +226,10 @@ yum -y clean all
 function choose_reboot(){
     echo -n "是否重启？(y or n)"
     read choice
-    if [ ${choice} == "y" ];then
+    if [[ ${choice} == "y" ]];then
         echo -e '\033[1;31m 你选择了重启 \033[0m'
         reboot
-    elif [ ${choice} == "n" ];then
+    elif [[ ${choice} == "n" ]];then
         echo "你选择了不重启"
     else
         echo "输入有误，请重新输入"
