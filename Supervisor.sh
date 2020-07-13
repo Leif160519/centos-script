@@ -1,9 +1,9 @@
 #!/bin/bash
-echo -e '\033[1;31m ********************************此脚本自动安装supervisor******************************** \033[0m'
-echo -e '\033[1;31m 安装pip \033[0m'
+echo -e '\033[1;32m 此脚本自动安装supervisor \033[0m'
+echo -e '\033[1;32m 安装pip \033[0m'
 yum -y install epel-release
 yum -y install python-pip
-echo -e '\033[1;31m 给pip换源 \033[0m'
+echo -e '\033[1;32m 给pip换源 \033[0m'
 mkdir /root/.pip
 cat <<EOF >/root/.pip/pip.conf
 [global]
@@ -11,18 +11,17 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 [install]
 trusted-host=mirrors.aliyun.com
 EOF
-echo -e '\033[1;31m 升级pip \033[0m'
+echo -e '\033[1;32m 升级pip \033[0m'
 pip install --upgrade pip
-echo -e '\033[1;31m ********************************************************************************** \033[0m'
 
-echo -e '\033[1;31m 安装supervisor \033[0m'
+echo -e '\033[1;32m 安装supervisor \033[0m'
 pip install supervisor
-echo -e '\033[1;31m 将supervisor配置文件重定向到/etc/目录下面 \033[0m'
+echo -e '\033[1;32m 将supervisor配置文件重定向到/etc/目录下面 \033[0m'
 mkdir /etc/supervisor
 echo_supervisord_conf > /etc/supervisor/supervisord.conf
-echo -e '\033[1;31m 新建进程管理文件夹 \033[0m \033[1;33m /etc/supervisor/conf.d \033[0m'
+echo -e '\033[1;32m 新建进程管理文件夹 \033[0m \033[1;33m /etc/supervisor/conf.d \033[0m'
 mkdir /etc/supervisor/conf.d
-echo -e '\033[1;31m 修改supervisor配置文件(将默认/temp路径放在/var下) \033[0m'
+echo -e '\033[1;32m 修改supervisor配置文件(将默认/temp路径放在/var下) \033[0m'
 cat <<EOF >/etc/supervisor/supervisord.conf
 [unix_http_server]
 file=/var/run/supervisor.sock   ; the path to the socket file
@@ -50,13 +49,13 @@ password=123456            ; 密码 (default is no password (open server))
 [include]
 files = /etc/supervisor/conf.d/*.conf
 EOF
-echo -e '\033[1;31m 修改新路径权限 \033[0m'
+echo -e '\033[1;32m 修改新路径权限 \033[0m'
 chmod 777 /var/run
 chmor 777 /var/log
-echo -e '\033[1;31m 创建supervisor.sock并赋予权限 \033[0m'
+echo -e '\033[1;32m 创建supervisor.sock并赋予权限 \033[0m'
 touch /var/run/supervisor.sock
 chmod 777 /var/run/supervisor.sock
-echo -e '\033[1;31m 生成supervisor服务自启动文件,文件路径为: \033[0m \033[1;33m /usr/lib/systemd/system/supervisor.service  \033[0m'
+echo -e '\033[1;32m 生成supervisor服务自启动文件,文件路径为: \033[0m \033[1;33m /usr/lib/systemd/system/supervisor.service  \033[0m'
 cat <<EOF >/usr/lib/systemd/system/supervisor.service
 [Unit]
 Description=Supervisor process control system for UNIX
@@ -75,14 +74,14 @@ RestartSec=50s
 WantedBy=multi-user.target
 EOF
 
-echo -e '\033[1;31m 启动supervisor \033[0m'
+echo -e '\033[1;32m 启动supervisor \033[0m'
 systemctl daemon-reload
 systemctl start supervisor
-echo -e '\033[1;31m 允许开机自启supervisor \033[0m'
+echo -e '\033[1;32m 允许开机自启supervisor \033[0m'
 systemctl enable supervisor
-echo -e '\033[1;31m 查看supervisor服务启动状态 \033[0m'
+echo -e '\033[1;32m 查看supervisor服务启动状态 \033[0m'
 systemctl status supervisor
-echo -e '\033[1;31m 管理supervisor下的服务 \033[0m
+echo -e '\033[1;32m 管理supervisor下的服务 \033[0m
 \033[1;33m
     1.启动服务
     supervisorctl start all
@@ -102,4 +101,4 @@ echo -e '\033[1;31m 管理supervisor下的服务 \033[0m
     7.添加/删除 要管理服务
     supervisorctl update
 \033[0m'
-echo -e '\033[1;31m 查看supervisor web管理页面 \033[0m  \033[1;33m http://localhost:9001; 用户名：admin; 密码：123456 \033[0m'
+echo -e '\033[1;32m 查看supervisor web管理页面 \033[0m  \033[1;33m http://localhost:9001; 用户名：admin; 密码：123456 \033[0m'

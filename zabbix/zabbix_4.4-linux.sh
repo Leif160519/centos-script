@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e '\033[1;31m ********************************此脚本自动化安装Zabbix******************************** \033[0m'
+echo -e '\033[1;32m 安装Zabbix \033[0m'
 if [[ `yum list installed | grep mysql-community | wc -l` == 0 ]];then
   echo -e '\033[1;32m mysql-community未安装，请先安装mysql再重新执行此脚本！ \033[0m'
 else

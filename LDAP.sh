@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e '\033[1;31m ********************************此脚本自动化安装openldap******************************** \033[0m'
+echo -e '\033[1;32m 安装openldap \033[0m'
 echo -n "请输入LDAP管理员密码："
 read slappasswd
 echo -n "请输入域名："
@@ -8,7 +8,7 @@ echo -n "请输入公司名称（英文）："
 read company
 #1.安装openLDAP
 function installOpenLDAP(){
-echo -e '\033[1;31m 1.安装openLDAP \033[0m'
+echo -e '\033[1;32m 1.安装openLDAP \033[0m'
 echo -e '\033[1;32m yum 安装相关包  \033[0m'
 yum install -y openldap openldap-clients openldap-servers
 echo -e '\033[1;32m 复制一个默认配置到指定目录下,并授权，这一步一定要做，然后再启动服务，不然生产密码时会报错  \033[0m'
@@ -27,7 +27,7 @@ yum -y clean all
 #2. 修改openldap配置
 #修改密码
 function changepwd(){
-echo -e '\033[1;31m  2. 修改openldap配置 \033[0m'
+echo -e '\033[1;32m  2. 修改openldap配置 \033[0m'
 echo -e '\033[1;32m  修改密码 \033[0m'
 echo -e '\033[1;32m  生成管理员密码,记录下这个密码，后面需要用到 \033[0m'
 ssha=`slappasswd -s ${slappasswd}`
@@ -111,7 +111,7 @@ ldapmodify -Y EXTERNAL -H ldapi:/// -f changedomain.ldif
 
 #启用memberof功能
 function add-memberof(){
-echo -e '\033[1;31m 启用memberof功能 \033[0m'
+echo -e '\033[1;32m 启用memberof功能 \033[0m'
 # 新增add-memberof.ldif, #开启memberof支持并新增用户支持memberof配置
 echo -e '\033[1;32m 新增add-memberof.ldif, 开启memberof支持并新增用户支持memberof配置 \033[0m'
 cat <<EOF >add-memberof.ldif
@@ -165,7 +165,7 @@ ldapadd -Q -Y EXTERNAL -H ldapi:/// -f refint2.ldif
 
 #分配角色
 function base(){
-echo -e '\033[1;31m 分配角色 \033[0m'
+echo -e '\033[1;32m 分配角色 \033[0m'
 echo -e '\033[1;32m 新增配置文件 \033[0m'
 cat <<EOF >base.ldif
 dn: dc=${domain},dc=com
@@ -196,7 +196,7 @@ ldapadd -x -D cn=admin,dc=${domain},dc=com -W -f base.ldif
 
 #3. 安装phpldapadmin
 function installWeb(){
-echo -e '\033[1;31m 3. 安装phpldapadmin \033[0m'
+echo -e '\033[1;32m 3. 安装phpldapadmin \033[0m'
 echo -e '\033[1;32m 卸载已安装的PHP  \033[0m'
 yum remove -y `yum list installed | grep php | cut -d " " -f 1`
 # yum安装时，会自动安装apache和php的依赖。

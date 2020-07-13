@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
-echo -e '\033[1;31m ********************************此脚本自动化node******************************** \033[0m'
+echo -e '\033[1;32m node \033[0m'
 echo -e '\033[1;32m 1.下载Linux版本二进制包 \033[0m'
-wget https://npm.taobao.org/mirrors/node/v12.11.1/node-v12.11.1-linux-x64.tar.xz
+wget -c https://npm.taobao.org/mirrors/node/v12.11.1/node-v12.11.1-linux-x64.tar.xz
 echo -e '\033[1;32m 2.解压 \033[0m'
 tar -xvf node-v12.11.1-linux-x64.tar.xz
 echo -e '\033[1;32m 3.重命名并复制到指定目录中 \033[0m'
