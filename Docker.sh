@@ -19,6 +19,16 @@ cat <<EOF > /etc/docker/daemon.json
 "registry-mirrors": ["https://b9pmyelo.mirror.aliyuncs.com"]
 }
 EOF
+# 若想更换docker网卡的网段，则json内容如下
+#{
+#"default-address-pools": [ 
+#       { 
+#               "base": "198.18.0.0/16",
+#               "size": 24
+#               }
+#       ],
+#  "registry-mirrors": ["https://b9pmyelo.mirror.aliyuncs.com"]
+#}
 echo -e '\033[1;32m 重启docker服务 \033[0m'
 systemctl restart docker
 echo -e '\033[1;32m 查看docker服务启动状态 \033[0m'
