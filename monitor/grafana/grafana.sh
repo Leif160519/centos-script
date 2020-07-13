@@ -27,7 +27,15 @@ systemctl status grafana-server
 systemctl enable grafana-server
 
 
+
 # 访问端口3000，默认用户名：admin，密码：admin
 echo "访问端口：3000，默认用户名：admin，密码：admin"
 # 插件目录：/var/lib/grafana/plugins
 echo "插件目录：/var/lib/grafana/plugins"
+
+# 下载插件
+# 参考：https://www.alibabacloud.com/help/zh/doc-detail/109434.htm
+git clone https://github.com/aliyun/aliyun-cms-grafana.git  /var/lib/grafana/plugins
+# 重启服务
+systemctl restart grafana-server
+
