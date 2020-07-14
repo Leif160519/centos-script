@@ -194,13 +194,14 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ### 9.5 Grafana
 功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
-![image.png](https://b3logfile.com/file/2020/07/image-bcf5cd3f.png)
+![image.png](https://b3logfile.com/file/2020/07/image-6e500ba5.png)
 
 [Node Exporter Full模板JSON文件](https://grafana.com/api/dashboards/1860/revisions/20/download)
 
 [Dashboard模板仓库](https://grafana.com/grafana/dashboards)
 
 > 参考资料：
+> - [Grafana官网](https://grafana.com/grafana/download)
 > - [CentOS 7中安装和配置Grafana](http://easonwu.me/2019/07/install-grafana-on-centos7.html)
 > - [对接Grafana](https://www.alibabacloud.com/help/zh/doc-detail/109434.htm)
 

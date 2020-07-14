@@ -15,9 +15,12 @@ EOF
 # 安装grafana
 yum -y install grafana
 
-# 方法2：直接下载安装包
-#wget -c https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.0-1.x86_64.rpm
-#yum -y install grafana-5.3.0-1.x86_64.rpm
+# 方法2：直接下载安装包(快)
+#wget -c https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-6.2.2-1.x86_64.rpm
+#yum -y install grafana-6.2.2-1.x86_64.rpm
+# 慢
+#wget -c https://dl.grafana.com/oss/release/grafana-7.0.6-1.x86_64.rpm
+#yum -y install grafana-7.0.6-1.x86_64.rpm
 
 # 启动grafana
 systemctl start grafana-server
