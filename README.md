@@ -184,7 +184,9 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
 
 ### 9.4 Prometheus(p8s)
-功能非常强大，适用性强的监控软件普罗米修斯，访问端口`9090`，`node_porter`访问端口`9100`
+开源的监控系统，访问端口`9090`，`node_porter`访问端口`9100`
+
+![](https://b3logfile.com/file/2020/07/solofetchupload5000648274399767074-bb49a17a.png)
 
 ![image.png](https://b3logfile.com/file/2020/07/image-d12c16be.png)
 
