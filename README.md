@@ -175,21 +175,40 @@ RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 
 ## 9.monitor
 监控软件
-### 9.1 netdata.sh
+### 9.1 netdata
 Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
 > 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
-### 9.2 goaccess.sh
+### 9.2 goaccess
 分析nginx日志的工具，默认访问端口`7890`
 ![image.png](https://img.hacpai.com/file/2019/09/image-da5afe19.png)
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
-### 9.3 cockpit.sh
+### 9.3 cockpit
 轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
 ![image.png](https://img.hacpai.com/file/2019/09/image-158bc1f9.png)
 
 ![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
+
+### 9.4 Prometheus(p8s)
+功能非常强大，适用性强的监控软件普罗米修斯，访问端口`9090`，`node_porter`访问端口`9100`
+
+![image.png](https://b3logfile.com/file/2020/07/image-d12c16be.png)
+
+
+### 9.5 Grafana
+功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：admin，密码：admin
+
+![image.png](https://b3logfile.com/file/2020/07/image-bcf5cd3f.png)
+
+[Node Exporter Full模板JSON文件](wget -c https://grafana.com/api/dashboards/1860/revisions/20/download)
+
+[Dashboard模板仓库](https://grafana.com/grafana/dashboards)
+
+> 参考资料：
+> - [CentOS 7中安装和配置Grafana](http://easonwu.me/2019/07/install-grafana-on-centos7.html)
+> - [对接Grafana](https://www.alibabacloud.com/help/zh/doc-detail/109434.htm)
 
 ## 10. k8s.sh
 centos下k8s安装脚本
