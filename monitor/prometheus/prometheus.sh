@@ -30,9 +30,9 @@ echo "访问端口9090"
 
 # 添加监控节点
 #cat <<EOF >> /usr/local/prometheus/prometheus.yml
-#  - job_name: 'node1'
+#  - job_name: 'node'
 #    static_configs:
-#    - targets: ['10.1.26.76:9100']
+#    - targets: ['10.1.26.76:9100','localhost:9100']
 #EOF
 # 热刷新配置
 #kill -HUP `ps -e | grep prometheus | awk '{print $1}'`
