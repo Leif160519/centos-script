@@ -86,30 +86,22 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 
 > 查看gitlab版本号`cat /opt/gitlab/embedded/service/gitlab-rails/VERSION`
 
-gitlab相关资料：
-
-- [Gitlab如何进行备份恢复与迁移？](https://leif.fun/articles/2019/08/29/1567060138639.html)
-
-- [完全卸载GitLab](https://leif.fun/articles/2019/08/29/1567058106789.html)
-
-- [centos搭建gitlab社区版](https://leif.fun/articles/2019/08/29/1567057627672.html)
-
-- [解决Gitlab迁移服务器后SSH key无效的问题](https://leif.fun/articles/2019/08/22/1566472573139.html)
+> gitlab相关资料：
+> - [Gitlab如何进行备份恢复与迁移？](https://leif.fun/articles/2019/08/29/1567060138639.html)
+> - [完全卸载GitLab](https://leif.fun/articles/2019/08/29/1567058106789.html)
+> - [centos搭建gitlab社区版](https://leif.fun/articles/2019/08/29/1567057627672.html)
+> - [解决Gitlab迁移服务器后SSH key无效的问题](https://leif.fun/articles/2019/08/22/1566472573139.html)
 
 ## 4. MongoDB.sh
 安装 *`MongoDB`* 数据库
 
 - *`MongoDB`* 默认没有用户名和密码，可以用Navicat等数据库管理工具直接连接
 
-mongodb相关资料：
-
-- [MongoDB 备份(mongodump)与恢复(mongorestore)](https://leif.fun/articles/2019/08/30/1567127999119.html)
-
-- [开启mongodb远程访问](https://leif.fun/articles/2019/08/30/1567127345260.html)
-
-- [mongodb服务启动失败](https://leif.fun/articles/2019/08/30/1567127175232.html)
-
-- [升级 MongoDB 到 4.0](https://leif.fun/articles/2019/08/30/1567127101249.html)
+> mongodb相关资料：
+> - [MongoDB 备份(mongodump)与恢复(mongorestore)](https://leif.fun/articles/2019/08/30/1567127999119.html)
+> - [开启mongodb远程访问](https://leif.fun/articles/2019/08/30/1567127345260.html)
+> - [mongodb服务启动失败](https://leif.fun/articles/2019/08/30/1567127175232.html)
+> - [升级 MongoDB 到 4.0](https://leif.fun/articles/2019/08/30/1567127101249.html)
 
 ## 5. MySQL.sh
 安装 *`MySQL`* 数据库社区版，脚本主要设置了固定密码。
@@ -143,7 +135,7 @@ flush privileges;
 ## 7. RabbitMQ.sh
 安装 *`RabbitMQ`* 消息通知
 
->访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
+> 访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
 
 erlang下载:[github](https://github.com/rabbitmq/erlang-rpm/releases)
 
@@ -198,11 +190,11 @@ Linux硬件资源监控软件，默认访问端口`1999`
 
 
 ### 9.5 Grafana
-功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：admin，密码：admin
+功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
 ![image.png](https://b3logfile.com/file/2020/07/image-bcf5cd3f.png)
 
-[Node Exporter Full模板JSON文件](wget -c https://grafana.com/api/dashboards/1860/revisions/20/download)
+[Node Exporter Full模板JSON文件](https://grafana.com/api/dashboards/1860/revisions/20/download)
 
 [Dashboard模板仓库](https://grafana.com/grafana/dashboards)
 
@@ -213,15 +205,11 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ## 10. k8s.sh
 centos下k8s安装脚本
 
-k8s相关资料：
-
-- [Kubernetes相关资料](https://leif.fun/articles/2019/09/06/1567758755140.html)
-
-- [Kubernetes 部署失败的 10 个最普遍原因（Part 1）](https://leif.fun/articles/2019/09/06/1567758470060.html)
-
-- [CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)
-
-- [《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
+> k8s相关资料：
+> - [Kubernetes相关资料](https://leif.fun/articles/2019/09/06/1567758755140.html)
+> - [Kubernetes 部署失败的 10 个最普遍原因（Part 1）](https://leif.fun/articles/2019/09/06/1567758470060.html)
+> - [CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)
+> - [《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
 
 ## 11.oh-my-zsh.sh
 安装zsh配置oh-my-zsh
@@ -235,15 +223,11 @@ k8s相关资料：
 ## 14. LDAP.sh
 LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议， 用这个协议可以访问提供目录服务的产品
 
-参考资料：
-
-- [Centos7 搭建openldap完整详细教程(真实可用)](https://blog.csdn.net/weixin_41004350/article/details/89521170)
-
-- [OpenLDAP管理工具之LDAP Admin](https://cloud.tencent.com/developer/article/1380076)
-
-- [Gitlab使用LDAP用户管理配置](https://blog.csdn.net/qq_40140473/article/details/96312452)
-
-- [gitlab详细配置ldap](https://blog.csdn.net/len9596/article/details/81222764)
+> 参考资料：
+> - [Centos7 搭建openldap完整详细教程(真实可用)](https://blog.csdn.net/weixin_41004350/article/details/89521170)
+> - [OpenLDAP管理工具之LDAP Admin](https://cloud.tencent.com/developer/article/1380076)
+> - [Gitlab使用LDAP用户管理配置](https://blog.csdn.net/qq_40140473/article/details/96312452)
+> - [gitlab详细配置ldap](https://blog.csdn.net/len9596/article/details/81222764)
 
 ## 15. zabbix
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
@@ -254,15 +238,11 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 ![image.png](https://img.hacpai.com/file/2020/04/image-0a2643d4.png)
 
-参考资料：
-
-- [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
-
-- [Linux老司机带你学Zabbix从入门到精通（一）](https://zhuanlan.zhihu.com/p/35064593)
-
-- [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
-
-- [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
+> 参考资料：
+> - [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
+> - [Linux老司机带你学Zabbix从入门到精通（一）](https://zhuanlan.zhihu.com/p/35064593)
+> - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
+> - [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
