@@ -1,2 +1,0 @@
-1.若想在zabbix中添加多台主机，请在对应的主机上安装zabbix-agent，执行zabbix-agent.sh脚本即可。
-2.字体实际为：微软雅黑常规体

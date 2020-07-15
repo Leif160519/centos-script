@@ -205,6 +205,21 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [CentOS 7中安装和配置Grafana](http://easonwu.me/2019/07/install-grafana-on-centos7.html)
 > - [对接Grafana](https://www.alibabacloud.com/help/zh/doc-detail/109434.htm)
 
+### 9.6. zabbix
+安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
+个人推荐`zabbix-docker.sh`，比较方便。
+![image.png](https://img.hacpai.com/file/2020/04/image-ca7b3026.png)
+
+![image.png](https://img.hacpai.com/file/2020/04/image-9952a2b4.png)
+
+![image.png](https://img.hacpai.com/file/2020/04/image-0a2643d4.png)
+
+> 参考资料：
+> - [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
+> - [Linux老司机带你学Zabbix从入门到精通（一）](https://zhuanlan.zhihu.com/p/35064593)
+> - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
+> - [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
+
 ## 10. k8s.sh
 centos下k8s安装脚本
 
@@ -232,20 +247,6 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 > - [Gitlab使用LDAP用户管理配置](https://blog.csdn.net/qq_40140473/article/details/96312452)
 > - [gitlab详细配置ldap](https://blog.csdn.net/len9596/article/details/81222764)
 
-## 15. zabbix
-安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
-个人推荐`zabbix-docker.sh`，比较方便。
-![image.png](https://img.hacpai.com/file/2020/04/image-ca7b3026.png)
-
-![image.png](https://img.hacpai.com/file/2020/04/image-9952a2b4.png)
-
-![image.png](https://img.hacpai.com/file/2020/04/image-0a2643d4.png)
-
-> 参考资料：
-> - [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
-> - [Linux老司机带你学Zabbix从入门到精通（一）](https://zhuanlan.zhihu.com/p/35064593)
-> - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
-> - [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
 
 # 用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
