@@ -1,9 +1,9 @@
-# 注意事项
-## 1. 此脚本适用于Centos 7(最小化安装，无图形界面)，部分脚本内容包含Ubuntu下的用法，可根据实际情况进行变更
+# 一、注意事项
+## 1. 此脚本适用于Centos 7，部分脚本内容包含Ubuntu下的用法，可根据实际情况进行变更
 ## 2. 脚本中涉及的IP地址和路径可以根据实际情况进行更改，但是有些路径是固定的，更改过后会出现问题，故在运行之前先了解一下工作原理
-## 3. 脚本在运行过程中自带彩色字体输出，某些脚本执行一定流程过后需要手动操作，并非无人值守，请执行前先看一下执行步骤，涉及手动操作和其他命令的提示用黄色表示，密码提示等用红色表示
+## 3. 部分脚本在运行过程中自带彩色字体输出，某些脚本执行一定流程过后需要手动操作，并非无人值守，请执行前先看一下执行步骤，涉及手动操作和其他命令的提示用黄色表示，密码提示等用红色表示
 
-# 文件介绍
+# 二、文件介绍
 ## 1. Base.sh
 centos 基础环境配置，安装必备组件和一些运维组件：
 
@@ -165,25 +165,25 @@ RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 
 - 具体安装教程：[centos7安装supervisor](https://leif.fun/articles/2019/08/28/1566986488665.html)
 
-## 9.monitor
+## 9.[monitor](monitor)
 监控软件
-### 9.1 netdata
+### 9.1 [netdata](monitor/netdata)
 Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
 > 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
-### 9.2 goaccess
+### 9.2 [goaccess](monitor/goaccess)
 分析nginx日志的工具，默认访问端口`7890`
 ![image.png](https://img.hacpai.com/file/2019/09/image-da5afe19.png)
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
-### 9.3 cockpit
+### 9.3 [cockpit](monitor/cockpit.sh)
 轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
 ![image.png](https://img.hacpai.com/file/2019/09/image-158bc1f9.png)
 
 ![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
 
-### 9.4 Prometheus(p8s)
+### 9.4 [Prometheus(p8s)](monitor/prometheus)
 开源的监控系统，访问端口`9090`，`node_porter`访问端口`9100`
 
 ![image.png](https://b3logfile.com/file/2020/07/image-efb935a6.png)
@@ -205,7 +205,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [CentOS 7中安装和配置Grafana](http://easonwu.me/2019/07/install-grafana-on-centos7.html)
 > - [对接Grafana](https://www.alibabacloud.com/help/zh/doc-detail/109434.htm)
 
-### 9.6. zabbix
+### 9.6. [zabbix](monitor/zabbix)
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
 个人推荐`zabbix-docker.sh`，比较方便。
 ![image.png](https://img.hacpai.com/file/2020/04/image-ca7b3026.png)
@@ -220,7 +220,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
 > - [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
 
-## 10. k8s.sh
+## 10. [k8s](k8s)
 centos下k8s安装脚本
 
 > k8s相关资料：
@@ -247,8 +247,9 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 > - [Gitlab使用LDAP用户管理配置](https://blog.csdn.net/qq_40140473/article/details/96312452)
 > - [gitlab详细配置ldap](https://blog.csdn.net/len9596/article/details/81222764)
 
+## 15. [scl使用指南](scl使用指南/scl使用指南.md)
 
-# 用法
+# 三、用法
 很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
 
 祝好运！
