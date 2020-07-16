@@ -448,7 +448,7 @@ log_format %h - %^ [%d:%t %^] "%r" %s %b "%R" "%u" "%^" %^ %^ %^ %T
 
 ## 七、参考
 
-https://www.jianshu.com/p/3b147fdbac86
-https://www.jianshu.com/p/b134995ae16c
-https://blog.51cto.com/13594742/2406665
-https://www.cnblogs.com/erbiao/p/9221671.html
+- https://www.jianshu.com/p/3b147fdbac86
+- https://www.jianshu.com/p/b134995ae16c
+- https://blog.51cto.com/13594742/2406665
+- https://www.cnblogs.com/erbiao/p/9221671.html
