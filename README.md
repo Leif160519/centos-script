@@ -191,7 +191,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](https://b3logfile.com/file/2020/07/image-d12c16be.png)
 
 
-### 9.5 Grafana
+### 9.5 [Grafana](monitor/grafana)
 功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
 ![image.png](https://b3logfile.com/file/2020/07/image-6e500ba5.png)
