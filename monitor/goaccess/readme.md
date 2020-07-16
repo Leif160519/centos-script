@@ -1,6 +1,7 @@
-官网地址：https://goaccess.io/
-官方github地址：https://github.com/allinurl/goaccess
-官方demo地址：https://rt.goaccess.io/?20190828082924
+- 官网地址：https://goaccess.io/
+- 官方github地址：https://github.com/allinurl/goaccess
+- 官方demo地址：https://rt.goaccess.io/?20190828082924
+
 ![image.png](https://img.hacpai.com/file/2019/09/image-535469fe.png)
 
 ## 一、前言
@@ -77,6 +78,7 @@ yum install -y ncurses-devel
 ```
 
 附上各个平台依赖包列表
+
 ![image.png](https://img.hacpai.com/file/2019/09/image-bd1fe6f6.png)
 
 ### 3.ubuntu包管理器安装
