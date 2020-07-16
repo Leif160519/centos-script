@@ -4,19 +4,19 @@
 
 - [页面介绍](https://grafana.com/grafana/dashboards/8919) 点击下载：[Node Exporter for Prometheus Dashboard CN v20200628](https://grafana.com/api/dashboards/1860/revisions/20/download)
 
-![image.png](https://grafana.com/api/dashboards/8919/images/8259/image)
+![image.png](images/8259.png)
 
-![image.png](https://grafana.com/api/dashboards/8919/images/8260/image)
+![image.png](images/8260.png)
 
 - [页面介绍](https://grafana.com/grafana/dashboards/11074) 点击下载：[Node Exporter for Prometheus Dashboard EN v20200628](https://grafana.com/api/dashboards/11074/revisions/4/download)
 
-![image.png](https://grafana.com/api/dashboards/11074/images/8427/image)
+![image.png](images/8427.png)
 
-![image.png](https://grafana.com/api/dashboards/11074/images/8428/image)
+![image.png](images/8428.png)
 
 - [页面介绍](https://grafana.com/grafana/dashboards/11174) 点击下载：[Node Exporter for Prometheus Dashboard 中文兼容版](https://grafana.com/api/dashboards/11174/revisions/1/download)
 
-![image.png](https://b3logfile.com/file/2020/07/image-b3ce4b2d.png)
+![image.png](images/image.png)
 
 
 ## 注意
