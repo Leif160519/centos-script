@@ -37,10 +37,13 @@ echo "访问端口：3000，默认用户名：admin，密码：admin"
 echo "插件目录：/var/lib/grafana/plugins"
 
 # 下载Node Exporter for Prometheus Dashboard CN v20200628
-#wget -c https://grafana.com/api/dashboards/1860/revisions/20/download -O node-exporter-full_rev20.json
+# wget -c https://grafana.com/api/dashboards/1860/revisions/20/download -O node-exporter-full_rev20.json
+
+# 下载Node Exporter for Prometheus Dashboard EN v20200628 
+# wget -c https://grafana.com/api/dashboards/11074/revisions/4/download -O node-exporter-en_rev4.json
 
 # 下载Node Exporter for Prometheus Dashboard 中文兼容版
-#wget -c https://grafana.com/api/dashboards/11174/revisions/1/download -O node-exporter-for-prometheus-dashboard_rev1.json
+# wget -c https://grafana.com/api/dashboards/11174/revisions/1/download -O node-exporter-for-prometheus-dashboard_rev1.json
 
 # Dashboard模板仓库：https://grafana.com/grafana/dashboards
 # 参考：http://easonwu.me/2019/07/install-grafana-on-centos7.html
