@@ -111,6 +111,7 @@ echo -e '\033[1;32m 安装lrzsz \033[0m'
 yum -y install lrzsz
 echo -e '\033[1;32m 安装monit \033[0m'
 yum -y install monit
+systemctl start monit && systemctl enable monit
 echo -e '\033[1;32m 3.安装时间同步服务器 \033[0m'
 yum -y install ntp
 echo -e '\033[1;32m 设置开机启动 \033[0m'
@@ -120,7 +121,7 @@ systemctl start ntpd
 echo -e '\033[1;32m 查看时间同步服务器运行状态 \033[0m'
 systemctl status ntpd
 echo -e '\033[1;32m 设置与windows时间同步 \033[0m'
-ntpdate time.windows.com 
+ntpdate time.windows.com
 
 
 echo -e '\033[1;32m 4.永久关闭swap分区（重启后生效） \033[0m'
