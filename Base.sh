@@ -100,6 +100,7 @@ echo -e '\033[1;32m 安装iostat \033[0m'
 yum -y install sysstat
 systemctl start sysstat && systemctl enable sysstat
 
+
 echo -e '\033[1;32m 安装dig/nslookup \033[0m'
 yum -y install bind-utils
 echo -e '\033[1;32m dstat \033[0m'
@@ -108,6 +109,8 @@ echo -e '\033[1;32m lynx \033[0m'
 yum -y install lynx
 echo -e '\033[1;32m w3m \033[0m'
 yum -y install w3m
+echo -e '\033[1;32m 安装lrzsz \033[0m'
+yum -y install lrzsz
 echo -e '\033[1;32m 3.安装时间同步服务器 \033[0m'
 yum -y install ntp
 echo -e '\033[1;32m 设置开机启动 \033[0m'
