@@ -15,6 +15,9 @@ systemctl restart nfs-server
 # 设置nfs开机自启动
 systemctl enable nfs-server
 
+#不重启nfs服务，刷新配置
+#exportfs -arv
+
 browser_url="file://ip${share_dir}"
 windows_url="\\\ip\\${share_dir}"
 
