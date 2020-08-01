@@ -1,0 +1,15 @@
+[submodule "monitor/Leif160519.goaccess"]
+	path = monitor/Leif160519.goaccess
+	url = https://github.com/Leif160519/goaccess.git
+[submodule "monitor/Leif160519.zabbix"]
+	path = monitor/Leif160519.zabbix
+	url = https://github.com/Leif160519/zabbix.git
+[submodule "monitor/Leif160519.netdata"]
+	path = monitor/Leif160519.netdata
+	url = https://github.com/Leif160519/netdata.git
+[submodule "monitor/Leif160519.grafana"]
+	path = monitor/Leif160519.grafana
+	url = https://github.com/Leif160519/grafana.git
+[submodule "monitor/Leif160519.prometheus"]
+	path = monitor/Leif160519.prometheus
+	url = https://github.com/Leif160519/prometheus.git
