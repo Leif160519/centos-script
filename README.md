@@ -171,32 +171,32 @@ RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 监控软件
 ### 9.1 [netdata](https://github.com/Leif160519/netdata)
 Linux硬件资源监控软件，默认访问端口`1999`
-![image.png](https://img.hacpai.com/file/2019/09/image-90b66926.png)
+![image.png](images/1.png)
 > 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
 ### 9.2 [goaccess](https://github.com/Leif160519/goaccess)
 分析nginx日志的工具，默认访问端口`7890`
-![image.png](https://img.hacpai.com/file/2019/09/image-da5afe19.png)
+![image.png](images/2.png)
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
 ### 9.3 [cockpit](monitor/cockpit.sh)
 轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
-![image.png](https://img.hacpai.com/file/2019/09/image-158bc1f9.png)
+![image.png](images/3.png)
 
-![image.png](https://img.hacpai.com/file/2019/09/image-e46a3ece.png)
+![image.png](images/4.png)
 
 ### 9.4 [Prometheus(p8s)](https://github.com/Leif160519/prometheus)
 开源的监控系统，访问端口`9090`，`node_porter`访问端口`9100`
 
-![image.png](https://b3logfile.com/file/2020/07/image-efb935a6.png)
+![image.png](images/5.png)
 
-![image.png](https://b3logfile.com/file/2020/07/image-d12c16be.png)
+![image.png](images/6.png)
 
 
 ### 9.5 [Grafana](https://github.com/Leif160519/grafana)
 功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
-![image.png](https://b3logfile.com/file/2020/07/image-6e500ba5.png)
+![image.png](images/7.png)
 
 [Node Exporter Full模板JSON文件](https://grafana.com/api/dashboards/1860/revisions/20/download)
 
@@ -210,11 +210,11 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ### 9.6. [zabbix](https://github.com/Leif160519/zabbix)
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
 个人推荐`zabbix-docker.sh`，比较方便。
-![image.png](https://img.hacpai.com/file/2020/04/image-ca7b3026.png)
+![image.png](images/8.png)
 
-![image.png](https://img.hacpai.com/file/2020/04/image-9952a2b4.png)
+![image.png](images/9.png)
 
-![image.png](https://img.hacpai.com/file/2020/04/image-0a2643d4.png)
+![image.png](images/10.png)
 
 > 参考资料：
 > - [【Zabbix】CentOS7.3下使用Docker安装Zabbix](https://www.jianshu.com/p/b2d44c733c2d)
