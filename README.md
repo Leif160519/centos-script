@@ -4,7 +4,7 @@
 ## 3. 部分脚本在运行过程中自带彩色字体输出，某些脚本执行一定流程过后需要手动操作，并非无人值守，请执行前先看一下执行步骤，涉及手动操作和其他命令的提示用黄色表示，密码提示等用红色表示
 
 # 二、文件介绍
-## 1. Base.sh
+## 1. base.sh
 centos 基础环境配置，安装必备组件和一些运维组件：
 
 | 序号 | 软件名称 | 说明 | 使用方法 |
@@ -66,10 +66,10 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 > 补充：[Linux 常用命令集合](https://www.runoob.com/w3cnote/linux-common-command.html)
 
 
-## 2. Docker
+## 2. docker.sh
 安装 *`Docker`* 和 *`docker-compose`*
 
-## 3. Gitlab.sh
+## 3. gitlab.sh
 安装 *`Gitlab`* ，支持中文(登录过后在setting中设置语言即可)，设置包括：
 
 1.安装 *`SSH `* ----------------------------------------------------(一般Linux都自带，支持SSH克隆或者提交代码)，
@@ -94,7 +94,7 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 > - [centos搭建gitlab社区版](https://leif.fun/articles/2019/08/29/1567057627672.html)
 > - [解决Gitlab迁移服务器后SSH key无效的问题](https://leif.fun/articles/2019/08/22/1566472573139.html)
 
-## 4. MongoDB.sh
+## 4. mongodb.sh
 安装 *`MongoDB`* 数据库
 
 - *`MongoDB`* 默认没有用户名和密码，可以用Navicat等数据库管理工具直接连接
@@ -105,7 +105,7 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 > - [mongodb服务启动失败](https://leif.fun/articles/2019/08/30/1567127175232.html)
 > - [升级 MongoDB 到 4.0](https://leif.fun/articles/2019/08/30/1567127101249.html)
 
-## 5. MySQL.sh
+## 5. mysql.sh
 安装 *`MySQL`* 数据库社区版，脚本主要设置了固定密码。
 
 关于如何开启远程访问(centos 7下)：
@@ -134,7 +134,7 @@ flush privileges;
 > [python相关内容](https://leif.fun/search?keyword=python)
 
 
-## 7. RabbitMQ.sh
+## 7. rabbitmq.sh
 安装 *`RabbitMQ`* 消息通知
 
 > 访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
@@ -160,10 +160,10 @@ RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 >截止2019年05月16日，rabbitmq官网暂未更新rabbitmq 3.7.14版本
 
 
-## 8. Supervisor.sh
+## 8. supervisor.sh
 安装 *`supervisor`* 进程管理工具设置应用程序开机自启动
 
-- 上述 *`Base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
+- 上述 *`base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
 
 - 具体安装教程：[centos7安装supervisor](https://leif.fun/articles/2019/08/28/1566986488665.html)
 
@@ -240,7 +240,7 @@ centos下k8s安装脚本
 ## 13.node.sh
 安装node和npm
 
-## 14. LDAP.sh
+## 14. ldap.sh
 LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议， 用这个协议可以访问提供目录服务的产品
 
 > 参考资料：
@@ -251,7 +251,19 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 ## 15. [scl使用指南](scl使用指南/scl使用指南.md)
 
+## 16.chrome.sh
+centos 7(Desktop版)安装chrome浏览器
+
+## 17.ethernet.sh
+修改centos的有线IP地址
+
+## 18.nfs.sh
+安装网络文件系统（Network File System）NFS
+
+## 19.samba.sh
+安装服务信息块（Server Messages Block）文件共享软件samba
+
 # 三、用法
-很多工具的安装依赖 *`Base.sh`* 中涉及到的工具，故建议先执行Base.sh，再根据实际需求执行上述其他脚本
+很多工具的安装依赖 *`base.sh`* 中涉及到的工具，故建议先执行base.sh，再根据实际需求执行上述其他脚本
 
 祝好运！
