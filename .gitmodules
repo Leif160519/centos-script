@@ -16,3 +16,6 @@
 [submodule "k8s/Leif160519.k8s"]
 	path = k8s/Leif160519.k8s
 	url = https://github.com/Leif160519/k8s.git
+[submodule "k8s/lizhenliang.ansible-install-k8s"]
+	path = k8s/lizhenliang.ansible-install-k8s
+	url = https://github.com/lizhenliang/ansible-install-k8s.git
