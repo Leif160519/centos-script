@@ -1,4 +1,5 @@
 #!/bin/bash
+echo -e '\033[1;32m 6.安装rar \033[0m'
 sys_info=$(uname -a)
 echo "下载安装包并解压"
 if [[ ${sys_info} =~ 64 ]];then
@@ -8,10 +9,7 @@ else
     wget -c http://www.rarsoft.com/rar/rarlinux-5.7.1.tar.gz
     tar -zxvf rarlinux-5.7.1.tar.gz
 fi
-echo "进入文件夹"
 cd rar || exit
-echo "编译和安装"
 make
-echo "测试"
-rar
+
 exit

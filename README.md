@@ -4,10 +4,11 @@
 ## 1. 此脚本适用于Centos 7，部分脚本内容包含Ubuntu下的用法，可根据实际情况进行变更
 ## 2. 脚本中涉及的IP地址和路径可以根据实际情况进行更改，但是有些路径是固定的，更改过后会出现问题，故在运行之前先了解一下工作原理
 ## 3. 部分脚本在运行过程中自带彩色字体输出，某些脚本执行一定流程过后需要手动操作，并非无人值守，请执行前先看一下执行步骤，涉及手动操作和其他命令的提示用黄色表示，密码提示等用红色表示
+## 4.部分脚本已经与ansible-linux中的playbook保持逻辑一致。
 
 # 二、文件介绍
-## 1. base.sh
-centos 基础环境配置，安装必备组件和一些运维组件：
+## 1. install.sh
+centos 基础环境安装，包括常用组件和一些运维工具(一下表格内容不全)：
 
 | 序号 | 软件名称 | 说明 | 使用方法 |
 | --- | --- | --- | --- |
@@ -55,23 +56,26 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 | 42 | lrzsz | rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到服务器(receive)，即windows上传到linux服务器;sz：将选定的文件发送（send）到本地机器，即从linux服务型下载到windows ||
 | 43 | monit | Monit是一款功能非常丰富的进程、文件、目录和设备的监测软件，适用于Linux/Unix平台。它可以自动修复那些已经停止运作的程序，特别适合处理那些由于多种原因导致的软件错误、监控系统关键的进程和资源。同时Monit 包含一个内嵌的 HTTP(S) Web 界面，你可以使用浏览器方便地查看 Monit 所监视的服务器。此外，M/Monit可以把多台安装Monit的服务器集中起来一起管理。| [Monit：开源服务器监控工具](https://www.cnblogs.com/52fhy/p/6412547.html) |
 
-其他软件及操作
+
+## 2. config.sh
+系统配置
 |  序号 |  软件/操作名称 |  作用 |
 | --- | --- | --- |
-| 1 | 安装时间同步服务器 | 与网络时间同步 |
-| 2 | 关闭swap分区 |  |
-| 3 | 关闭防火墙 |  |
-| 4 | screenfetch | 查看系统信息 |
-| 5 | neofetch | 查看系统信息 |
-| 6 | 关闭SSH DNS反向解析和GSSAPI的用户认证  | 防止ssh超时掉线 |
+| 1 | 关闭swap分区 |  |
+| 2 | 关闭防火墙 |  |
+| 3 | 关闭SSH DNS反向解析和GSSAPI的用户认证  | 防止ssh超时掉线 |
+| 4 | 设置所有sudo指令不需要密码 |
+| 5 | 给pip换源 |
+| 6 | 配置vim |
+| 7 | 配置关机等待时间 |
 
 > 补充：[Linux 常用命令集合](https://www.runoob.com/w3cnote/linux-common-command.html)
 
 
-## 2. docker.sh
+## 3. docker.sh
 安装 *`Docker`* 和 *`docker-compose`*
 
-## 3. gitlab.sh
+## 4. gitlab.sh
 安装 *`Gitlab`* ，支持中文(登录过后在setting中设置语言即可)，设置包括：
 
 1.安装 *`SSH `* ----------------------------------------------------(一般Linux都自带，支持SSH克隆或者提交代码)，
@@ -96,7 +100,7 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 > - [centos搭建gitlab社区版](https://leif.fun/articles/2019/08/29/1567057627672.html)
 > - [解决Gitlab迁移服务器后SSH key无效的问题](https://leif.fun/articles/2019/08/22/1566472573139.html)
 
-## 4. mongodb.sh
+## 5. mongodb.sh
 安装 *`MongoDB`* 数据库
 
 - *`MongoDB`* 默认没有用户名和密码，可以用Navicat等数据库管理工具直接连接
@@ -107,7 +111,8 @@ centos 基础环境配置，安装必备组件和一些运维组件：
 > - [mongodb服务启动失败](https://leif.fun/articles/2019/08/30/1567127175232.html)
 > - [升级 MongoDB 到 4.0](https://leif.fun/articles/2019/08/30/1567127101249.html)
 
-## 5. mysql.sh
+## 6. mysql
+### 6.1 mysql-yum.sh
 安装 *`MySQL`* 数据库社区版，脚本主要设置了固定密码。
 
 关于如何开启远程访问(centos 7下)：
@@ -129,14 +134,17 @@ flush privileges;
 
 附：[mysql5.7安装包(rpm)](https://centos.pkgs.org/7/mysql-5.7-x86_64/)
 
-## 6.python3.7.sh
+### 6.2 mysql-tar.sh
+安装mysql压缩版
+
+## 7.python3.7.sh
 编译安装 *`Python3.7`*
 
 安装pip并升级到最新版
 > [python相关内容](https://leif.fun/search?keyword=python)
 
 
-## 7. rabbitmq.sh
+## 8. rabbitmq.sh
 安装 *`RabbitMQ`* 消息通知
 
 > 访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`* 
@@ -162,32 +170,32 @@ RabbitMQ下载:[github]( https://github.com/rabbitmq/rabbitmq-server/releases/)
 >截止2019年05月16日，rabbitmq官网暂未更新rabbitmq 3.7.14版本
 
 
-## 8. supervisor.sh
+## 9. supervisor.sh
 安装 *`supervisor`* 进程管理工具设置应用程序开机自启动
 
-- 上述 *`base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`* 
+- 上述 *`base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`*
 
 - 具体安装教程：[centos7安装supervisor](https://leif.fun/articles/2019/08/28/1566986488665.html)
 
-## 9.[monitor](monitor)
+## 10.[monitor](monitor)
 监控软件
-### 9.1 [netdata](https://github.com/Leif160519/netdata)
+### 10.1 [netdata](https://github.com/Leif160519/netdata)
 Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](images/1.png)
 > 部署教程参考:[netdata监控搭建及使用](https://leif.fun/articles/2019/09/10/1568097487995.html)
 
-### 9.2 [goaccess](https://github.com/Leif160519/goaccess)
+### 10.2 [goaccess](https://github.com/Leif160519/goaccess)
 分析nginx日志的工具，默认访问端口`7890`
 ![image.png](images/2.png)
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置](https://leif.fun/articles/2019/09/10/1568098665037.html)
 
-### 9.3 [cockpit](monitor/cockpit.sh)
+### 10.3 [cockpit](monitor/cockpit.sh)
 轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
 ![image.png](images/3.png)
 
 ![image.png](images/4.png)
 
-### 9.4 [Prometheus(p8s)](https://github.com/Leif160519/prometheus)
+### 10.4 [Prometheus(p8s)](https://github.com/Leif160519/prometheus)
 开源的监控系统，访问端口`9090`，`node_porter`访问端口`9100`
 
 ![image.png](images/5.png)
@@ -195,7 +203,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](images/6.png)
 
 
-### 9.5 [Grafana](https://github.com/Leif160519/grafana)
+### 10.5 [Grafana](https://github.com/Leif160519/grafana)
 功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
 ![image.png](images/7.png)
@@ -209,7 +217,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [CentOS 7中安装和配置Grafana](http://easonwu.me/2019/07/install-grafana-on-centos7.html)
 > - [对接Grafana](https://www.alibabacloud.com/help/zh/doc-detail/109434.htm)
 
-### 9.6. [zabbix](https://github.com/Leif160519/zabbix)
+### 10.6. [zabbix](https://github.com/Leif160519/zabbix)
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
 个人推荐`zabbix-docker.sh`，比较方便。
 ![image.png](images/8.png)
@@ -224,7 +232,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [Linux老司机带你学Zabbix从入门到精通（二）](https://zhuanlan.zhihu.com/p/35068409)
 > - [基于 docker 部署 zabbix 及客户端批量部署](https://blog.rj-bai.com/post/144.html)
 
-## 10. [k8s](k8s)
+## 11. [k8s](k8s)
 centos下k8s安装脚本
 
 > k8s相关资料：
@@ -233,11 +241,8 @@ centos下k8s安装脚本
 > - [CentOS7.5 Kubernetes V1.13 二进制部署集群](https://leif.fun/articles/2019/09/06/1567755955285.html)
 > - [《每天5分钟玩转Kubernetes》读书笔记](https://leif.fun/articles/2019/09/18/1568772630383.html)
 
-## 11.oh-my-zsh.sh
+## 12.oh-my-zsh.sh
 安装zsh配置oh-my-zsh
-
-## 12.rar.sh
-安装rar解压缩命令
 
 ## 13.node.sh
 安装node和npm
@@ -264,6 +269,9 @@ centos 7(Desktop版)安装chrome浏览器
 
 ## 19.samba.sh
 安装服务信息块（Server Messages Block）文件共享软件samba
+
+## 20.rar.sh
+编译安装rar
 
 # 三、用法
 很多工具的安装依赖 *`base.sh`* 中涉及到的工具，故建议先执行base.sh，再根据实际需求执行上述其他脚本
