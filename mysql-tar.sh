@@ -114,7 +114,7 @@ chown root:root /lib/systemd/system/mysqld.service
 
 # 环境检测
 port_monit=$(lsof -i:3306 | wc -l)
-if [[ ${port_monit} == 1 ]];then
+if [[ ${port_monit} == 2 ]];then
     echo "端口已被占用，请检查mysql是否已经安装！"
 else
     # 安装依赖软件
