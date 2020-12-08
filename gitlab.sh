@@ -1,6 +1,6 @@
 #!/bin/bash
 #获取本机ip地址
-IP_ADDRESS=`ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1`
+IP_ADDRESS=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
 echo -e '\033[1;32m 安装GitLab \033[0m'
 echo -e '\033[1;32m 1.安装SSH \033[0m'
 yum -y install curl policycoreutils openssh-server openssh-clients policycoreutils-python
@@ -9,12 +9,10 @@ systemctl enable sshd
 echo -e '\033[1;32m 启动SSH服务 \033[0m'
 systemctl start sshd
 
-
 echo -e '\033[1;32m 2.安装邮件系统用来发送邮件 \033[0m'
 yum -y install postfix
 systemctl enable postfix
 systemctl start postfix
-
 
 echo -e '\033[1;32m 安装GitLab社区版 \033[0m'
 wget -c https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-11.4.6-ce.0.el7.x86_64.rpm

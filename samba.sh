@@ -1,11 +1,11 @@
 #!/bin/bash
 yum -y install samba
 echo -n "请输入需要共享的目录（不存在则会自动创建）："
-read share_dir
-mkdir -p ${share_dir}
-chmod -R 777 ${share_dir}
+read -r share_dir
+mkdir -p "${share_dir}"
+chmod -R 777 "${share_dir}"
 echo -n "请输入共享的名称（别名）："
-read share_name
+read -r share_name
 echo "请设置共享的root密码"
 smbpasswd -a root
 
@@ -17,7 +17,7 @@ cat <<EOF >> /etc/samba/smb.conf
    browseable = yes
    writeable = yes
    guest ok = yes
-   read only = no
+   read -r only = no
    valid user = root
 EOF
 

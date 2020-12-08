@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/bin/bash
 echo -e '\033[1;32m 安装cockpit \033[0m'
 yum -y install cockpit
 echo -e '\033[1;32m 设置开机自启 \033[0m'

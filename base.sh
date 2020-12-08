@@ -6,13 +6,13 @@ yum -y install wget
 
 function choice(){
     echo -n "是否更换阿里源？(y or n)"
-    read choice
+    read -r choice
     if [[ ${choice} == "y" ]];then
         echo -e '\033[1;32m 2.更换阿里源 \033[0m'
         echo -e '\033[1;32m 备份本地yum源 \033[0m'
         mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
         echo -e '\033[1;32m 获取阿里yum源配置文件 \033[0m'
-        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo 
+        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
         echo -e '\033[1;32m 更新cache \033[0m'
         yum makecache
         echo -e '\033[1;32m 更新 \033[0m'
@@ -189,7 +189,7 @@ yum -y clean all
 
 function choose_reboot(){
     echo -n "是否重启？(y or n)"
-    read choice
+    read -r choice
     if [[ ${choice} == "y" ]];then
         echo -e '\033[1;32m 你选择了重启 \033[0m'
         reboot

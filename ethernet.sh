@@ -1,22 +1,22 @@
-#!/usr/bin/env bash 
+#!/bin/bash
 echo -e "\033[1;31m  此脚本设置有线网连接,请以root用户执行 \033[0m"
 echo -e "\033[1;32m  查看IP状态 \033[0m"
 ip a
 echo -n -e "\033[1;32m  请输入网卡设备号: \033[0m"
-read interface
+read -r interface
 echo -n -e "\033[1;32m  请输入有线IP地址: \033[0m"
-read address
+read -r address
 echo -n -e "\033[1;32m  请输入有线子网掩码(24): \033[0m"
-read netmask
+read -r netmask
 echo -n -e "\033[1;32m  请输入有线网关: \033[0m"
-read gateway
+read -r gateway
 echo -n -e "\033[1;32m  请输入有线DNS1(必填): \033[0m"
-read dns1
+read -r dns1
 echo -n -e "\033[1;32m  请输入有线DNS2(若没有直接回车跳过): \033[0m"
-read dns2
+read -r dns2
 
 uuid=$(uuidgen)
-cat <<EOF >/etc/sysconfig/network-scripts/ifcfg-${interface}
+cat <<EOF >/etc/sysconfig/network-scripts/ifcfg-"${interface}"
 TYPE="Ethernet"
 PROXY_METHOD="none"
 BROWSER_ONLY="no"

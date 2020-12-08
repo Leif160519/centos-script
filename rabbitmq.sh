@@ -3,10 +3,10 @@
 
 # RabbitMQ下载 https://www.rabbitmq.com/install-rpm.html#install-erlang;https://github.com/rabbitmq/rabbitmq-server/releases/
 
-centos6=`grep -cIE 'CentOS.*?6.*?' /etc/issue`
-centos7=`grep -cIE 'CentOS.*?7.*?' /etc/issue`
+centos6=$(grep -cIE 'CentOS.*?6.*?' /etc/issue)
+centos7=$(grep -cIE 'CentOS.*?7.*?' /etc/issue)
 
-if [ $centos6 = 1 -o $centos7 = 1 ]; then
+if [ "$centos6" == 1 -o "$centos7" == 1 ]; then
     echo -e "\033[1;32m 1.卸载RabbitMQ \033[0m"
     yum -y remove rabbitmq
     rpm -qa | grep rabbitmq | xargs -I {} rpm -e {}
@@ -17,7 +17,7 @@ if [ $centos6 = 1 -o $centos7 = 1 ]; then
     yum -y install socat
 fi
 
-if [ $centos6 = 1 ]; then
+if [ "$centos6" == 1 ]; then
     echo -e "\033[1;32m 4.下载erlang  \033[0m"
     wget -c https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el6.x86_64.rpm
     echo -e "\033[1;32m 5.安装erlang \033[0m"
@@ -28,7 +28,7 @@ if [ $centos6 = 1 ]; then
     rpm -ivh rabbitmq-server-3.7.14-1.el6.noarch.rpm
 fi
 
-if [ $centos7 = 1 ]; then
+if [ "$centos7" == 1 ]; then
     echo -e "\033[1;32m 4.下载erlang \033[0m"
     wget -c https://github.com/rabbitmq/erlang-rpm/releases/download/v21.3.8.1/erlang-21.3.8.1-1.el7.x86_64.rpm
     echo -e "\033[1;32m 5.安装erlang \033[0m"
@@ -52,7 +52,7 @@ EOF
 echo -e "\033[1;32m 10.启动服务 \033[0m"
 systemctl restart  rabbitmq-server
 echo -e "\033[1;32m 11.查看服务状态 \033[0m"
-systemctl status rabbitmq-server 
+systemctl status rabbitmq-server
 echo -e "\033[1;32m 12.开启管理功能 \033[0m"
 rabbitmq-plugins enable rabbitmq_management
 echo -e "\033[1;32m 13.重启服务 \033[0m"
@@ -65,4 +65,4 @@ curl http://localhost:15672
 echo -e '\033[1;32m RabbitMQ配置完成！\033[0m'
 echo -e "\033[1;32m 清除yum安装包 \033[0m"
 yum -y clean all
-exit   
+exit

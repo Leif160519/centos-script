@@ -1,11 +1,11 @@
 #!/bin/bash
 echo -e '\033[1;32m 安装openldap \033[0m'
 echo -n "请输入LDAP管理员密码："
-read slappasswd
+read -r slappasswd
 echo -n "请输入域名："
-read domain
+read -r domain
 echo -n "请输入公司名称（英文）："
-read company
+read -r company
 #1.安装openLDAP
 function installOpenLDAP(){
 echo -e '\033[1;32m 1.安装openLDAP \033[0m'
@@ -30,13 +30,13 @@ function changepwd(){
 echo -e '\033[1;32m  2. 修改openldap配置 \033[0m'
 echo -e '\033[1;32m  修改密码 \033[0m'
 echo -e '\033[1;32m  生成管理员密码,记录下这个密码，后面需要用到 \033[0m'
-ssha=`slappasswd -s ${slappasswd}`
-echo ${ssha}
+ssha=$(slappasswd -s "${slappasswd}")
+echo "${ssha}"
 
 # 新增修改密码文件,ldif为后缀，文件名随意，不要在/etc/openldap/slapd.d/目录下创建类似文件
 # 生成的文件为需要通过命令去动态修改ldap现有配置，如下，我在home目录下，创建文件
 echo -e '\033[1;32m  创建changepwd.ldif文件 \033[0m'
-cd ~
+cd ~ || exit
 cat <<EOF >changepwd.ldif
 dn: olcDatabase={0}config,cn=config
 changetype: modify
@@ -80,22 +80,22 @@ cat <<EOF >changedomain.ldif
 dn: olcDatabase={1}monitor,cn=config
 changetype: modify
 replace: olcAccess
-olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" read by dn.base="cn=admin,dc=${domain},dc=com" read by * none
+olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" read by dn.base="cn=admin,dc="${domain}",dc=com" read by * none
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 replace: olcSuffix
-olcSuffix: dc=${domain},dc=com
+olcSuffix: dc="${domain}",dc=com
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 replace: olcRootDN
-olcRootDN: cn=admin,dc=${domain},dc=com
+olcRootDN: cn=admin,dc="${domain}",dc=com
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 replace: olcRootPW
-olcRootPW: ${ssha}
+olcRootPW: "${ssha}"
 
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
@@ -190,7 +190,7 @@ EOF
 
 # 执行命令，添加配置, 这里要注意修改域名为自己配置的域名，然后需要输入上面我们生成的密码
 echo -e '\033[1;32m 执行命令，添加配置, 输入上面我们生成的密码 \033[0m'
-ldapadd -x -D cn=admin,dc=${domain},dc=com -W -f base.ldif
+ldapadd -x -D cn=admin,dc="${domain}",dc=com -W -f base.ldif
 }
 
 
@@ -198,19 +198,19 @@ ldapadd -x -D cn=admin,dc=${domain},dc=com -W -f base.ldif
 function installWeb(){
 echo -e '\033[1;32m 3. 安装phpldapadmin \033[0m'
 echo -e '\033[1;32m 卸载已安装的PHP  \033[0m'
-yum remove -y `yum list installed | grep php | cut -d " " -f 1`
+yum remove -y "$(yum list installed | grep php | cut -d " " -f 1)"
 # yum安装时，会自动安装apache和php的依赖。
 # 注意： phpldapadmin很多没更新了，只支持php5，如果你服务器的环境是php7，则会有问题，页面会有各种报错
 yum -y install epel-release
 yum install -y phpldapadmin
- 
+
 # 修改apache的phpldapadmin配置文件
 # 修改如下内容，放开外网访问，这里只改了2.4版本的配置，因为centos7 默认安装的apache为2.4版本。所以只需要改2.4版本的配置就可以了
 # 如果不知道自己apache版本，执行 rpm -qa|grep httpd 查看apache版本
 echo -e '\033[1;32m 修改apache的phpldapadmin配置文件 \033[0m'
 sed -i "s/local/all granted/g" /etc/httpd/conf.d/phpldapadmin.conf
- 
- 
+
+
 # 修改配置用DN登录ldap
 echo -e '\033[1;32m 修改配置用DN登录ldap \033[0m'
 # 398行，默认是使用uid进行登录，我这里改为cn，也就是用户名
@@ -218,21 +218,21 @@ sed -i "s/\$servers->setValue('login','attr','uid');/\$servers->setValue('login'
 
 # 460行，关闭匿名登录，否则任何人都可以直接匿名登录查看所有人的信息
 sed -i "s/\/\/ \$servers->setValue('login','anon_bind',true);/\$servers->setValue('login','anon_bind',false);/g" /etc/phpldapadmin/config.php
- 
+
 # 519行，设置用户属性的唯一性，这里我将cn,sn加上了，以确保用户名的唯一性
 sed -i "s/#  \$servers->setValue('unique','attrs',array('mail','uid','uidNumber'));/\$servers->setValue('unique','attrs',array('mail','uid','uidNumber','cn','sn'));/g" /etc/phpldapadmin/config.php
- 
+
 # 启动apache
 echo -e '\033[1;32m 启动apache \033[0m'
 systemctl start httpd
-systemctl enable httpd    
+systemctl enable httpd
 }
 
 
 #4. 登录phpldapadmin界面
 function login(){
 echo -e '\033[1;32m 登录phpldapadmin界面 \033[0m'
-ip_address=`ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1`
+ip_address=$(ip a | grep inet | grep -v inet6 | grep -v 127 | sed 's/^[ \t]*//g' | cut -d ' ' -f2 | grep -v 172 | cut -d '/' -f1 | head -1)
 echo "访问：http://${ip_address}/ldapadmin，然后使用定义的用户名和密码登陆即可"
 }
 

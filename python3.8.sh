@@ -8,7 +8,7 @@ wget -c https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tar.xz
 echo -e '\033[1;32m 3.解压 \033[0m'
 tar -xvJf  Python-3.8.3.tar.xz
 echo -e '\033[1;32m 4.配置python3的安装目录 \033[0m'
-cd Python-3.8.3
+cd Python-3.8.3 || exit
 ./configure --prefix=/usr/local/python3
 echo -e '\033[1;32m 5.编译 \033[0m'
 make

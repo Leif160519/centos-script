@@ -38,7 +38,7 @@
 验证一下
 
 ```shell
-[root@carl ~]# ps | grep $$ 
+[root@carl ~]# ps | grep $$
  9847 pts/0    00:00:00 bash    # 开启 scl 之前
 [root@carl rh]# scl enable devtoolset-3 bash  # 开启 scl
 [root@carl rh]# ps | grep $$
@@ -113,7 +113,7 @@ export PYTHONPATH=/opt/rh/devtoolset-3/root/usr/lib64/python$pythonvers/site-pac
 
    ```shell
    yum install devtoolset-6
-   
+
    # wget http://mirror.centos.org/centos/6/sclo/x86_64/rh/devtoolset-6/devtoolset-6-6.0-6.el6.x86_64.rpm
    # yum install devtoolset-6-6.0-6.el6.x86_64.rpm
    ```
@@ -133,7 +133,7 @@ export PYTHONPATH=/opt/rh/devtoolset-3/root/usr/lib64/python$pythonvers/site-pac
    Using built-in specs.
    Target: x86_64-redhat-linux
    # 省略部分输出信息...
-   gcc version 4.4.7 20120313 (Red Hat 4.4.7-23) (GCC) 
+   gcc version 4.4.7 20120313 (Red Hat 4.4.7-23) (GCC)
    [root@carl ~]# scl enable devtoolset-6 bash
    [root@carl ~]# gcc -v
    Using built-in specs.

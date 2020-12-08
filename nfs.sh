@@ -1,11 +1,11 @@
 #!/bin/bash
 yum -y install nfs-utils
 echo -n "请输入需要共享的目录（不存在的会自动创建）："
-read share_dir
-mkdir -p ${share_dir}
-chmod -R 777 ${share_dir}
+read -r share_dir
+mkdir -p "${share_dir}"
+chmod -R 777 "${share_dir}"
 echo -n "请输入允许访问nfs的IP段,如'192.168.1.0/24'（若允许所有主机都可访问，请输入'*'）："
-read ip
+read -r ip
 # 添加共享目录
 cat <<EOF >> /etc/exports
 ${share_dir} ${ip}(rw,sync,no_subtree_check,no_root_squash)
