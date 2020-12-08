@@ -15,8 +15,6 @@ echo -e '\033[1;32m 开启MongoDB远程访问 \033[0m'
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 echo -e '\033[1;32m 启动MongoDB \033[0m'
 systemctl start mongod.service
-echo -e '\033[1;32m 查看MongoDB状态 \033[0m'
-systemctl status mongod.service
 echo -e "\033[1;32m 清除yum安装包 \033[0m"
 yum -y clean all
 exit

@@ -18,8 +18,6 @@ echo -e '\033[1;32m 设置mysql开机启动 \033[0m'
 systemctl enable mysqld
 echo -e '\033[1;32m 启动mysql \033[0m'
 systemctl start mysqld
-echo -e '\033[1;32m 查看mysql启动状态 \033[0m'
-systemctl status mysqld
 
 echo -e -n '\033[1;32m 请输入将要设置的mysql root用户密码\033[0m'
 read mysql_passwd

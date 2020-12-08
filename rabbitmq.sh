@@ -51,16 +51,14 @@ EOF
 #重新启动服务
 echo -e "\033[1;32m 10.启动服务 \033[0m"
 systemctl restart  rabbitmq-server
-echo -e "\033[1;32m 11.查看服务状态 \033[0m"
-systemctl status rabbitmq-server
-echo -e "\033[1;32m 12.开启管理功能 \033[0m"
+echo -e "\033[1;32m 11.开启管理功能 \033[0m"
 rabbitmq-plugins enable rabbitmq_management
-echo -e "\033[1;32m 13.重启服务 \033[0m"
+echo -e "\033[1;32m 12.重启服务 \033[0m"
 systemctl restart  rabbitmq-server
-echo -e "\033[1;32m 14.增加管理员用户 \033[0m"
+echo -e "\033[1;32m 13.增加管理员用户 \033[0m"
 rabbitmqctl add_user admin 123456
 rabbitmqctl set_user_tags admin administrator
-echo -e "\033[1;32m 15.在浏览器中使用端口15672登录控制台，可以对RabbitMQ进行管理 \033[0m"
+echo -e "\033[1;32m 14.在浏览器中使用端口15672登录控制台，可以对RabbitMQ进行管理 \033[0m"
 curl http://localhost:15672
 echo -e '\033[1;32m RabbitMQ配置完成！\033[0m'
 echo -e "\033[1;32m 清除yum安装包 \033[0m"

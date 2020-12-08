@@ -18,8 +18,6 @@ chown -R ldap. /var/lib/ldap/DB_CONFIG
 echo -e '\033[1;32m 启动服务，先启动服务，配置后面再进行修改  \033[0m'
 systemctl start slapd
 systemctl enable slapd
-echo -e '\033[1;32m 查看状态，正常启动则ok  \033[0m'
-systemctl status slapd
 echo -e '\033[1;32m 清除安装包  \033[0m'
 yum -y clean all
 }

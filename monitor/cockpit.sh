@@ -8,8 +8,6 @@ systemctl enable --now cockpit.socket
 # firewall-cmd --reload
 echo -e '\033[1;32m 启动cockpit \033[0m'
 systemctl start cockpit
-echo -e '\033[1;32m 查看cockpit状态 \033[0m'
-systemctl status cockpit
 echo -e '\033[1;32m 访问http://localhost:9090；使用本机用户名和密码登录 \033[0m'
 echo -e "\033[1;32m 清除yum安装包 \033[0m"
 yum -y clean all

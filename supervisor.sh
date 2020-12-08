@@ -79,8 +79,6 @@ systemctl daemon-reload
 systemctl start supervisor
 echo -e '\033[1;32m 允许开机自启supervisor \033[0m'
 systemctl enable supervisor
-echo -e '\033[1;32m 查看supervisor服务启动状态 \033[0m'
-systemctl status supervisor
 echo -e '\033[1;32m 管理supervisor下的服务 \033[0m
 \033[1;33m
     1.启动服务
