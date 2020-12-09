@@ -4,7 +4,7 @@ echo -e '\033[1;32m 1.安装常用软件或工具包 \033[0m'
 
 for software_name in yum-utils epel-release bind-utils \
     wget nano vim emacs zip unzip git java expect htop iotop iftop nethogs nagios ShellCheck\
-    mrtg cacti npm pv telnet net-tools tree tmux iperf lsof dpkg hdparm smartmontools \
+    mrtg npm pv telnet net-tools tree tmux iperf lsof dpkg hdparm smartmontools \
     psmisc fping tcpdump nmap fio nc strace perf build-utils dstat lynx w3m lrzsz \
     monit ntp bash-completion ctop ansible dosfstools uuid make colordiff subnetcalc groovy \
     python python3 python3-pip dos2unix nload curl cifs-utils xfsprogs exfat-utils rename \
