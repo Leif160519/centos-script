@@ -274,6 +274,12 @@ centos 7(Desktop版)安装chrome浏览器
 编译安装rar
 
 # 三、用法
-很多工具的安装依赖 *`base.sh`* 中涉及到的工具，故建议先执行base.sh，再根据实际需求执行上述其他脚本
+
+推荐执行顺序：
+- repository.sh - 换源
+- install.sh    - 安装常用组件
+- config.sh     - 系统配置
+- ethernet.sh   - 固定ip地址
+- ···.sh        - 其他特定软件的安装脚本
 
 祝好运！
