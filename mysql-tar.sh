@@ -61,7 +61,7 @@ function create_run_dir() {
 
 # 创建日志文件
 function create_log_file() {
-    touch${mysql_log_file}
+    touch ${mysql_log_file}
     chmod 0644 ${mysql_log_file}
     chown mysql:mysql ${mysql_log_file}
 }
@@ -124,7 +124,12 @@ else
     # 下载解压mysql安装程序
     wget -c ${mysql_url} -O /tmp/${mysql_version}.tar.gz
     tar -zxvf /tmp/${mysql_version}.tar.gz -C /var/lib
-    mv /var/lib/${mysql_version} ${mysql_root_dir}
+    if [[ -d ${mysql_root_dir} ]];then
+        echo "${mysql_root_dir}已存在,退出安装程序！"
+        exit 1
+    else
+        mv /var/lib/${mysql_version} ${mysql_root_dir}
+    fi
     # 设置mysql文件夹权限
     chown -R mysql:mysql ${mysql_root_dir}
     # 创建data目录
