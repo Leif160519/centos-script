@@ -114,7 +114,7 @@ chown root:root /lib/systemd/system/mysqld.service
 
 # 环境检测
 port_monit=$(lsof -i:3306 | wc -l)
-if [[ ${port_monit} == 2 ]];then
+if [[ ${port_monit} -ge 2 ]];then
     echo "端口已被占用，请检查mysql是否已经安装！"
 else
     # 安装依赖软件
@@ -147,5 +147,5 @@ else
     systemctl start mysqld
     systemctl enable mysqld
     # 创建软链接
-    find ${mysql_root_dir}/bin -type f | xargs -i ln -s {} /usr/local/bin/
+    find ${mysql_root_dir}/bin -type f -exec ln -s {} /usr/local/bin \;
 fi
