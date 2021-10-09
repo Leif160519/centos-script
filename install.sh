@@ -7,9 +7,10 @@ for software_name in yum-utils epel-release bind-utils \
     mrtg npm pv telnet net-tools tree tmux iperf lsof dpkg hdparm smartmontools \
     psmisc fping tcpdump nmap fio nc strace perf build-utils dstat lynx w3m lrzsz \
     monit ntp bash-completion ctop ansible dosfstools uuid make colordiff subnetcalc groovy \
-    python python3 python3-pip dos2unix nload curl cifs-utils xfsprogs exfat-utils rename \
+    python python3 python3-pip dos2unix nload curl cifs-utils xfsprogs \
     curlftpfs tig jq mosh axel cloc ccache neovim mc powerman ncdu glances pcp multitail \
-    figlet wdiff ;
+    figlet wdiff smartmontools ntpdate lsb fortune-mod ethtool lvm2 enca nload iptraf bmon \
+    slurm tcptrack vnstat bwm-ng ifstat collectl zstd moreutils nvme-cli unhide ;
 do
     echo -e "\033[1;32m 安装${software_name} \033[0m"
     yum -y install "${software_name}"
