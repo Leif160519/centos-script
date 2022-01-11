@@ -53,18 +53,12 @@ echo -e '\033[1;32m 7.配置关机等待时间 \033[0m'
 sed -i "/^#DefaultTimeoutStartSec/cDefaultTimeoutStartSec=10s" /etc/systemd/system.conf
 sed -i "/^#DefaultTimeoutStopSec/cDefaultTimeoutStopSec=10s" /etc/systemd/system.conf
 
-
 function choose_reboot(){
-    echo -n "是否重启？(y or n)"
-    read -r choice
-    if [[ ${choice} == "y" ]];then
-        echo -e '\033[1;32m 你选择了重启 \033[0m'
-        reboot
-    elif [[ ${choice} == "n" ]];then
-        echo "你选择了不重启"
-    else
-        echo "输入有误，请重新输入"
-        choice
-    fi
+    read -rp "是否重启？(y or n):" choice
+    case $choice in
+        "y") echo -e '\033[1;32m 你选择了重启 \033[0m' && reboot ;;
+        "n") echo "你选择了不重启" ;;
+        *) echo "输入有误，请重新输入!" && choose_reboot ;;
+    esac
 }
 choose_reboot

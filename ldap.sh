@@ -1,11 +1,8 @@
 #!/bin/bash
 echo -e '\033[1;32m 安装openldap \033[0m'
-echo -n "请输入LDAP管理员密码："
-read -r slappasswd
-echo -n "请输入域名："
-read -r domain
-echo -n "请输入公司名称（英文）："
-read -r company
+read -rp "请输入LDAP管理员密码：" slappasswd
+read -rp "请输入域名："  domain
+read -rp "请输入公司名称（英文）：" company
 #1.安装openLDAP
 function installOpenLDAP(){
 echo -e '\033[1;32m 1.安装openLDAP \033[0m'

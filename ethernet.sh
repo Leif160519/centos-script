@@ -2,18 +2,12 @@
 echo -e "\033[1;31m  此脚本设置有线网连接,请以root用户执行 \033[0m"
 echo -e "\033[1;32m  查看IP状态 \033[0m"
 ip a
-echo -n -e "\033[1;32m  请输入网卡设备号: \033[0m"
-read -r interface
-echo -n -e "\033[1;32m  请输入有线IP地址: \033[0m"
-read -r address
-echo -n -e "\033[1;32m  请输入有线子网掩码(24): \033[0m"
-read -r netmask
-echo -n -e "\033[1;32m  请输入有线网关: \033[0m"
-read -r gateway
-echo -n -e "\033[1;32m  请输入有线DNS1(必填): \033[0m"
-read -r dns1
-echo -n -e "\033[1;32m  请输入有线DNS2(若没有直接回车跳过): \033[0m"
-read -r dns2
+read -rp "请输入网卡设备号:" interface
+read -rp "请输入有线IP地址:" address
+read -rp "请输入有线子网掩码(24):" netmask
+read -rp "请输入有线网关:" gateway
+read -rp "请输入有线DNS1(必填):" dns1
+read -rp "请输入有线DNS2(若没有直接回车跳过):" dns2
 
 uuid=$(uuidgen)
 cat <<EOF >/etc/sysconfig/network-scripts/ifcfg-"${interface}"
