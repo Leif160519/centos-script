@@ -52,7 +52,7 @@ configure_ssh(){ # {{{
 
 configure_sudo_privileges(){ # {{{
     judge_user
-    sed -i 's/^%wheel/%wheel ALL=(ALL) NOPASSWD: ALL/g'
+    sed -i 's/^(|)%wheel/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
     if [[ ! -f /var/log/sudo.log ]];then
         touch /var/log/sudo.log
     fi
@@ -65,8 +65,8 @@ configure_sudo_privileges(){ # {{{
 
 disable_selinux(){ # {{{
     judge_user
-    sed -i 's/^SELINUX=/SELINUX=disabled/g' /etc/selinux/config
-    setinforce 0
+    sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+    setenforce 0
 } # }}}
 
 disable_firewalld(){ # {{{
