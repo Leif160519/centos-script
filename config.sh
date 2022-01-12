@@ -33,7 +33,7 @@ judge_user(){ # {{{
     fi
 } # }}}
 
-configure_ssh(){ # {{{
+config_ssh(){ # {{{
     judge_user
     sed -i '/^\(#\|\)UseDNS/cUseDNS no' /etc/ssh/sshd_config
     sed -i '/^\(#\|\)GSSAPIAuthentication/cGSSAPIAuthentication no' /etc/ssh/sshd_config
@@ -48,9 +48,10 @@ configure_ssh(){ # {{{
     sed -i '$a    GSSAPIAuthentication yes' /etc/ssh/ssh_config
     sed -i '$a    GSSAPIAuthentication no' /etc/ssh/ssh_config
     systemctl reload sshd
+    echo "configure ssh done."
 } # }}}
 
-configure_sudo_privileges(){ # {{{
+config_sudo_privileges(){ # {{{
     judge_user
     sed -i '/^%wheel/c%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
     if [[ ! -f /var/log/sudo.log ]];then
@@ -61,27 +62,31 @@ configure_sudo_privileges(){ # {{{
     sed -i '$aDefaults loglinelen=0' /etc/sudoers
     sed -i '$aDefaults !syslog' /etc/sudoers
     systemctl restart rsyslog
+    echo "config sudo done."
 } # }}}
 
 disable_selinux(){ # {{{
     judge_user
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
     setenforce 0
+    echo "disable selinux done."
 } # }}}
 
 disable_firewalld(){ # {{{
     judge_user
     systemctl stop firewalld
     systemctl disable firewalld
+    echo "disable firewalld done."
 } # }}}
 
 disable_swap(){ # {{{
     judge_user
     swapoff -a
     sed -i '/swap/d' /etc/fstab
+    echo "disable swap done."
 } # }}}
 
-configure_pip(){ # {{{
+config_pip(){ # {{{
     judge_user
     if [[ ! -d /root/.pip ]];then
         mkdir /root/.pip
@@ -93,66 +98,73 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 [install]
 trusted-host=mirrors.aliyun.com
 EOF
+    echo "config pip done."
 } # }}}
 
-configure_shutdown_wait_time(){ # {{{
+config_shutdown_wait_time(){ # {{{
     judge_user
     sed -i '/^#DefaultTimeoutStartSec/cDefaultTimeoutStartSec=10s' /etc/systemd/system.conf
     sed -i '/^#DefaultTimeoutStopSec/cDefaultTimeoutStopSec=10s' /etc/systemd/system.conf
+    echo "config shutdown wait time done."
 } # }}}
 
 open_cron_log(){ # {{{
     judge_user
     sed -i 's/#cron/cron/g' /etc/rsyslog.conf
     systemctl restart rsyslog
+    echo "open cron log done."
 } # }}}
 
-configure_clock(){ # {{{
+config_clock(){ # {{{
     judge_user
     timedatectl set-local-rtc 0
     timedatectl set-timezone Asia/Shanghai
+    echo "config clock done."
 } # }}}
 
-configure_default_editor(){ # {{{
+config_default_editor(){ # {{{
     judge_user
     echo 'SELECTED_EDITOR="/usr/bin/vim.basic"' > /root/.selected_editor
+    echo "config default editor done."
 } # }}}
 
-configure_git(){ # {{{
+config_git(){ # {{{
     judge_user
     if [[ -f /usr/bin/git ]];then
         git config --global core.editor vim
         git config --global core.quotepath false
     fi
+    echo "config git done."
 } # }}}
 
-configure_email(){ # {{{
+config_email(){ # {{{
     judge_user
     find /var/mail/* -path "*/var/mail/*" -type f -delete
+    echo "config email done."
 } # }}}
 
 reboot_server(){ # {{{
-    read -rp "是否重启？(y or n):" choice
+    read -rp "Whether to restart ?(y or n):" choice
     case $choice in
-        "y") echo -e '\033[1;32m 你选择了重启 \033[0m' && reboot ;;
-        "n") echo "你选择了不重启" ;;
-        *) echo "输入有误，请重新输入!" && reboot_server ;;
+        "y") echo -e '\033[1;32m You choose to reboot \033[0m' && reboot ;;
+        "n") echo "You chose not to reboot" ;;
+        *) echo "Input error please try again." && reboot_server ;;
     esac
 } # }}}
 
 all(){ # {{{
-    configure_ssh
-    configure_sudo_privileges
+    config_ssh
+    config_sudo_privileges
     disable_selinux
     disable_firewalld
     disable_swap
-    configure_pip
-    configure_shutdown_wait_time
+    config_pip
+    config_shutdown_wait_time
     open_cron_log
-    configure_clock
-    configure_default_editor
-    configure_git
-    configure_email
+    config_clock
+    config_default_editor
+    config_git
+    config_email
     reboot_server
 } # }}}
 
@@ -163,18 +175,18 @@ else
     case $1 in
         help) help_info;;
         all) all;;
-        ssh) configure_ssh;;
-        sudo) configure_sudo_privileges;;
+        ssh) config_ssh;;
+        sudo) config_sudo_privileges;;
         selinux) disable_selinux;;
         firewalld) disable_firewalld;;
         swap) disable_swap;;
-        pip) configure_pip;;
-        shutdown) configure_shutdown_wait_time;;
-        cron) configure_shutdown_wait_time;;
-        clock) configure_clock;;
-        editor) configure_default_editor;;
-        git) configure_git;;
-        email) configure_email;;
+        pip) config_pip;;
+        shutdown) config_shutdown_wait_time;;
+        cron) config_shutdown_wait_time;;
+        clock) config_clock;;
+        editor) config_default_editor;;
+        git) config_git;;
+        email) config_email;;
         *) echo "未识别的参数: $1";;
     esac
 fi
