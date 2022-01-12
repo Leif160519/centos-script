@@ -35,14 +35,14 @@ judge_user(){ # {{{
 
 configure_ssh(){ # {{{
     judge_user
-    sed -i 's/^(#|)UseDNS/UseDNS no/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)GSSAPIAuthentication/GSSAPIAuthentication no/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)ClientAliveInterval/ClientAliveInterval 60/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)ClientAliveCountMax/ClientAliveCountMax 60/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)PermitRootLogin/PermitRootLogin without-password/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)PasswordAuthentication/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)PermitEmptyPasswords/PermitEmptyPasswords no/g' /etc/ssh/sshd_config
-    sed -i 's/^(#|)   StrictHostKeyChecking/    StrictHostKeyChecking no/g' /etc/ssh/ssh_config
+    sed -i '/^\(#\|\)UseDNS/cUseDNS no' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)GSSAPIAuthentication/cGSSAPIAuthentication no' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)ClientAliveInterval/cClientAliveInterval 60' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)ClientAliveCountMax/cClientAliveCountMax 60' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)PermitRootLogin/cPermitRootLogin without-password' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)PasswordAuthentication/cPasswordAuthentication yes' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)PermitEmptyPasswords/cPermitEmptyPasswords no' /etc/ssh/sshd_config
+    sed -i '/^\(#\|\)   StrictHostKeyChecking/c    StrictHostKeyChecking no' /etc/ssh/ssh_config
     sed -i '$a    ServerAliveInterval 20' /etc/ssh/ssh_config
     sed -i '$a    ServerAliveCountMax 999' /etc/ssh/ssh_config
     sed -i '$a    GSSAPIAuthentication yes' /etc/ssh/ssh_config
@@ -52,7 +52,7 @@ configure_ssh(){ # {{{
 
 configure_sudo_privileges(){ # {{{
     judge_user
-    sed -i 's/^(|)%wheel/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+    sed -i '/^%wheel/c%wheel ALL=(ALL) NOPASSWD: ALL' /etc/sudoers
     if [[ ! -f /var/log/sudo.log ]];then
         touch /var/log/sudo.log
     fi
@@ -97,8 +97,8 @@ EOF
 
 configure_shutdown_wait_time(){ # {{{
     judge_user
-    sed -i 's/^(#|)DefaultTimeoutStartSec/DefaultTimeoutStartSec=10s/g' /etc/systemd/system.conf
-    sed -i 's/^(#|)DefaultTimeoutStopSec/DefaultTimeoutStopSec=10s/g' /etc/systemd/system.conf
+    sed -i '/^#DefaultTimeoutStartSec/cDefaultTimeoutStartSec=10s' /etc/systemd/system.conf
+    sed -i '/^#DefaultTimeoutStopSec/cDefaultTimeoutStopSec=10s' /etc/systemd/system.conf
 } # }}}
 
 open_cron_log(){ # {{{
@@ -175,6 +175,6 @@ else
         editor) configure_default_editor;;
         git) configure_git;;
         email) configure_email;;
-        *) echo "未识别的参数: $1"
+        *) echo "未识别的参数: $1";;
     esac
 fi
