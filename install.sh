@@ -26,6 +26,7 @@ cat <<EOF
         monit      安装monit
         docker     安装docker
         zsh        安装oh_my_zsh
+        mongodb    安装mongodb
 
 EOF
         exit 1
@@ -500,6 +501,21 @@ source \$ZSH/oh-my-zsh.sh
 EOF
 } # }}}
 
+install_mongodb(){ # {{{
+cat <<EOF > /etc/yum.repos.d/mongodb-org-4.0.repo
+[mongodb-org-4.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/4.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
+EOF
+    yum install -y mongodb-org
+    sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
+    systemctl start mongod
+    systemctl enable mongod
+} # }}}
+
 if (($#==0))
 then
     help_info
@@ -523,6 +539,7 @@ else
         monit) install_monit;;
         docker) install_docker;;
         zsh) install_oh_my_zsh;;
+        mongodb) install_mongodb;;
         *) echo "未识别的参数: $1";;
     esac
 fi
