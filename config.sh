@@ -34,7 +34,7 @@ judge_user(){ # {{{
     fi
 } # }}}
 
-config_repository(){
+config_repository(){ # {{{
     if [[ -f /etc/redhat-release ]];then
         centos_major_version=$(awk '{print $4}' /etc/redhat-release | awk -F. '{print $1}')
         wget -c http://mirrors.aliyun.com/repo/Centos-"${centos_major_version}".repo -O /etc/yum.repos.d/CentOS-Base.repo
@@ -44,7 +44,7 @@ config_repository(){
     else
         echo "非centos或redhat系统"
     fi
-}
+} # }}}
 
 config_ssh(){ # {{{
     judge_user
