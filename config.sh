@@ -10,6 +10,7 @@ cat <<EOF
 选项:
         help       打印这个帮助信息
         all        配置所有
+        repo       换源(阿里源)
         ssh        配置ssh服务
         sudo       配置sudo权限
         selinux    关闭selinux
@@ -32,6 +33,18 @@ judge_user(){ # {{{
         exit 1
     fi
 } # }}}
+
+config_repository(){
+    if [[ -f /etc/redhat-release ]];then
+        centos_major_version=$(awk '{print $4}' /etc/redhat-release | awk -F. '{print $1}')
+        wget -c http://mirrors.aliyun.com/repo/Centos-"${centos_major_version}".repo -O /etc/yum.repos.d/CentOS-Base.repo
+        yum makecache
+        yum -y update
+        yum clean all
+    else
+        echo "非centos或redhat系统"
+    fi
+}
 
 config_ssh(){ # {{{
     judge_user
@@ -152,6 +165,7 @@ reboot_server(){ # {{{
 } # }}}
 
 all(){ # {{{
+    config_repository
     config_ssh
     config_sudo_privileges
     disable_selinux
@@ -174,6 +188,7 @@ else
     case $1 in
         help) help_info;;
         all) all;;
+        repo) config_repository;;
         ssh) config_ssh;;
         sudo) config_sudo_privileges;;
         selinux) disable_selinux;;

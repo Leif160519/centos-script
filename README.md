@@ -60,25 +60,7 @@ centos 基础环境安装，包括常用组件和一些运维工具(以下表格
 | 46 | nslookup | 常用域名查询工具 | [nslookup命令][46] |
 
 
-## 2. config.sh
-系统配置
-| 序号 |  软件/操作名称 |  作用 |
-| ---- | -------------- | ------|
-| 1 | 关闭swap分区 |  |
-| 2 | 关闭防火墙 |  |
-| 3 | 关闭SSH DNS反向解析和GSSAPI的用户认证  | 防止ssh超时掉线 |
-| 4 | 设置所有sudo指令不需要密码 |
-| 5 | 给pip换源 |
-| 6 | 配置vim |
-| 7 | 配置关机等待时间 |
-
-> 补充：[Linux 常用命令集合][26]
-
-
-## 3. docker.sh
-安装 *`Docker`* 和 *`docker-compose`*
-
-## 4. gitlab.sh
+### 1.1 gitlab
 安装 *`Gitlab`* ，支持中文(登录过后在setting中设置语言即可)，设置包括：
 
 1.安装 *`SSH `* ----------------------------------------------------(一般Linux都自带，支持SSH克隆或者提交代码)，
@@ -103,7 +85,7 @@ centos 基础环境安装，包括常用组件和一些运维工具(以下表格
 > - [centos搭建gitlab社区版][49]
 > - [解决Gitlab迁移服务器后SSH key无效的问题][50]
 
-## 5. mongodb.sh
+### 1.2 mongodb
 安装 *`MongoDB`* 数据库
 
 - *`MongoDB`* 默认没有用户名和密码，可以用Navicat等数据库管理工具直接连接
@@ -114,40 +96,14 @@ centos 基础环境安装，包括常用组件和一些运维工具(以下表格
 > - [mongodb服务启动失败][53]
 > - [升级 MongoDB 到 4.0][54]
 
-## 6. mysql
-### 6.1 mysql-yum.sh
-安装 *`MySQL`* 数据库社区版，脚本主要设置了固定密码。
-
-关于如何开启远程访问(centos 7下)：
-
-1.登录进mysql
-```
-mysql -u root -p
-```
-2.更新表内容
-```
-grant all privileges on *.* to 'root' @'%' identified by '你的root用户密码’;
-```
-3.刷新权限
-```
-flush privileges;
-```
+### 1.3 mysql
+安装mysql压缩版
 
 > [mysql相关内容][55]
 
 附：[mysql5.7安装包(rpm)][56]
 
-### 6.2 mysql-tar.sh
-安装mysql压缩版
-
-## 7.python3.7.sh
-编译安装 *`Python3.7`*
-
-安装pip并升级到最新版
-> [python相关内容][57]
-
-
-## 8. rabbitmq.sh
+### 1.4 rabbitmq.sh
 安装 *`RabbitMQ`* 消息通知
 
 > 访问端口号 *`16572`* ， 用户名 *`admin`*  ，密码 *`123456`*
@@ -173,32 +129,38 @@ RabbitMQ下载:[github][61]
 >截止2019年05月16日，rabbitmq官网暂未更新rabbitmq 3.7.14版本
 
 
-## 9. supervisor.sh
+### 1.5 supervisor.sh
 安装 *`supervisor`* 进程管理工具设置应用程序开机自启动
 
 - 上述 *`base.sh`* 设置了 *`supervisor`* 的管理界面，端口号 *`9001`* ，用户名 *`admin`* ，密码 *`123456`*
 
 - 具体安装教程：[centos7安装supervisor][66]
 
-## 10.[monitor](monitor)
+## 2. python3.8.sh
+编译安装 `Python3.7`
+
+安装pip并升级到最新版
+> [python相关内容][57]
+
+## 3. [monitor](monitor)
 监控软件
-### 10.1 [netdata][67]
+### 3.1 [netdata][67]
 Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](images/1.png)
 > 部署教程参考:[netdata监控搭建及使用][68]
 
-### 10.2 [goaccess][69]
+### 3.2 [goaccess][69]
 分析nginx日志的工具，默认访问端口`7890`
 ![image.png](images/2.png)
 > 部署教程参考:[(超级详细)使用GoAccess分析Nginx日志的安装和配置][70]
 
-### 10.3 [cockpit](monitor/cockpit.sh)
+### 3.3 [cockpit](monitor/cockpit.sh)
 轻量级硬件资源监控软件，默认访问端口`9090`，用户名为Linux用户名，密码为Linux登录密码
 ![image.png](images/3.png)
 
 ![image.png](images/4.png)
 
-### 10.4 [Prometheus(p8s)][71]
+### 3.4 [Prometheus(p8s)][71]
 开源的监控系统，访问端口`9090`，`node_porter`访问端口`9100`
 
 ![image.png](images/5.png)
@@ -206,7 +168,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 ![image.png](images/6.png)
 
 
-### 10.5 [Grafana][72]
+### 3.5 [Grafana][72]
 功能强大的监控图形程序，可以接受多个监控平台的数据源。访问端口`3000`,默认用户名：*`admin`，密码：*`admin`。
 
 ![image.png](images/7.png)
@@ -220,7 +182,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [CentOS 7中安装和配置Grafana][76]
 > - [对接Grafana][77]
 
-### 10.6. [zabbix][78]
+### 3.6. [zabbix][78]
 安装zabbix服务，使用`zabbix-linux.sh`前提需要安装`mysql`(mysql不能装在docker中，否则zabbix-server不可用)。
 个人推荐`zabbix-docker.sh`，比较方便。
 ![image.png](images/8.png)
@@ -235,7 +197,7 @@ Linux硬件资源监控软件，默认访问端口`1999`
 > - [Linux老司机带你学Zabbix从入门到精通（二）][81]
 > - [基于 docker 部署 zabbix 及客户端批量部署][82]
 
-## 11. [k8s](k8s)
+## 4. [k8s](k8s)
 centos下k8s安装脚本
 
 > k8s相关资料：
@@ -244,13 +206,7 @@ centos下k8s安装脚本
 > - [CentOS7.5 Kubernetes V1.13 二进制部署集群][85]
 > - [《每天5分钟玩转Kubernetes》读书笔记][86]
 
-## 12.oh-my-zsh.sh
-安装zsh配置oh-my-zsh
-
-## 13.node.sh
-安装node和npm
-
-## 14. ldap.sh
+## 4. ldap.sh
 LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议， 用这个协议可以访问提供目录服务的产品
 
 > 参考资料：
@@ -259,31 +215,20 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 > - [Gitlab使用LDAP用户管理配置][89]
 > - [gitlab详细配置ldap][90]
 
-## 15. [scl使用指南](scl使用指南/scl使用指南.md)
+## 5. [scl使用指南](scl使用指南/scl使用指南.md)
 
-## 16.chrome.sh
-centos 7(Desktop版)安装chrome浏览器
-
-## 17.ethernet.sh
-修改centos的有线IP地址
-
-## 18.nfs.sh
+## 6.nfs.sh
 安装网络文件系统（Network File System）NFS
 
-## 19.samba.sh
+## 7.samba.sh
 安装服务信息块（Server Messages Block）文件共享软件samba
 
-## 20.rar.sh
-编译安装rar
+## 8. config.sh
+系统配置
 
-# 三、用法
+`./config.sh help`查看详情
 
-推荐执行顺序：
-- repository.sh - 换源
-- install.sh    - 安装常用组件
-- config.sh     - 系统配置
-- ethernet.sh   - 固定ip地址
-- ···.sh        - 其他特定软件的安装脚本
+> 补充：[Linux 常用命令集合][26]
 
 Good Luck！
 
