@@ -296,6 +296,7 @@ EOF
         # 创建mysqld服务启动文件
         create_service_file
         # 启动mysqld服务
+        systemctl daemon-reload
         systemctl start mysqld
         systemctl enable mysqld
         # 创建软链接
