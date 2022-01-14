@@ -43,10 +43,9 @@ config_ssh(){ # {{{
     sed -i '/^\(#\|\)PasswordAuthentication/cPasswordAuthentication yes' /etc/ssh/sshd_config
     sed -i '/^\(#\|\)PermitEmptyPasswords/cPermitEmptyPasswords no' /etc/ssh/sshd_config
     sed -i '/^\(#\|\)   StrictHostKeyChecking/c    StrictHostKeyChecking no' /etc/ssh/ssh_config
-    sed -i '$a    ServerAliveInterval 20' /etc/ssh/ssh_config
-    sed -i '$a    ServerAliveCountMax 999' /etc/ssh/ssh_config
-    sed -i '$a    GSSAPIAuthentication yes' /etc/ssh/ssh_config
-    sed -i '$a    GSSAPIAuthentication no' /etc/ssh/ssh_config
+    sed -i 's/\tGSSAPIAuthentication no/\        GSSAPIAuthentication yes/g' /etc/ssh/ssh_config
+    [[ $(grep "ServerAliveInterval 20" /etc/ssh/ssh_config | wc -l) == 0 ]] && sed -i '$a\        ServerAliveInterval 20' /etc/ssh/ssh_config
+    [[ $(grep "ServerAliveCountMax 999" /etc/ssh/ssh_config | wc -l) == 0 ]] && sed -i '$a\        ServerAliveCountMax 999' /etc/ssh/ssh_config
     systemctl reload sshd
     echo "configure ssh done."
 } # }}}
@@ -57,10 +56,10 @@ config_sudo_privileges(){ # {{{
     if [[ ! -f /var/log/sudo.log ]];then
         touch /var/log/sudo.log
     fi
-    sed -i '$alocal2.debug /var/log/sudo.log' /etc/rsyslog.conf
-    sed -i '$aDefaults logfile=/var/log/sudo.log' /etc/sudoers
-    sed -i '$aDefaults loglinelen=0' /etc/sudoers
-    sed -i '$aDefaults !syslog' /etc/sudoers
+    [[ $(grep "local2.debug" /etc/rsyslog.conf | wc -l) == 0 ]] && sed -i '$alocal2.debug /var/log/sudo.log' /etc/rsyslog.conf
+    [[ $(grep "Defaults logfile" /etc/sudoers | wc -l) == 0 ]] && sed -i '$aDefaults logfile=/var/log/sudo.log' /etc/sudoers
+    [[ $(grep "Defaults loglinelen" /etc/sudoers | wc -l) == 0 ]] && sed -i '$aDefaults loglinelen=0' /etc/sudoers
+    [[ $(grep "Defaults \!syslog" /etc/sudoers | wc -l ) == 0 ]] && sed -i '$aDefaults !syslog' /etc/sudoers
     systemctl restart rsyslog
     echo "config sudo done."
 } # }}}
