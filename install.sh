@@ -439,6 +439,8 @@ EOF
     else
         echo "docker is already installed."
     fi
+    wget -c https://github.com/bcicen/ctop/releases/download/0.7.6/ctop-0.7.6-linux-amd64 -O /usr/local/bin/ctop
+    chmod +x /usr/local/bin/ctop
 } # }}}
 
 install_oh_my_zsh(){ # {{{
