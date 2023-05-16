@@ -1,0 +1,135 @@
+# 商业转载请联系作者获得授权，非商业转载请注明出处。
+# For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source.
+# 协议(License)：署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)
+# 作者(Author)：Mashiro
+# 链接(URL)：https://2heng.xin/2019/09/10/docker-zabbix-grafana/
+# 来源(Source)：樱花庄的白猫
+
+version: '1.0'
+ 
+services:
+  # zabbix-server 容器配置
+  server:
+    image: zabbix/zabbix-server-mysql:latest
+    container_name: zabbix-server
+    depends_on:
+     - mysql
+     - agent
+    environment:
+      TZ: Asia/Shanghai
+      DB_SERVER_HOST: "mysql"
+      MYSQL_DATABASE: "zabbix"
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_ROOT_PASSWORD: "123456"
+    ports:
+     - "10051:10051"
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+    links:
+     - mysql:zabbix-mysql
+     - agent:zabbix-agent
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.20.0.6
+    restart: always
+ 
+  # zabbix-agent 容器配置
+  agent:
+    image: zabbix/zabbix-agent:latest
+    container_name: zabbix-agent
+    privileged: true
+    ports:
+     - "10050:10050"
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.20.0.5
+    restart: always
+ 
+  # zabbix web 环境容器配置
+  web:
+    image: zabbix/zabbix-web-nginx-mysql:latest
+    container_name: zabbix-web
+    depends_on:
+     - mysql
+     - server
+    environment:
+      TZ: Asia/Shanghai
+      DB_SERVER_HOST: "mysql"
+      ZBX_SERVER_HOST: "server"
+      MYSQL_DATABASE: "zabbix"
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_ROOT_PASSWORD: "123456"
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+    links:
+      - mysql:zabbix-mysql
+      - server:zabbix-server
+    ports:
+     - "80:80"
+    user: root
+    networks:
+      zabbixbr:
+        ipv4_address: 172.20.0.4
+    restart: always 
+ 
+  # mysql 容器配置
+  mysql:
+    image: mysql:5.7
+    container_name: zabbix-mysql
+    command: --character-set-server=utf8 --collation-server=utf8_general_ci
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_DATABASE: "zabbix"
+      MYSQL_USER: "zabbix"
+      MYSQL_PASSWORD: "zabbix"
+      MYSQL_ROOT_PASSWORD: "123456"     
+    networks:
+      zabbixbr:
+        ipv4_address: 172.20.0.3
+    volumes:
+     # 数据库 volume 路径：/home/data，根据自己需求调整
+     - /root/zabbix/database/mysql:/var/lib/mysql
+     - /etc/localtime:/etc/localtime:ro
+    restart: always
+ 
+  # Grafana 容器配置
+  grafana:
+    image: grafana/grafana:latest
+    container_name: zabbix-grafana
+    environment:
+     TZ: Asia/Shanghai
+     # 下面填写你想安装的插件，多项逗号分隔，当然也可以直接把插件上传到下面的 volume 中
+     GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app
+     # 挂载储存用的 volume，映射到宿主目录 /var/lib/docker/volumes 下
+    volumes:
+      # 插件和 Grafana 的用户配置数据放这里面
+      - grafana-storage:/var/lib/grafana
+      # grafana.ini 配置文件在里面
+      - grafana-etc:/etc/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      zabbixbr:
+        ipv4_address: 172.20.0.2
+    restart: always
+ 
+# 创建 stack 内用的容器
+volumes:
+  grafana-storage:
+  grafana-etc:
+ 
+# stack 内网配置
+networks:
+  zabbixbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.20.0.0/16
+         # 内网网关
+         gateway: 172.20.0.1

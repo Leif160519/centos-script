@@ -1,0 +1,3 @@
+[submodule "dashboard/starsliao.Prometheus"]
+	path = dashboard/starsliao.Prometheus
+	url = https://github.com/starsliao/Prometheus.git
