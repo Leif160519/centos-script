@@ -232,6 +232,9 @@ LDAP是Lightweight Directory Access Protocol ， 即轻量级目录访问协议�
 
 Good Luck！
 
+# 三、Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=leif160519/centos-script&type=Date)](https://star-history.com/#leif160519/centos-script&Date)
 
 [1]:  https://github.com/Leif160519/ansible-linux
 [2]:  https://cloud.tencent.com/developer/article/1115041
