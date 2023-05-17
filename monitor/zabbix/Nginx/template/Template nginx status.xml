@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2017-07-17T09:37:18Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template nginx status</template>
+            <name>Template nginx status</name>
+            <description>nginx监控模板</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>nginx</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>nginx status server accepts</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[accepts]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>1</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>accepts</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status connections active</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[active]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>0</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>active</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status server handled</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[handled]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>1</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>handled</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status PING</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[ping]</key>
+                    <delay>60</delay>
+                    <history>30</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>0</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>is live</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status connections reading</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[reading]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>0</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>reading</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status server requests</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[requests]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>1</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>requests</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status connections waiting</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[waiting]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>0</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>waiting</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+                <item>
+                    <name>nginx status connections writing</name>
+                    <type>0</type>
+                    <snmp_community />
+                    <multiplier>0</multiplier>
+                    <snmp_oid />
+                    <key>nginx.status[writing]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts />
+                    <units />
+                    <delta>0</delta>
+                    <snmpv3_contextname />
+                    <snmpv3_securityname />
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase />
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase />
+                    <formula>1</formula>
+                    <delay_flex />
+                    <params />
+                    <ipmi_sensor />
+                    <data_type>0</data_type>
+                    <authtype>0</authtype>
+                    <username />
+                    <password />
+                    <publickey />
+                    <privatekey />
+                    <port />
+                    <description>writing</description>
+                    <inventory_link>0</inventory_link>
+                    <applications>
+                        <application>
+                            <name>nginx</name>
+                        </application>
+                    </applications>
+                    <valuemap />
+                    <logtimefmt />
+                </item>
+            </items>
+            <discovery_rules />
+            <macros />
+            <templates />
+            <screens />
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template nginx status:nginx.status[ping].last(0)}=0 and {Template nginx status:nginx.status[ping].last(1)}=0</expression>
+            <name>nginx is down!</name>
+            <url />
+            <status>0</status>
+            <priority>4</priority>
+            <description />
+            <type>0</type>
+            <dependencies />
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <name>nginx status</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>1A7C11</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[active]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>F63100</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[reading]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>2774A4</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[waiting]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>A54F10</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[writing]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>FC6EA3</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[accepts]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>5</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>6C59DC</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[handled]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>6</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>AC8C14</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template nginx status</host>
+                        <key>nginx.status[requests]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+    <value_maps>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
